@@ -1,7 +1,12 @@
 'use client'
 import Select from "react-select";
 import Image from "next/image";
+import { ReactNode, useEffect, useState } from "react";
+import { createContext,useContext } from "react";
+import { UserContext } from "./context_selectedPlace";
+import { UserProvider } from "./context_selectedPlace";
 export function Search(){
+  
     const place = [
   { value: "Andhra Pradesh", label: "Andhra Pradesh" },
   { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
@@ -40,7 +45,25 @@ export function Search(){
   { value: "Lakshadweep", label: "Lakshadweep" },
   { value: "Puducherry", label: "Puducherry" },
 ];
+const context = useContext(UserContext);
+if (!context) {
+  throw new Error("useContext must be used inside a UserProvider");
+}
+const { selectedPlace, setSelectedPlace } = context;
+function gettingPlace(option: { value: string; label: string }) {
+  setSelectedPlace(option.value);
+  console.log(option.value); //
+}
 
+  const [mounted,setMounted]=useState(false);
+
+  
+  useEffect(()=>{
+    setMounted(true);
+  },[])
+  if(!mounted){
+    return null;
+  }
     return(
         <div className="flex justify-center items-center space-x-2 h-12 bg-[#FFA69E] py-10 mb-5">
   {/* Wrapper around input and icon */}
@@ -55,8 +78,11 @@ export function Search(){
     <Select
       placeholder="Enter City"
       isSearchable
-          classNamePrefix="react-select"
-          options={place}
+      classNamePrefix="react-select"
+      options={place}
+      onChange={gettingPlace}
+      value={place.find(p => p.value === selectedPlace)}
+      
           styles={{
             control: (base) => ({
               ...base,
