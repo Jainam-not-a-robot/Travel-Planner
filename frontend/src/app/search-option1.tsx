@@ -38,12 +38,14 @@ export function Search(){
   { value: "West Bengal", label: "West Bengal" },
   { value: "Andaman and Nicobar Islands", label: "Andaman and Nicobar Islands" },
   { value: "Chandigarh", label: "Chandigarh" },
-  { value: "Dadra and Nagar Haveli and Daman and Diu", label: "Dadra and Nagar Haveli and Daman and Diu" },
+  { value: "Dadra and Nagar Haveli", label: "Dadra and Nagar Haveli" },
+  { value: "Daman and Diu", label: "Daman and Diu" },
   { value: "Delhi", label: "Delhi" },
   { value: "Jammu and Kashmir", label: "Jammu and Kashmir" },
   { value: "Ladakh", label: "Ladakh" },
   { value: "Lakshadweep", label: "Lakshadweep" },
   { value: "Puducherry", label: "Puducherry" },
+  { value: "Chattisgarh", label: "Chattisgarh" },
 ];
 const context = useContext(UserContext);
 if (!context) {
