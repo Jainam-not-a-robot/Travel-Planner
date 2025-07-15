@@ -9,7 +9,8 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-
+frontend/src/generating_images.py
+frontend/src/sendin_data.py
 # testing
 /coverage
 
