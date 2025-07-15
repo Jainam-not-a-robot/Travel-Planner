@@ -14,7 +14,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     console.log(selectedPlace);
   },[selectedPlace])
    return(
-    <svg className="bg-[#DDFFF7] mx-36"
+    <svg className="bg-slate-50 mx-36"
     xmlns="http://www.w3.org/2000/svg"
     width="611.86"
     height="695.70"
@@ -26,7 +26,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         .allStates {
           border: 2px solid #2E4057;
           transition: fill 0.4s ease;
-          stroke: #2E4057;
+          stroke: #f8fafc;
           stroke-width: 1;
           
         }
@@ -42,7 +42,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-AN"
      data-name="Andaman and Nicobar Islands"
-     fill={selectedPlace === "Andaman and Nicobar Islands" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Andaman and Nicobar Islands" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Andaman and Nicobar Islands');
           setHoverPos({ x: 520, y: 650 }); // approximate position
@@ -62,7 +62,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-AP"
      data-name="Andhra Pradesh"
-     fill={selectedPlace === "Andhra Pradesh" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Andhra Pradesh" ? "#FFA69E" : "#9333ea"}
       onMouseEnter={() => {
           setHoveredState('Andhra Pradesh');
           setHoverPos({ x: 300, y: 520 }); 
@@ -83,7 +83,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-AR"
      data-name="Arunachal Pradesh"
-     fill={selectedPlace === "Arunachal Pradesh" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Arunachal Pradesh" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Arunachal Pradesh');
           setHoverPos({ x: 550, y: 190 }); // approximate position
@@ -103,7 +103,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-AS"
      data-name="Assam"
-     fill={selectedPlace === "Assam" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Assam" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Assam');
           setHoverPos({ x: 520, y: 270 }); // approximate position
@@ -123,7 +123,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-BR"
      data-name="Bihar"
-     fill={selectedPlace === "Bihar" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Bihar" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Bihar');
           setHoverPos({ x: 370, y: 280 }); 
@@ -143,7 +143,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-CT"
      data-name="Chattisgarh"
-     fill={selectedPlace === "Chattisgarh" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Chattisgarh" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Chattisgarh');
           setHoverPos({ x: 300, y: 370 }); 
@@ -163,7 +163,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-DD"
      data-name="Daman and Diu"
-     fill={selectedPlace === "Daman and Diu" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Daman and Diu" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Daman and Diu');
           setHoverPos({ x: 70, y: 420 }); 
@@ -183,7 +183,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-DL"
      data-name="Delhi"
-     fill={selectedPlace === "Delhi" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Delhi" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Delhi');
           setHoverPos({ x: 180, y: 205 }); 
@@ -203,14 +203,14 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-DN"
      data-name="Dadra and Nagar Haveli"
-     fill={selectedPlace === "Dadra and Nagar Haveli" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Dadra and Nagar Haveli" ? "#FFA69E" : "#9333ea"}
     //  title="Dadra and Nagar Haveli"
      d="m 105.295,406.93205 -0.637,1.54248 -0.97,-0.70122 -1.651,-0.33046 -0.164,0.70122 -0.892,-0.9541 0.152,-0.54808 -0.591,0.48561 -0.336,-0.39191 0.282,-0.90474 -0.34,-0.91682 0,0 -0.959,-1.48303 0.447,-0.32946 0.798,0.48562 0.133,-0.4564 0.629,0.0262 -0.014,-0.5914 0.51,0.58737 0.132,-0.7123 0.846,-0.0856 0.345,-0.75764 0.115,1.24628 1.016,-0.27304 0.365,0.68611 -0.432,-0.0897 -1,1.30471 -0.703,0.0514 0.117,1.63618 0.231,-0.38688 0.658,0.38486 0.527,-0.36068 -0.091,-0.76268 1.343,0.2146 0.385,0.38486 -0.677,0.89768 z"><title>Dadra and Nagar Haveli</title></path>
   <path
      className="allStates"
      id="IN-GA"
      data-name="Goa"
-     fill={selectedPlace === "Goa" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Goa" ? "#FFA69E" : "#9333ea"}
     //  title="Goa"
     onMouseEnter={() => {
           setHoveredState('Goa');
@@ -231,7 +231,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-GJ"
      data-name="Gujarat"
-     fill={selectedPlace === "Gujarat" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Gujarat" ? "#FFA69E" : "#9333ea"}
     //  title="Gujarat"
     onMouseEnter={() => {
           setHoveredState('Gujarat');
@@ -252,7 +252,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-HP"
      data-name="Himachal Pradesh"
-     fill={selectedPlace === "Himachal Pradesh" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Himachal Pradesh" ? "#FFA69E" : "#9333ea"}
     //  title="Himachal Pradesh"
     onMouseEnter={() => {
           setHoveredState('Himachal Pradesh');
@@ -273,7 +273,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-HR"
      data-name="Haryana"
-     fill={selectedPlace === "Haryana" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Haryana" ? "#FFA69E" : "#9333ea"}
     //  title="Haryana"
     onMouseEnter={() => {
           setHoveredState('Haryana');
@@ -294,7 +294,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-JH"
      data-name="Jharkhand"
-     fill={selectedPlace === "Jharkhand" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Jharkhand" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Jharkhand');
           setHoverPos({ x: 360, y: 330 }); 
@@ -314,7 +314,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-JK"
      data-name="Jammu and Kashmir"
-     fill={selectedPlace === "Jammu and Kashmir" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Jammu and Kashmir" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Jammu and Kashmir');
           setHoverPos({ x: 170, y: 80 }); 
@@ -334,7 +334,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-KA"
      data-name="Karnataka"
-     fill={selectedPlace === "Karnataka" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Karnataka" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Karnataka');
           setHoverPos({ x: 160, y: 530 }); 
@@ -354,7 +354,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-KL"
      data-name="Kerala"
-     fill={selectedPlace === "Kerala" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Kerala" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Kerala');
           setHoverPos({ x: 140, y: 640 }); 
@@ -374,7 +374,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-LD"
      data-name="Lakshadweep"
-     fill={selectedPlace === "Lakshadweep" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Lakshadweep" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Lakshadweep');
           setHoverPos({ x: 100, y: 650 }); 
@@ -394,7 +394,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-MH"
      data-name="Maharashtra"
-     fill={selectedPlace === "Maharashtra" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Maharashtra" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Maharashtra');
           setHoverPos({ x: 160, y: 430 }); 
@@ -414,7 +414,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-ML"
      data-name="Meghalaya"
-     fill={selectedPlace === "Meghalaya" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Meghalaya" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Meghalaya');
           setHoverPos({ x: 460, y: 300 }); 
@@ -434,7 +434,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-MN"
      data-name="Manipur"
-     fill={selectedPlace === "Manipur" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Manipur" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Manipur');
           setHoverPos({ x: 575, y: 320 }); 
@@ -454,7 +454,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-MP"
      data-name="Madhya Pradesh"
-     fill={selectedPlace === "Madhya Pradesh" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Madhya Pradesh" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Madhya Pradesh');
           setHoverPos({ x: 210, y: 350 }); 
@@ -474,7 +474,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-MZ"
      data-name="Mizoram"
-     fill={selectedPlace === "Mizoram" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Mizoram" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Mizoram');
           setHoverPos({ x: 520, y: 340 }); 
@@ -494,7 +494,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-NL"
      data-name="Nagaland"
-     fill={selectedPlace === "Nagaland" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Nagaland" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Nagaland');
           setHoverPos({ x: 570, y: 280 }); 
@@ -514,7 +514,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-OR"
      data-name="Odisha"
-     fill={selectedPlace === "Odisha" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Odisha" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Odisha');
           setHoverPos({ x: 350, y: 400 }); 
@@ -534,7 +534,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-PB"
      data-name="Punjab"
-     fill={selectedPlace === "Punjab" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Punjab" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Punjab');
           setHoverPos({ x: 154, y: 165 }); 
@@ -554,7 +554,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-CH"
      data-name="Chandigarh"
-     fill={selectedPlace === "Chandigarh" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Chandigarh" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Chandigarh');
           setHoverPos({ x: 180, y: 175 }); 
@@ -575,7 +575,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-PY"
      data-name="Puducherry"
-     fill={selectedPlace === "Puducherry" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Puducherry" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Puducherry');
           setHoverPos({ x: 260, y: 600 }); 
@@ -595,7 +595,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-RJ"
      data-name="Rajasthan"
-     fill={selectedPlace === "Rajasthan" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Rajasthan" ? "#FFA69E" : "#9333ea"}
      onMouseEnter={() => {
           setHoveredState('Rajasthan');
           setHoverPos({ x: 120, y: 260 }); 
@@ -615,7 +615,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-SK"
      data-name="Sikkim"
-     fill={selectedPlace === "Sikkim" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Sikkim" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Sikkim');
           setHoverPos({ x: 420, y: 220 }); 
@@ -636,7 +636,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-TG"
      data-name="Telangana"
-     fill={selectedPlace === "Telangana" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Telangana" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Telangana');
           setHoverPos({ x: 236, y: 460 }); 
@@ -656,7 +656,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-TN"
      data-name="Tamil Nadu"
-     fill={selectedPlace === "Tamil Nadu" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Tamil Nadu" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Tamil Nadu');
           setHoverPos({ x: 220, y: 620 }); 
@@ -676,7 +676,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-TR"
      data-name="Tripura"
-     fill={selectedPlace === "Tripura" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Tripura" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Tripura');
           setHoverPos({ x: 485, y: 355 }); 
@@ -696,7 +696,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-UP"
      data-name="Uttar Pradesh"
-     fill={selectedPlace === "Uttar Pradesh" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Uttar Pradesh" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Uttar Pradesh');
           setHoverPos({ x: 270, y: 260 }); 
@@ -716,7 +716,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-UT"
      data-name="Uttarakhand"
-     fill={selectedPlace === "Uttarakhand" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "Uttarakhand" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('Uttarakhand');
           setHoverPos({ x: 300, y: 200 }); 
@@ -736,7 +736,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
      className="allStates"
      id="IN-WB"
      data-name="West Bengal"
-     fill={selectedPlace === "West Bengal" ? "#FFA69E" : "#AA4465"}
+     fill={selectedPlace === "West Bengal" ? "#FFA69E" : "#9333ea"}
     onMouseEnter={() => {
           setHoveredState('West Bengal');
           setHoverPos({ x: 450, y: 390 }); 

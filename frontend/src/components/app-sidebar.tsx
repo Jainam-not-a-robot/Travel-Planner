@@ -44,39 +44,44 @@ const menuItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
-
   const isActive = (url: string) => pathname === url;
 
   return (
-    <Sidebar>
-      <SidebarContent className="bg-[#507DBC]">
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
+  <Sidebar>
+    <SidebarContent className="bg-[#1e293b]">
+      <SidebarGroup>
+        <SidebarGroupLabel className="text-white h-12 text-2xl mx-auto ">Navigate</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu className="flex flex-col items-center justify-center gap-2 py-4 w-full ">
+            {menuItems.map((item) => {
+              const active = isActive(item.url);
+              return (
                 <SidebarMenuItem
                   key={item.title}
-                  className={isActive(item.url) ? 'bg-[#EAEAEA] opacity-90' : ''}
+                  className={`
+                    ${active ? 'bg-[#EAEAEA] text-black' : 'text-white hover:text-black hover:bg-[#EAEAEA] hover:opacity-80'}
+                    transition-colors duration-150 h-8 w-full px-4 rounded-lg
+                  `}
                 >
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className='hover:bg-#FFFFFFCC'>
                     <Link href={item.url}>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 w-full">
                         <img
                           src={item.png}
                           alt={item.icon}
                           className="w-6 h-6 object-contain opacity-80 rounded-full"
                         />
-                        <span>{item.title}</span>
+                        <span className="transition-colors duration-150 hover:text-black">{item.title}</span>
                       </div>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  );
+              );
+            })}
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+  </Sidebar>
+)
 }
