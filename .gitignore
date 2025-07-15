@@ -12,16 +12,17 @@
 frontend/src/generating_images.py
 frontend/src/sendin_data.py
 # Ignore images folder or file types
-place_images/
-*.jpg
-*.png
-*.jpeg
-# testing
+frontend/public/place_images/
+
 /coverage
 
 # next.js
-/.next/
+**/.next/
 /out/
+
+# Ignore node_modules inside frontend and backend
+frontend/node_modules/
+backend/node_modules/
 
 # production
 /build
