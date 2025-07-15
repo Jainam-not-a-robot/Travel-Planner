@@ -1,48 +1,52 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# See https://help.github.com/articles/ignoring-files/
 
 # dependencies
-/node_modules
-/.pnp
+**/node_modules/
+.pnp/
 .pnp.*
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+
+# frontend scripts (optional)
 frontend/src/generating_images.py
 frontend/src/sendin_data.py
-# Ignore images folder or file types
+
+# Images and generated content
 frontend/public/place_images/
 
+# Test coverage
 /coverage
 
-# next.js
+# Next.js build artifacts
 **/.next/
-/out/
-
-# Ignore node_modules inside frontend and backend
-**/node_modules/
-
-
-# production
-/build
+out/
+build/
 
 # misc
 .DS_Store
 *.pem
 
-# debug
+# debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
 
-# vercel
-.vercel
+# virtual environments
+/venv/
 
-# typescript
+# deployment
+.vercel/
+
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# VS Code (optional)
+.vscode/
