@@ -11,6 +11,11 @@
 !.yarn/versions
 frontend/src/generating_images.py
 frontend/src/sendin_data.py
+# Ignore images folder or file types
+place_images/
+*.jpg
+*.png
+*.jpeg
 # testing
 /coverage
 
