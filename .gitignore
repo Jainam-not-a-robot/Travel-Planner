@@ -12,7 +12,7 @@
 
 # frontend scripts (optional)
 frontend/src/generating_images.py
-frontend/src/sendin_data.py
+frontend/src/sending_data.py
 
 # Images and generated content
 frontend/public/place_images/
