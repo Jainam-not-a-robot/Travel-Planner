@@ -14,9 +14,6 @@
 frontend/src/generating_images.py
 frontend/src/sending_data.py
 
-# Images and generated content
-frontend/public/place_images/
-
 # Test coverage
 /coverage
 
