@@ -67,7 +67,7 @@ function gettingPlace(option: { value: string; label: string }) {
     return null;
   }
     return(
-        <div className="flex justify-center items-center space-x-2 h-12 bg-[#FFA69E] py-10 mb-5">
+        <div className="flex justify-center items-center space-x-2 h-12 py-10 mb-5">
   {/* Wrapper around input and icon */}
   <div className="relative">
     <Image
@@ -78,7 +78,7 @@ function gettingPlace(option: { value: string; label: string }) {
   className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none z-10"
 />
     <Select
-      placeholder="Enter City"
+      placeholder="Enter State"
       isSearchable
       classNamePrefix="react-select"
       options={place}
@@ -93,10 +93,15 @@ function gettingPlace(option: { value: string; label: string }) {
               borderColor: "#ccc",
               minHeight: "40px",
               boxShadow: "none",
+              minWidth: "15rem",
+              // textAlign:"center"
+              backgroundColor:"#DBEAFE",
+              // opacity:"50%"
             }),
             input: (base) => ({
               ...base,
               marginLeft: "4px",
+              color:"black"
             }),
           }}
     />
