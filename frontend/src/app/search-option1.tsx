@@ -2,11 +2,19 @@
 import Select from "react-select";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { createContext,useContext } from "react";
 import { UserContext } from "./context_selectedPlace";
 import { UserProvider } from "./context_selectedPlace";
 export function Search(){
-  
+    const router=useRouter();
+    const pathname=usePathname();
+    const changingRoute=()=>{
+      if(pathname==="/"){
+        router.push("/places");
+      }
+    }
     const place = [
   { value: "Andhra Pradesh", label: "Andhra Pradesh" },
   { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
@@ -107,7 +115,7 @@ function gettingPlace(option: { value: string; label: string }) {
     />
   </div>
 
-  <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">
+  <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600" onClick={changingRoute}>
     Search
   </button>
 </div> 

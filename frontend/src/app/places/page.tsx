@@ -1,21 +1,13 @@
-'use client'
-import Card from "./placesCard";
-export default function places(){
-    async function gettingLocation(){
-        navigator.geolocation.watchPosition(
-  (pos) => {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-  },
-  (err) => {
-    console.error("Error:", err.message);
-  }
-);
-    }
-    
-    return(<>
-    <div className="flex flex-row w-screen flex-wrap">
-    <Card/>
-    </div>
-    </>)
+import Places from "./places";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Search } from "../search-option1";
+export default function placesPage(){
+return(
+    <>
+    <SidebarTrigger className="fixed mt-32"/>
+    <Search/>
+    <Places/>
+    </>
+
+)
 }
