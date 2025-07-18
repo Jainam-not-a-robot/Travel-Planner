@@ -1,5 +1,5 @@
 'use client'
-
+import Card from "./placesCard";
 export default function places(){
     async function gettingLocation(){
         navigator.geolocation.watchPosition(
@@ -13,5 +13,9 @@ export default function places(){
 );
     }
     
-    return(<></>)
+    return(<>
+    <div className="flex flex-row w-screen flex-wrap">
+    <Card/>
+    </div>
+    </>)
 }

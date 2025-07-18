@@ -1,6 +1,6 @@
 // import pool from "../database/pool";
 import { getAllPlaces, getPlacesFromState} from "../models/getPlacesModels.js";
-import { placesSchema } from "../../schema/placesSchema.js";
+import { placesSchema } from "../schema/placesSchema.js";
 export const handleGetAllPlaces=async(req,res)=>{
     try{
         const places=await getAllPlaces();
