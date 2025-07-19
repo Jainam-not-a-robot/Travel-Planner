@@ -1,33 +1,48 @@
 'use client'
-import Image from "next/image"
-import './styles.css'
-export default function CardPlaces({place}) {
+import Image from "next/image";
+import './styles.css';
+
+type Place = {
+  id: number;
+  name: string;
+  city: string;
+  state: string;
+  latitude: number;
+  longitude: number;
+  image_path: string;
+  description: string;
+  distance: number;
+};
+
+type PlaceProps = {
+  place: Place;
+};
+
+export default function CardPlaces({ place }: PlaceProps) {
   return (
-    <div className="flex flex-col w-80 bg-amber-300 border-4 rounded-2xl mx-8 h-[400px] items-center">
-      <div className="relative w-full h-1/2 my-0">
+    <div className="flex flex-col w-80 bg-gray-300 border border-gray-200 rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-300 mx-8 my-8">
+      <div className="relative w-full h-48">
         <Image
           src={`/${place.image_path}`}
           alt={place.name}
           fill
-          className="object-cover rounded-tl-2xl rounded-tr-2xl"
+          className="object-cover"
         />
       </div>
-     
-        <div className="w-full h-1/5 my-0 font-bold flex items-center justify-center text-2xl">
-        <span className="text-center leading-tight">
-          {place.name}
-        </span>
+
+      <div className="flex flex-col flex-grow p-4">
+        <h2 className="text-xl font-bold mb-2 text-center">{place.name}</h2>
+        <p className="text-sm text-gray-700 flex-grow mb-4">{place.description}</p>
+
+        <div className="flex justify-between items-center text-sm font-semibold">
+          <span className="bg-blue-400 rounded-full px-3 py-1 text-gray-800">
+            📍 {place.distance} km
+          </span>
+          <span className="bg-yellow-400 rounded-full px-3 py-1 text-gray-800">
+            Ratings coming soon
+          </span>
         </div>
-        <hr className="border-black"></hr>
-        <div className=" w-full h-3/10 my-0 flex flex-row">
-            <div className=" w-3/5 h-full border-r-black border-1">{place.description}</div>
-            <div className=" w-2/5 h-full flex flex-col flex-wrap">
-            <div className=" h-1/2 w-full border-b-1 border-black text-xl">
-                Distance: {place.distance} kms
-            </div>
-            <div className=" h-1/2 w-full">Rating</div>
-            </div>
-        </div>
+      </div>
     </div>
-  )
+  );
 }
