@@ -22,8 +22,8 @@ export default function CardPlaces({place}) {
         <div className=" w-full h-3/10 my-0 flex flex-row">
             <div className=" w-3/5 h-full border-r-black border-1">{place.description}</div>
             <div className=" w-2/5 h-full flex flex-col flex-wrap">
-            <div className=" h-1/2 w-full border-b-1 border-black">
-                Distance
+            <div className=" h-1/2 w-full border-b-1 border-black text-xl">
+                Distance: {place.distance} kms
             </div>
             <div className=" h-1/2 w-full">Rating</div>
             </div>
