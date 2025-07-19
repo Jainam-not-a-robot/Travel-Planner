@@ -15,6 +15,7 @@ export default function Places() {
         image_path: string;
         description: string;
         distance: number;
+        ratings:number|null;
     };
 
     const context = useContext(UserContext);

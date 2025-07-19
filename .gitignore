@@ -13,7 +13,7 @@
 # frontend scripts (optional)
 frontend/src/generating_images.py
 frontend/src/sending_data.py
-
+frontend/src/generating_ratings.py
 # Test coverage
 /coverage
 

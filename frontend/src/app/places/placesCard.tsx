@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image";
 import './styles.css';
+import { redirect } from "next/dist/server/api-utils";
 
 type Place = {
   id: number;
@@ -12,6 +13,7 @@ type Place = {
   image_path: string;
   description: string;
   distance: number;
+  ratings:number|null;
 };
 
 type PlaceProps = {
@@ -19,8 +21,11 @@ type PlaceProps = {
 };
 
 export default function CardPlaces({ place }: PlaceProps) {
+  const redirectToMaps=()=>{
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(place.name)}`);
+  }
   return (
-    <div className="flex flex-col w-80 bg-gray-300 border border-gray-200 rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-300 mx-8 my-8">
+    <div className="flex flex-col w-80 bg-gray-300 border border-gray-200 rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-300 mx-8 my-8 cursor-pointer" onClick={redirectToMaps}>
       <div className="relative w-full h-48">
         <Image
           src={`/${place.image_path}`}
@@ -39,7 +44,7 @@ export default function CardPlaces({ place }: PlaceProps) {
             📍 {place.distance} km
           </span>
           <span className="bg-yellow-400 rounded-full px-3 py-1 text-gray-800">
-            Ratings coming soon
+            {place.ratings?`${place.ratings}`:"No rating"}
           </span>
         </div>
       </div>

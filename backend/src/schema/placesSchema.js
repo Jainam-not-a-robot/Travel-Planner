@@ -8,5 +8,6 @@ export const placesSchema=Joi.object({
     description:Joi.string().min(1).required(),
     lattitude:Joi.number().min(-90).max(90).required(),
     longitude:Joi.number().min(-180).max(180).required(),
-    image_path:Joi.string().min(1).pattern(/^place_images/).required()
+    image_path:Joi.string().min(1).pattern(/^place_images/).required(),
+    ratings:Joi.number().min(0).max(5)
 });
