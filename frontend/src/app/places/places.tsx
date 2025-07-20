@@ -25,7 +25,7 @@ export default function Places() {
         throw new Error("useContext must be used inside a UserProvider");
     }
 
-    const { selectedPlace, setSelectedPlace } = context;
+    const { selectedPlace, setSelectedPlace,selectedOption,setSelectedOption } = context;
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/places/states/${selectedPlace}`).then(response => {
@@ -84,13 +84,35 @@ export default function Places() {
       let right_arr=arr.slice(m+1,r+1);
       let i=0,j=0,k=l;
       while(i<left_arr.length&&j<right_arr.length){
-        if(left_arr[i].distance<right_arr[j].distance){
-          arr[k++]=left_arr[i++];
+        if(selectedOption===null||selectedOption.value==="distance"){
+            if(left_arr[i].distance<right_arr[j].distance){
+                arr[k++]=left_arr[i++];
+                }
+            else{
+                arr[k++]=right_arr[j++];
+            }
+        
         }
-        else{
-          arr[k++]=right_arr[j++];
+        else if(selectedOption.value==="rating"){
+            if(left_arr[i].ratings===null){
+                left_arr[i].ratings=0;
+            }
+            else if(right_arr[j].ratings===null){
+                right_arr[j].ratings=0;
+            }
+            if(left_arr[i].ratings!==null && right_arr[j].ratings!==null){
+                if(left_arr[i].ratings<right_arr[j].ratings){
+                    arr[k++]=right_arr[j++];
+                }
+                else{
+                    arr[k++]=left_arr[i++];
+            }
+            }
+            
         }
-      }
+        
+      
+    }
       while(i<left_arr.length){
         arr[k++]=left_arr[i++];
       }

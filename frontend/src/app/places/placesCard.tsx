@@ -1,7 +1,6 @@
 'use client'
 import Image from "next/image";
 import './styles.css';
-import { redirect } from "next/dist/server/api-utils";
 
 type Place = {
   id: number;
@@ -43,8 +42,8 @@ export default function CardPlaces({ place }: PlaceProps) {
           <span className="bg-blue-400 rounded-full px-3 py-1 text-gray-800">
             📍 {place.distance} km
           </span>
-          <span className="bg-yellow-400 rounded-full px-3 py-1 text-gray-800">
-            {place.ratings?`${place.ratings}`:"No rating"}
+          <span className="bg-orange-400 rounded-full px-3 py-1 text-gray-800">
+            {place.ratings?`⭐ ${place.ratings}`:"No rating"}
           </span>
         </div>
       </div>
