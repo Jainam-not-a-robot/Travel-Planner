@@ -15,7 +15,7 @@ export default function Places() {
         image_path: string;
         description: string;
         distance: number;
-        ratings:number|null;
+        ratings: number | null;
     };
 
     const context = useContext(UserContext);
@@ -25,15 +25,15 @@ export default function Places() {
         throw new Error("useContext must be used inside a UserProvider");
     }
 
-    const { selectedPlace, setSelectedPlace,selectedOption,setSelectedOption } = context;
+    const { selectedPlace, setSelectedPlace, selectedOption, setSelectedOption } = context;
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/places/states/${selectedPlace}`).then(response => {
             setPlaces(response.data.places);
         })
-        .catch(error => {
-            console.error(error);
-        });
+            .catch(error => {
+                console.error(error);
+            });
     }, [selectedPlace]);
 
     const [lat, setLat] = useState<number | null>(null);
@@ -59,8 +59,8 @@ export default function Places() {
         const dLon = toRad(lon2 - lon1);
 
         const a = Math.sin(dLat / 2) ** 2 +
-                  Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-                  Math.sin(dLon / 2) ** 2;
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+            Math.sin(dLon / 2) ** 2;
 
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
@@ -78,64 +78,65 @@ export default function Places() {
                 distance: haversine(lat, lon, place.latitude, place.longitude),
             }))
             : [];
-    function sorting(l:number,r:number,arr:Place[]){
-      let m=Math.floor((l+r)/2);
-      let left_arr=arr.slice(l,m+1);
-      let right_arr=arr.slice(m+1,r+1);
-      let i=0,j=0,k=l;
-      while(i<left_arr.length&&j<right_arr.length){
-        if(selectedOption===null||selectedOption.value==="distance"){
-            if(left_arr[i].distance<right_arr[j].distance){
-                arr[k++]=left_arr[i++];
+    function sorting(l: number, r: number, arr: Place[]) {
+        let m = Math.floor((l + r) / 2);
+        let left_arr = arr.slice(l, m + 1);
+        let right_arr = arr.slice(m + 1, r + 1);
+        let i = 0, j = 0, k = l;
+        while (i < left_arr.length && j < right_arr.length) {
+            if (selectedOption === null || selectedOption.value === "distance") {
+                if (left_arr[i].distance < right_arr[j].distance) {
+                    arr[k++] = left_arr[i++];
                 }
-            else{
-                arr[k++]=right_arr[j++];
-            }
-        
-        }
-        else if(selectedOption.value==="rating"){
-            if(left_arr[i].ratings===null){
-                left_arr[i].ratings=0;
-            }
-            else if(right_arr[j].ratings===null){
-                right_arr[j].ratings=0;
-            }
-            if(left_arr[i].ratings!==null && right_arr[j].ratings!==null){
-                if(left_arr[i].ratings<right_arr[j].ratings){
-                    arr[k++]=right_arr[j++];
+                else {
+                    arr[k++] = right_arr[j++];
                 }
-                else{
-                    arr[k++]=left_arr[i++];
+
             }
+            else if (selectedOption.value === "rating") {
+                if (left_arr[i].ratings === null) {
+                    left_arr[i].ratings = 0;
+                }
+                else if (right_arr[j].ratings === null) {
+                    right_arr[j].ratings = 0;
+                }
+                if (left_arr[i].ratings !== null && right_arr[j].ratings !== null) {
+                    if (left_arr[i].ratings < right_arr[j].ratings) {
+                        arr[k++] = right_arr[j++];
+                    }
+                    else {
+                        arr[k++] = left_arr[i++];
+                    }
+                }
+
             }
-            
+
+
         }
-        
-      
+        while (i < left_arr.length) {
+            arr[k++] = left_arr[i++];
+        }
+        while (j < right_arr.length) {
+            arr[k++] = right_arr[j++];
+        }
     }
-      while(i<left_arr.length){
-        arr[k++]=left_arr[i++];
-      }
-      while(j<right_arr.length){
-        arr[k++]=right_arr[j++];
-      }
+    function sortByDistance(l: number, r: number) {
+        let m = Math.floor((l + r) / 2);
+        if (l < r) {
+            sortByDistance(l, m);
+            sortByDistance(m + 1, r);
+            sorting(l, r, placesWithDistance);
+        }
     }
-    function sortByDistance(l:number,r:number){
-      let m=Math.floor((l+r)/2);
-      if(l<r){
-        sortByDistance(l,m);
-        sortByDistance(m+1,r);
-        sorting(l,r,placesWithDistance);
-      }
-    }
-    sortByDistance(0,placesWithDistance.length-1)
+    sortByDistance(0, placesWithDistance.length - 1)
     if (placesWithDistance) {
         return (
-            <div className="flex flex-row w-screen flex-wrap">
+            <div className="flex flex-wrap justify-center gap-6 p-4">
                 {placesWithDistance.map((place) => (
-                    <Card place={place} key={place.id} />
+                    <Card key={place.id} place={place} />
                 ))}
             </div>
+
         )
     }
 }

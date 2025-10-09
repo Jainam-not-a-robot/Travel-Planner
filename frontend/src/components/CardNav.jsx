@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from 'react-icons/go';
 import './CardNav.css';
+import Image from 'next/image';
 
 const CardNav = ({
   logo,
@@ -51,7 +52,7 @@ const CardNav = ({
         contentEl.style.position = wasPosition;
         contentEl.style.height = wasHeight;
 
-        return topBar + contentHeight/2 + padding;
+        return topBar + contentHeight / 2 + padding;
       }
     }
     return 166;
@@ -151,10 +152,18 @@ const CardNav = ({
           </div>
 
           <div className="logo-container">
-            <img src={logo} alt={logoAlt} className="logo" />
+            <Image
+              src={logo}
+              alt={logoAlt}
+              className="logo"
+              width={120}  // adjust width
+              height={40}  // adjust height
+              priority={true}
+            />
+
           </div>
 
-          
+
         </div>
 
         <div className="card-nav-content" aria-hidden={!isExpanded}>
