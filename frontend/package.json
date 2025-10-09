@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@kennethormandy/react-fittext": "^0.6.0",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
@@ -17,12 +16,14 @@
     "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.0",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.511.0",
-    "next": "15.3.2",
+    "next": "^15.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-select": "^5.10.1",
-    "react-textfit": "^1.1.1",
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {

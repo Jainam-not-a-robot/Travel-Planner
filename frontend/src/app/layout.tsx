@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
 import { UserProvider } from "./context_selectedPlace"
-
+import NavCard from "./NavCard";
+// import logo from './logo.svg';
+import { HomeIcon } from "lucide-react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,20 +26,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en" className="h-full">
       <body
         className={`${geistSans.variable} ${geistMono.variable} h-full flex bg-slate-50 antialiased`}
       >
         <UserProvider>
-        <SidebarProvider>
-          <AppSidebar />
 
           <main className="flex-1 min-h-screen overflow-auto p-4">
             {/* <SidebarTrigger /> */}
             {children}
           </main>
-        </SidebarProvider>
+
         </UserProvider>
       </body>
     </html>

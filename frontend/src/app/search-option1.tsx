@@ -1,123 +1,122 @@
-'use client'
-import Select from "react-select";
-import Image from "next/image";
-import { ReactNode, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
-import { createContext,useContext } from "react";
-import { UserContext } from "./context_selectedPlace";
-import { UserProvider } from "./context_selectedPlace";
-export function Search(){
-    const router=useRouter();
-    const pathname=usePathname();
-    const changingRoute=()=>{
-      if(pathname==="/"){
-        router.push("/places");
-      }
-    }
-    const place = [
-  { value: "Andhra Pradesh", label: "Andhra Pradesh" },
-  { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
-  { value: "Assam", label: "Assam" },
-  { value: "Bihar", label: "Bihar" },
-  { value: "Chhattisgarh", label: "Chhattisgarh" },
-  { value: "Goa", label: "Goa" },
-  { value: "Gujarat", label: "Gujarat" },
-  { value: "Haryana", label: "Haryana" },
-  { value: "Himachal Pradesh", label: "Himachal Pradesh" },
-  { value: "Jharkhand", label: "Jharkhand" },
-  { value: "Karnataka", label: "Karnataka" },
-  { value: "Kerala", label: "Kerala" },
-  { value: "Madhya Pradesh", label: "Madhya Pradesh" },
-  { value: "Maharashtra", label: "Maharashtra" },
-  { value: "Manipur", label: "Manipur" },
-  { value: "Meghalaya", label: "Meghalaya" },
-  { value: "Mizoram", label: "Mizoram" },
-  { value: "Nagaland", label: "Nagaland" },
-  { value: "Odisha", label: "Odisha" },
-  { value: "Punjab", label: "Punjab" },
-  { value: "Rajasthan", label: "Rajasthan" },
-  { value: "Sikkim", label: "Sikkim" },
-  { value: "Tamil Nadu", label: "Tamil Nadu" },
-  { value: "Telangana", label: "Telangana" },
-  { value: "Tripura", label: "Tripura" },
-  { value: "Uttar Pradesh", label: "Uttar Pradesh" },
-  { value: "Uttarakhand", label: "Uttarakhand" },
-  { value: "West Bengal", label: "West Bengal" },
-  { value: "Andaman and Nicobar Islands", label: "Andaman and Nicobar Islands" },
-  { value: "Chandigarh", label: "Chandigarh" },
-  { value: "Dadra and Nagar Haveli", label: "Dadra and Nagar Haveli" },
-  { value: "Daman and Diu", label: "Daman and Diu" },
-  { value: "Delhi", label: "Delhi" },
-  { value: "Jammu and Kashmir", label: "Jammu and Kashmir" },
-  { value: "Ladakh", label: "Ladakh" },
-  { value: "Lakshadweep", label: "Lakshadweep" },
-  { value: "Puducherry", label: "Puducherry" },
-  { value: "Chattisgarh", label: "Chattisgarh" },
-];
-const context = useContext(UserContext);
-if (!context) {
-  throw new Error("useContext must be used inside a UserProvider");
-}
-const { selectedPlace, setSelectedPlace } = context;
-function gettingPlace(option: { value: string; label: string }) {
-  setSelectedPlace(option.value);
-  console.log(option.value); //
-}
-
-  const [mounted,setMounted]=useState(false);
-
-  
-  useEffect(()=>{
-    setMounted(true);
-  },[])
-  if(!mounted){
-    return null;
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { UserContext } from './context_selectedPlace';
+import { usePathname } from 'next/navigation';
+export default function Search() {
+  const router = useRouter()
+  const context = useContext(UserContext);
+  const pathname=usePathname()
+  if (!context) {
+    throw new Error("useContext must be used inside a UserProvider");
   }
-    return(
-        <div className="flex justify-center items-center space-x-2 h-12 py-10 mb-5">
-  {/* Wrapper around input and icon */}
-  <div className="relative">
-    <Image
-  src="/search-icon.webp"
-  alt="search icon"
-  width={16}
-  height={16}
-  className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none z-10"
-/>
-    <Select
-      placeholder="Enter State"
-      isSearchable
-      classNamePrefix="react-select"
-      options={place}
-      onChange={gettingPlace}
-      value={place.find(p => p.value === selectedPlace)}
-      
-          styles={{
-            control: (base) => ({
-              ...base,
-              borderRadius: "9999px",
-              paddingLeft: "30px",
-              borderColor: "#ccc",
-              minHeight: "40px",
-              boxShadow: "none",
-              minWidth: "15rem",
-              // textAlign:"center"
-              backgroundColor:"#DBEAFE",
-              // opacity:"50%"
-            }),
-            input: (base) => ({
-              ...base,
-              marginLeft: "4px",
-              color:"black"
-            }),
-          }}
-    />
-  </div>
+  const { selectedPlace, setSelectedPlace } = context;
+  const changingRoute = () => {
+    if(pathname==="/")router.push("/places");
+  }
+  const places = [
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli",
+    "Daman and Diu",
+    "Delhi",
+    "Jammu and Kashmir",
+    "Ladakh",
+    "Lakshadweep",
+    "Puducherry"
+  ];
 
-  <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600" onClick={changingRoute}>
-    Search
-  </button>
-</div> 
-    )
+  const [filtered, setFiltered] = useState([]);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSelectedPlace(value);
+
+    if (value.trim() === "") {
+      setFiltered(places);
+      return;
+    }
+
+    const suggestions = places.filter(p =>
+      p.toLowerCase().startsWith(value.toLowerCase())
+    );
+
+    setFiltered(suggestions);
+  };
+
+  const handleFocus = () => {
+    setFiltered(places); // show all when focused
+  };
+
+  const handleBlur = () => {
+    // small delay so clicking a list item still works
+    setTimeout(() => setFiltered([]), 100);
+  };
+
+  const handleSelect = (place) => {
+    setSelectedPlace(place);
+    setFiltered([]);
+  };
+
+  return (
+    <div className="relative w-128 mx-auto mt-16">
+      <div className='flex items-center gap-8 mb-4'>
+        <input
+          type="search"
+          value={selectedPlace}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          placeholder="Enter State"
+          className="w-full border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600" onClick={changingRoute}>
+          Search
+        </button>
+      </div>
+      {filtered.length > 0 && (
+        <ul className="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-md max-h-48 overflow-y-auto z-10">
+          {filtered.map((place, i) => (
+            <li
+              key={i}
+              onMouseDown={() => handleSelect(place)} // use onMouseDown instead of onClick
+              className="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+            >
+              {place}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
