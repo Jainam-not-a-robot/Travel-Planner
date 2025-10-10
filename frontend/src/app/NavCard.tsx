@@ -1,6 +1,6 @@
 'use client'
 import CardNav from "@/components/CardNav"
-import logo from "@/assets/logo.png"
+// import logo from "@/assets/logo.png"
 import travellogo from "@/assets/travel-logo.png"
 export default function NavCard(){
     const items = [

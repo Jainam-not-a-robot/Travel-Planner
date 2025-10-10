@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+// import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { UserProvider } from "./context_selectedPlace"
-import NavCard from "./NavCard";
+// import NavCard from "./NavCard";
 // import logo from './logo.svg';
-import { HomeIcon } from "lucide-react";
+// import { HomeIcon } from "lucide-react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

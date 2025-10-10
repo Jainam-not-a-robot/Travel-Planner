@@ -1,12 +1,9 @@
 'use client';
 import { useState, useContext } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
 import { UserContext } from './../context_selectedPlace';
 import FilterBtn from './filterbtn';
 
 export function Search() {
-  const router = useRouter();
-  const pathname = usePathname();
   const context = useContext(UserContext);
 
   if (!context) {
@@ -57,9 +54,7 @@ export function Search() {
     setFiltered([]);
   };
 
-  const changingRoute = () => {
-    if (pathname === "/") router.push("/places");
-  };
+
 
   return (
     <div className="relative w-full max-w-3xl mx-auto mt-16">
