@@ -27,9 +27,9 @@ export default function NavCard(){
             logo={logo}
             logoAlt="Travel Planner"
             items={items}
-            baseColor="#fff"
-            menuColor="#000"
-            buttonBgColor="#111"
+            baseColor="white"
+            menuColor="black"
+            buttonBgColor="#FFBDBD"
             buttonTextColor="#fff"
             ease="power3.out"/>
     )

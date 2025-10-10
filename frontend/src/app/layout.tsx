@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} h-full flex bg-slate-50 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} h-full flex bg-gradient-to-b from-white to-[#BADFDB]  antialiased`}
       >
         <UserProvider>
 

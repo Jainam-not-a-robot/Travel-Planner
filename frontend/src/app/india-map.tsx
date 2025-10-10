@@ -14,7 +14,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     console.log(selectedPlace);
   },[selectedPlace])
    return(
-    <svg className="bg-slate-50 mx-36"
+    <svg className="mx-36"
     xmlns="http://www.w3.org/2000/svg"
     width="611.86"
     height="695.70"

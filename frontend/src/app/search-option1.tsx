@@ -100,7 +100,7 @@ export default function Search() {
           className="w-full border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600" onClick={changingRoute}>
+        <button className="bg-[#239BA7] text-white px-4 py-2 rounded-full hover:bg-blue-600 hover:cursor-pointer hover:shadow-xl" onClick={changingRoute}>
           Search
         </button>
       </div>
