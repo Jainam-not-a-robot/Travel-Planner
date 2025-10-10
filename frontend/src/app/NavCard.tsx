@@ -1,6 +1,7 @@
 'use client'
 import CardNav from "@/components/CardNav"
 import logo from "@/assets/logo.png"
+import travellogo from "@/assets/travel-logo.png"
 export default function NavCard(){
     const items = [
     {
@@ -24,12 +25,12 @@ export default function NavCard(){
   ]
     return(
         <CardNav 
-            logo={logo}
+            logo={travellogo}
             logoAlt="Travel Planner"
             items={items}
             baseColor="white"
             menuColor="black"
-            buttonBgColor="#FFBDBD"
+            buttonBgColor="#239BA7"
             buttonTextColor="#fff"
             ease="power3.out"/>
     )

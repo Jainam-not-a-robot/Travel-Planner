@@ -157,7 +157,7 @@ const CardNav = ({
               alt={logoAlt}
               className="logo"
               width={120}  // adjust width
-              height={40}  // adjust height
+              height={60}  // adjust height
               priority={true}
             />
 
