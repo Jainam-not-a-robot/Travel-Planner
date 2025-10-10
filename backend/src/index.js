@@ -5,16 +5,16 @@ import placesRoutes from './routes/api/places.js';
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors(
+  {
+    origin: "https://travel-planner-web.vercel.app",
+    credentials: true // if you need cookies/auth
+  }
+));
 app.use(express.json());
 
 // Routes
 app.use('/api/places', placesRoutes);
-
-// Health check route (optional)
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
 
 // Global error handler
 app.use((err, req, res, next) => {
