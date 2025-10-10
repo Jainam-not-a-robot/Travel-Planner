@@ -1,0 +1,2101 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict 8I5hgnBIA88gYpnuHLa3pMyWpUO8HNlhhrlX3YL7RuHgt2BpoENp34tfPznp79l
+
+-- Dumped from database version 17.6 (Ubuntu 17.6-1.pgdg24.04+1)
+-- Dumped by pg_dump version 17.6 (Ubuntu 17.6-1.pgdg24.04+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: places; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.places (
+    id integer NOT NULL,
+    name character varying(100),
+    city character varying(100),
+    state character varying(50),
+    description text,
+    latitude numeric(9,6),
+    longitude numeric(9,6)
+);
+
+
+ALTER TABLE public.places OWNER TO postgres;
+
+--
+-- Name: placesData; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."placesData" (
+    id bigint,
+    name text,
+    city text,
+    state text,
+    description text,
+    latitude double precision,
+    longitude double precision,
+    image_path text,
+    ratings double precision
+);
+
+
+ALTER TABLE public."placesData" OWNER TO postgres;
+
+--
+-- Name: places_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.places_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.places_id_seq OWNER TO postgres;
+
+--
+-- Name: places_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.places_id_seq OWNED BY public.places.id;
+
+
+--
+-- Name: placesdata; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.placesdata (
+    id integer NOT NULL,
+    name character varying(200),
+    city character varying(100),
+    state character varying(50),
+    description text,
+    latitude numeric(9,6),
+    longitude numeric(9,6)
+);
+
+
+ALTER TABLE public.placesdata OWNER TO postgres;
+
+--
+-- Name: placesdata_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.placesdata_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.placesdata_id_seq OWNER TO postgres;
+
+--
+-- Name: placesdata_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.placesdata_id_seq OWNED BY public.placesdata.id;
+
+
+--
+-- Name: places id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.places ALTER COLUMN id SET DEFAULT nextval('public.places_id_seq'::regclass);
+
+
+--
+-- Name: placesdata id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.placesdata ALTER COLUMN id SET DEFAULT nextval('public.placesdata_id_seq'::regclass);
+
+
+--
+-- Data for Name: places; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.places (id, name, city, state, description, latitude, longitude) FROM stdin;
+1	Rani ki Vav	Patan	Gujarat	UNESCO heritage stepwell with intricate sculptures dedicated to water architecture	\N	\N
+2	Sun Temple	Modhera	Gujarat	11th-century temple dedicated to the Sun God, a masterpiece of Solanki architecture	\N	\N
+3	Laxmi Vilas Palace	Vadodara	Gujarat	Lavish palace of the Gaekwad dynasty, larger than Buckingham Palace	\N	\N
+4	Champaner-Pavagadh Archaeological Park	Champaner	Gujarat	UNESCO World Heritage Site blending Hindu-Muslim architecture with forts and mosques	\N	\N
+5	Dholavira (Indus Valley Civilization Site)	Dholavira (Kutch)	Gujarat	Ancient city of the Indus Valley Civilization, now a UNESCO World Heritage Site	\N	\N
+6	Uparkot Fort	Junagadh	Gujarat	Ancient fort in Junagadh with Buddhist caves and stepwells	\N	\N
+7	Mahabat Maqbara	Junagadh	Gujarat	19th-century Islamic mausoleum known for its fusion of Gothic and Indo-Islamic styles	\N	\N
+8	Vijay Vilas Palace	Mandvi	Gujarat	Royal summer palace with sea views and Bollywood shooting location	\N	\N
+9	Aina Mahal & Prag Mahal	Bhuj	Gujarat	Historical palaces showcasing Kutchi art, mirrorwork, and colonial influence	\N	\N
+10	Adalaj Stepwell	Adalaj (near Ahmedabad)	Gujarat	Architectural marvel of stepwell engineering with intricate carvings	\N	\N
+11	Gir National Park	Sasan Gir (Junagadh)	Gujarat	Only natural habitat of the Asiatic lions in the world	\N	\N
+12	Blackbuck National Park	Velavadar (Bhavnagar)	Gujarat	Protected park with large populations of blackbucks and migratory birds	\N	\N
+13	Wild Ass Sanctuary (Little Rann of Kutch)	Dhrangadhra (Surendranagar)	Gujarat	Unique salt desert sanctuary home to Indian wild asses	\N	\N
+14	Nalsarovar Bird Sanctuary	Nalsarovar (Ahmedabad)	Gujarat	Wetland sanctuary popular for birdwatching and boating	\N	\N
+15	Saputara Hill Station	Saputara (Dang)	Gujarat	Gujarat’s only hill station with lush forests and cool climate	\N	\N
+16	Polo Forest	Abhapur (Sabarkantha)	Gujarat	Dense forest with ancient Jain and Hindu ruins, ideal for trekking	\N	\N
+17	Zarwani Waterfall	Kevadia (Narmada)	Gujarat	Beautiful waterfall inside Shoolpaneshwar Wildlife Sanctuary	\N	\N
+18	Statue of Unity	Kevadia (Narmada)	Gujarat	World’s tallest statue dedicated to Sardar Patel, with museum and viewing gallery	\N	\N
+19	White Rann of Kutch	Dhordo (Kutch)	Gujarat	White salt desert that glows under the moonlight, especially during Rann Utsav	\N	\N
+20	Somnath Temple	Somnath (Veraval)	Gujarat	One of the 12 Jyotirlingas, located on the Arabian Sea coast	\N	\N
+21	Dwarkadhish Temple	Dwarka	Gujarat	Ancient city of Lord Krishna and one of the Char Dham pilgrimage sites	\N	\N
+22	Palitana Temples	Palitana (Bhavnagar)	Gujarat	Jain pilgrimage site with over 900 temples on a hilltop	\N	\N
+23	Ambaji Temple	Ambaji (Banaskantha)	Gujarat	Shakti Peetha temple of Goddess Amba, surrounded by scenic hills	\N	\N
+24	Bhalka Tirth	Somnath (Veraval)	Gujarat	Site where Lord Krishna is believed to have left his mortal body	\N	\N
+25	Girnar Hill Temples	Junagadh	Gujarat	Hill with a series of temples dedicated to Jain and Hindu deities	\N	\N
+26	Ahmedabad Old City Heritage Walk	Ahmedabad	Gujarat	UNESCO World Heritage old city with pols, havelis, and heritage walks	\N	\N
+27	Sabarmati Ashram	Ahmedabad	Gujarat	Peaceful riverside ashram where Mahatma Gandhi lived and led the freedom movement	\N	\N
+28	Science City	Vadodara	Gujarat	Interactive science museum and park for education and family fun	\N	\N
+29	ISKCON Temple	Rajkot	Gujarat	Temple complex of the International Society for Krishna Consciousness	\N	\N
+30	Dutch & English Cemetery	Surat	Gujarat	Historical cemetery with Dutch and English tombs from the colonial era	\N	\N
+31	Amber Fort	Jaipur	Rajasthan	UNESCO Hill Fort with palaces and underground passage to Jaigarh	\N	\N
+32	City Palace	Jaipur	Rajasthan	Royal palace complex featuring museums and lush gardens	\N	\N
+33	Hawa Mahal	Jaipur	Rajasthan	“Palace of Winds” with intricate lattice façade for royal women	\N	\N
+34	Jantar Mantar	Jaipur	Rajasthan	Astronomical observatory; UNESCO World Heritage site	\N	\N
+35	Jaigarh Fort	Jaipur	Rajasthan	Hilltop fort housing the massive Jaivana cannon	\N	\N
+36	Nahargarh Fort	Jaipur	Rajasthan	Fort offering panoramic views of Jaipur city	\N	\N
+37	Jal Mahal	Jaipur	Rajasthan	“Water Palace” set in the middle of Man Sagar Lake	\N	\N
+38	Mehrangarh Fort	Jodhpur	Rajasthan	Impressive hill fortress overlooking the Blue City	\N	\N
+39	Umaid Bhawan Palace	Jodhpur	Rajasthan	Palace and museum; part luxury hotel	\N	\N
+40	Mandore Gardens	Jodhpur	Rajasthan	Historic gardens with cenotaphs of Marwar rulers	\N	\N
+41	Jaisalmer Fort	Jaisalmer	Rajasthan	Living sandstone desert fort; UNESCO Hill Fort site	\N	\N
+42	Patwon Ki Haveli	Jaisalmer	Rajasthan	Cluster of ornate Jain havelis	\N	\N
+43	Sam Sand Dunes	Sam	Rajasthan	Desert dunes perfect for camel safaris and sunsets	\N	\N
+44	Bada Bagh	Jaisalmer	Rajasthan	Chhatri cenotaphs of Jaisalmer royalty	\N	\N
+45	Osian Temples	Osian	Rajasthan	Ancient Hindu and Jain temples in the desert	\N	\N
+46	Chittorgarh Fort	Chittorgarh	Rajasthan	Largest fort in India; tales of Rajput valor	\N	\N
+47	Ranakpur Temples	Ranakpur	Rajasthan	Jain temple complex nestled in Aravalli forests	\N	\N
+48	Pushkar Lake & Temple	Pushkar	Rajasthan	Sacred lake with Brahma temple; camel fair site	\N	\N
+49	Brahma Temple	Pushkar	Rajasthan	One of the rare temples dedicated to Lord Brahma	\N	\N
+50	Mount Abu (Dilwara Temples)	Mount Abu	Rajasthan	Marble Jain temples and hill station retreat	\N	\N
+51	Trevor’s Tank & Honeymoon Point	Mount Abu	Rajasthan	Scenic viewpoints at Rajasthan’s only hill station	\N	\N
+52	Gadisar Lake	Jaisalmer	Rajasthan	Historic artificial lake with ghats and birdlife	\N	\N
+53	Sariska Tiger Reserve	Sariska	Rajasthan	Wildlife sanctuary known for tigers and leopards	\N	\N
+54	Bundi Palace	Bundi	Rajasthan	Palace with intricate frescos and cliffside architecture	\N	\N
+55	Chaurasi Khambon ki Chhatri	Bundi	Rajasthan	Eighty-four pillar cenotaph with ornate pillars	\N	\N
+56	Taragarh Fort	Bundi	Rajasthan	Hill fort overlooking serene Bundi town	\N	\N
+57	Keoladeo National Park	Bharatpur	Rajasthan	UNESCO bird sanctuary popular among birdwatchers	\N	\N
+58	Deeg Palace	Deeg	Rajasthan	Former royal residence with water palaces and fountains	\N	\N
+59	Govind Dev Ji Temple	Jaipur	Rajasthan	Major Krishna temple in the City Palace complex	\N	\N
+60	Galta Ji (Monkey Temple)	Jaipur	Rajasthan	Temple complex with natural springs and sacred pools	\N	\N
+61	Khajuraho Temples	Khajuraho	Madhya Pradesh	UNESCO temples famed for erotic sculptures	\N	\N
+62	Kanha National Park	Kanha	Madhya Pradesh	Tiger reserve known for its wildlife and jungle inspiration	\N	\N
+63	Bandhavgarh National Park	Bandhavgarh	Madhya Pradesh	High-density Bengal tiger sanctuary	\N	\N
+64	Pench National Park	Pench	Madhya Pradesh	Biodiverse safari destination in central India	\N	\N
+65	Pachmarhi	Pachmarhi	Madhya Pradesh	Satpura hill station with caves, waterfalls, and trails	\N	\N
+66	Sanchi Stupa	Sanchi	Madhya Pradesh	3rd-century BCE Buddhist stupas; UNESCO site	\N	\N
+67	Bhimbetka Caves	Raisen	Madhya Pradesh	Prehistoric rock shelters with ancient paintings	\N	\N
+68	Orchha Fort Complex	Orchha	Madhya Pradesh	Riverside palaces and temples of Bundela era	\N	\N
+69	Gwalior Fort	Gwalior	Madhya Pradesh	Historic hill fort with palaces and temples	\N	\N
+70	Ujjain Mahakaleshwar Temple	Ujjain	Madhya Pradesh	One of India’s 12 Jyotirlinga shrines	\N	\N
+71	Omkareshwar Temple	Omkareshwar	Madhya Pradesh	Jyotirlinga shrine on an island in the Narmada River	\N	\N
+72	Chitrakoot Falls	Chhindwara	Madhya Pradesh	“Niagara of India” waterfall on the Indravati River	\N	\N
+73	Mandu (Mandav)	Mandu	Madhya Pradesh	Ruined hilltop city with romantic Afghan-era architecture	\N	\N
+74	Khajwa Falls	Satna	Madhya Pradesh	Scenic waterfall ideal for nature lovers	\N	\N
+75	Gandhi Sagar Dam	Mandsaur	Madhya Pradesh	Reservoir with sanctuary, boating, and scenic views	\N	\N
+76	Bhedaghat Marble Rocks	Jabalpur	Madhya Pradesh	Marble gorge on the Narmada River	\N	\N
+77	Dhuandhar Falls	Jabalpur	Madhya Pradesh	Majestic waterfall producing mist (“smoke cascade”)	\N	\N
+78	Jabalpur Madan Mahal Fort	Jabalpur	Madhya Pradesh	Hilltop fort with panoramic city views	\N	\N
+79	Indore Sarafa Bazaar	Indore	Madhya Pradesh	Night market celebrated for street food delicacies	\N	\N
+80	Khajrana Ganesh Temple	Indore	Madhya Pradesh	Popular temple dedicated to Lord Ganesh	\N	\N
+81	Maheshwar	Maheshwar	Madhya Pradesh	Riverside town with Ahilya Devi Holkar’s palace	\N	\N
+82	Omkareshwar Sanctified Ghats	Omkareshwar	Madhya Pradesh	Holy ghats along Narmada with pilgrim access	\N	\N
+83	Tulsishyam Hot Springs	Alirajpur	Madhya Pradesh	Natural hot springs with thermal and therapeutic value	\N	\N
+84	Rewa White Tigers Rescue Center	Rewa	Madhya Pradesh	Center for the conservation of white tigers	\N	\N
+85	Kuno National Park	Sheopur	Madhya Pradesh	Wildlife reserve planned for tiger relocation	\N	\N
+86	Chandela Museum	Khajuraho	Madhya Pradesh	Museum showcasing Khajuraho’s cultural artifacts	\N	\N
+87	Dhugin Function Hall	Bhopal	Madhya Pradesh	Modern cultural venue by Upper Lake	\N	\N
+88	Upper Lake Boating	Bhopal	Madhya Pradesh	Recreational boating on Bhopal’s largest lake	\N	\N
+89	Bhimbetka Gond Art Stalls	Raisen	Madhya Pradesh	Local craft stalls near rock shelter site	\N	\N
+90	Gandhi Bhawan	Bhopal	Madhya Pradesh	Central museum dedicated to Mahatma Gandhi’s life	\N	\N
+91	Cellular Jail	Port Blair	Andaman and Nicobar Islands	Historic colonial prison, now a national memorial to Indian freedom fighters	\N	\N
+92	Radhanagar Beach	Havelock Island	Andaman and Nicobar Islands	Pristine white sand beach, often ranked among Asia’s best	\N	\N
+93	Elephant Beach	Havelock Island	Andaman and Nicobar Islands	Popular snorkeling and water sports destination	\N	\N
+94	Neil Island	Neil Island	Andaman and Nicobar Islands	Laid-back island known for coral reefs and scenic beaches	\N	\N
+95	Ross Island	Port Blair	Andaman and Nicobar Islands	Ruins of a British administrative center with deer roaming freely	\N	\N
+96	Baratang Island	Baratang Island	Andaman and Nicobar Islands	Known for limestone caves, mud volcanoes, and mangrove creeks	\N	\N
+97	North Bay Island	North Bay	Andaman and Nicobar Islands	Great for coral viewing, glass-bottom boat rides, and scuba diving	\N	\N
+98	Chidiya Tapu	Port Blair	Andaman and Nicobar Islands	“Bird Island” popular for sunsets and trekking	\N	\N
+99	Mahatma Gandhi Marine National Park	Wandoor	Andaman and Nicobar Islands	Protected marine park with coral reefs and snorkeling spots	\N	\N
+100	Mount Harriet National Park	Port Blair	Andaman and Nicobar Islands	Hilltop national park with trekking and panoramic sea views	\N	\N
+101	Viper Island	Port Blair	Andaman and Nicobar Islands	Historical site where British executed convicts before Cellular Jail	\N	\N
+102	Barren Island	Barren Island	Andaman and Nicobar Islands	India’s only active volcano, accessible by boat or sea plane	\N	\N
+103	Tirumala Venkateswara Temple	Tirupati	Andhra Pradesh	Famous Hindu pilgrimage site dedicated to Lord Venkateswara	\N	\N
+104	Araku Valley	Araku	Andhra Pradesh	Scenic hill station with coffee plantations and waterfalls	\N	\N
+105	Borra Caves	Visakhapatnam	Andhra Pradesh	Limestone caves known for stalactite and stalagmite formations	\N	\N
+106	Kailasagiri	Visakhapatnam	Andhra Pradesh	Hilltop park offering panoramic views and giant Shiva-Parvati statues	\N	\N
+107	Rushikonda Beach	Visakhapatnam	Andhra Pradesh	Popular beach for water sports and sunsets	\N	\N
+108	Undavalli Caves	Vijayawada	Andhra Pradesh	4th-century rock-cut cave temples with Jain and Hindu carvings	\N	\N
+109	Amaravati Stupa	Amaravati	Andhra Pradesh	Ancient Buddhist monument and important heritage site	\N	\N
+110	Lepakshi Temple	Lepakshi	Andhra Pradesh	Temple with hanging pillar and Vijayanagara architecture	\N	\N
+111	Ahobilam	Kurnool	Andhra Pradesh	Sacred site with nine shrines of Lord Narasimha in the Nallamala forest	\N	\N
+112	Gandikota	Kadapa	Andhra Pradesh	Known as the Grand Canyon of India with a fort overlooking Pennar River	\N	\N
+113	Sri Kalahasti Temple	Srikalahasti	Andhra Pradesh	Vayu Lingam temple of Shiva, important in Saivism	\N	\N
+114	Belum Caves	Kurnool	Andhra Pradesh	Second-largest cave system in India with long underground passages	\N	\N
+115	Rajahmundry Godavari River Ghats	Rajahmundry	Andhra Pradesh	Holy ghats for river bathing and boat rides on the Godavari	\N	\N
+116	Kolleru Lake	Eluru	Andhra Pradesh	Large freshwater lake and bird sanctuary	\N	\N
+117	Papikondalu Hills	Rajahmundry	Andhra Pradesh	Hill range with scenic boat cruises along the Godavari	\N	\N
+118	Simhachalam Temple	Visakhapatnam	Andhra Pradesh	Temple dedicated to Lord Narasimha with Dravidian architecture	\N	\N
+119	Maredumilli Forest	Maredumilli	Andhra Pradesh	Eco-tourism forest area with waterfalls and tribal culture	\N	\N
+120	Sri Durga Malleswara Swamy Temple	Vijayawada	Andhra Pradesh	Temple of Goddess Durga on Indrakeeladri Hill	\N	\N
+121	Iskcon Temple	Tirupati	Andhra Pradesh	Spiritual center with Lord Krishna worship and cultural activities	\N	\N
+122	Manginapudi Beach	Machilipatnam	Andhra Pradesh	Black-sand beach with shallow waters and pilgrim visits	\N	\N
+123	Tawang Monastery	Tawang	Arunachal Pradesh	Largest Buddhist monastery in India, near Bhutan border	\N	\N
+124	Sela Pass	Tawang	Arunachal Pradesh	High-altitude mountain pass with snow and scenic beauty	\N	\N
+125	Ziro Valley	Ziro	Arunachal Pradesh	UNESCO nominated site with rice fields, pine forests, and tribal culture	\N	\N
+126	Namdapha National Park	Changlang	Arunachal Pradesh	Diverse wildlife reserve near Indo-Myanmar border	\N	\N
+127	Bomdila Monastery	Bomdila	Arunachal Pradesh	Peaceful Buddhist monastery with Himalayan views	\N	\N
+128	Dirang Valley	Dirang	Arunachal Pradesh	Charming valley with hot springs and monasteries	\N	\N
+129	Mechuka Valley	Mechuka	Arunachal Pradesh	Remote valley near China border with tribal culture and beauty	\N	\N
+130	Itanagar Gompa	Itanagar	Arunachal Pradesh	Prominent Buddhist temple overlooking the capital	\N	\N
+131	Pakhui Wildlife Sanctuary	Seijosa	Arunachal Pradesh	Tiger reserve and birdwatcher’s paradise	\N	\N
+132	Parshuram Kund	Lohit	Arunachal Pradesh	Pilgrimage site on Lohit River, visited during Makar Sankranti	\N	\N
+133	Roing	Roing	Arunachal Pradesh	Base for Mayudia Pass, snow-capped peaks, and archaeological sites	\N	\N
+134	Bhismaknagar Fort	Roing	Arunachal Pradesh	Ruins of an ancient fort associated with Lord Krishna legends	\N	\N
+135	Kaziranga National Park	Kohora	Assam	UNESCO World Heritage Site known for one-horned rhinoceroses	\N	\N
+136	Majuli Island	Majuli	Assam	World’s largest river island, rich in Vaishnavite culture	\N	\N
+137	Kamakhya Temple	Guwahati	Assam	Shakti Peetha temple atop Nilachal Hill	\N	\N
+138	Manas National Park	Barpeta	Assam	UNESCO Biosphere Reserve and Project Tiger site	\N	\N
+139	Umananda Temple	Guwahati	Assam	Island temple on the Brahmaputra River	\N	\N
+140	Sualkuchi	Sualkuchi	Assam	Renowned silk-weaving village producing Assam silk	\N	\N
+141	Haflong	Haflong	Assam	Assam’s only hill station, known for picturesque valleys	\N	\N
+142	Dibru-Saikhowa National Park	Tinsukia	Assam	Wetland ecosystem known for migratory birds and feral horses	\N	\N
+143	Pobitora Wildlife Sanctuary	Morigaon	Assam	High density of one-horned rhinos in a compact area	\N	\N
+144	Tezpur	Tezpur	Assam	Cultural town on the banks of Brahmaputra, with temples and heritage sites	\N	\N
+145	Sibsagar	Sivasagar	Assam	Historic capital of the Ahom dynasty, known for temples and tanks	\N	\N
+146	Hajo	Hajo	Assam	Pilgrimage town sacred to Hindus, Muslims, and Buddhists	\N	\N
+147	Barpeta Satra	Barpeta	Assam	Vaishnavite monastery known for its architecture and tradition	\N	\N
+148	Chandubi Lake	Kamrup	Assam	Natural lagoon formed by an earthquake, great for boating	\N	\N
+149	Bogamati	Baksa	Assam	Scenic picnic spot by the Bhutan border with river and hills	\N	\N
+150	Mahabodhi Temple	Bodh Gaya	Bihar	UNESCO Buddhist site where Buddha attained enlightenment	\N	\N
+151	Nalanda University Ruins	Nalanda	Bihar	Ancient center of learning; UNESCO World Heritage Site	\N	\N
+152	Vishnupad Temple	Gaya	Bihar	Hindu temple marking Lord Vishnu’s footprint	\N	\N
+153	Rajgir Hot Springs	Rajgir	Bihar	Sacred hot water springs in a valley surrounded by hills	\N	\N
+154	Takht Sri Patna Sahib	Patna	Bihar	Birthplace of Guru Gobind Singh Ji, Sikh pilgrimage site	\N	\N
+155	Golghar	Patna	Bihar	Historic granary with panoramic city views	\N	\N
+156	Barabar Caves	Jehanabad	Bihar	Oldest surviving rock-cut caves in India, linked to Jainism	\N	\N
+157	Mundeshwari Temple	Kaimur	Bihar	Possibly India’s oldest functional Hindu temple	\N	\N
+158	Ashokan Pillar	Vaishali	Bihar	Erected by Emperor Ashoka to mark the Buddha’s visit	\N	\N
+159	Kesaria Stupa	Kesaria	Bihar	One of the largest Buddhist stupas in the world	\N	\N
+160	Bihar Museum	Patna	Bihar	Modern museum showcasing the state’s rich heritage	\N	\N
+161	Maner Sharif	Patna	Bihar	Sufi shrine complex with Islamic architecture	\N	\N
+162	Bodhgaya Archaeological Museum	Bodh Gaya	Bihar	Museum with Buddhist and Mauryan artifacts	\N	\N
+163	Kakolat Waterfall	Nawada	Bihar	Scenic waterfall with mythological relevance	\N	\N
+164	Eco Park	Patna	Bihar	Urban green space ideal for boating and family visits	\N	\N
+165	Chitrakote Waterfalls	Jagdalpur	Chhattisgarh	Widest waterfall in India, often called Niagara of India	\N	\N
+166	Tirathgarh Waterfalls	Jagdalpur	Chhattisgarh	Multi-tiered waterfall inside Kanger Valley National Park	\N	\N
+167	Barnawapara Wildlife Sanctuary	Mahasamund	Chhattisgarh	Popular reserve with diverse flora and fauna	\N	\N
+168	Kanger Valley National Park	Jagdalpur	Chhattisgarh	Dense forest area with caves, streams, and wildlife	\N	\N
+169	Danteshwari Temple	Dantewada	Chhattisgarh	Ancient Shakti Peeth temple of Goddess Danteshwari	\N	\N
+170	Bhoramdeo Temple	Kawardha	Chhattisgarh	10th-century temple complex known as the Khajuraho of Chhattisgarh	\N	\N
+171	Sirpur	Mahasamund	Chhattisgarh	Archaeological site with Buddhist and Hindu ruins	\N	\N
+172	Rajim	Rajim	Chhattisgarh	Spiritual site with Kumbh festival and temples	\N	\N
+173	Mainpat	Mainpat	Chhattisgarh	Hill station known for Tibetan settlement and scenic beauty	\N	\N
+174	Bastar Palace	Jagdalpur	Chhattisgarh	Royal residence of the Bastar kings	\N	\N
+175	Kutumsar Caves	Kanger Valley	Chhattisgarh	Dark limestone cave system inside national park	\N	\N
+176	Maitri Bagh Zoo	Bhilai	Chhattisgarh	Park with zoo, musical fountain and garden	\N	\N
+177	Dongargarh	Rajnandgaon	Chhattisgarh	Hilltop temple of Maa Bambleshwari	\N	\N
+178	Madku Dweep	Bilaspur	Chhattisgarh	Island with archaeological remains on Shivnath River	\N	\N
+179	Sita Bengra and Jogimara Caves	Ramgarh	Chhattisgarh	Ancient caves with pre-historic art and Buddhist inscriptions	\N	\N
+180	Rani ki Vav	Patan	Gujarat	UNESCO heritage stepwell with intricate sculptures dedicated to water architecture	23.858920	72.101620
+181	Sun Temple	Modhera	Gujarat	11th-century temple dedicated to the Sun God, a masterpiece of Solanki architecture	23.583500	72.133000
+182	Laxmi Vilas Palace	Vadodara	Gujarat	Lavish palace of the Gaekwad dynasty, larger than Buckingham Palace	22.307200	73.181200
+183	Champaner-Pavagadh Archaeological Park	Champaner	Gujarat	UNESCO World Heritage Site blending Hindu-Muslim architecture with forts and mosques	22.491400	73.579200
+184	Dholavira (Indus Valley Civilization Site)	Dholavira (Kutch)	Gujarat	Ancient city of the Indus Valley Civilization, now a UNESCO World Heritage Site	23.849300	69.649200
+185	Uparkot Fort	Junagadh	Gujarat	Ancient fort in Junagadh with Buddhist caves and stepwells	21.513900	70.458100
+186	Mahabat Maqbara	Junagadh	Gujarat	19th-century Islamic mausoleum known for its fusion of Gothic and Indo-Islamic styles	21.514200	70.459200
+187	Vijay Vilas Palace	Mandvi	Gujarat	Royal summer palace with sea views and Bollywood shooting location	22.818700	69.266800
+188	Aina Mahal & Prag Mahal	Bhuj	Gujarat	Historical palaces showcasing Kutchi art, mirrorwork, and colonial influence	23.244700	69.666200
+189	Adalaj Stepwell	Adalaj (near Ahmedabad)	Gujarat	Architectural marvel of stepwell engineering with intricate carvings	23.087600	72.514300
+190	Gir National Park	Sasan Gir (Junagadh)	Gujarat	Only natural habitat of the Asiatic lions in the world	21.183300	70.792500
+191	Blackbuck National Park	Velavadar (Bhavnagar)	Gujarat	Protected park with large populations of blackbucks and migratory birds	21.642400	72.703000
+192	Wild Ass Sanctuary (Little Rann of Kutch)	Dhrangadhra (Surendranagar)	Gujarat	Unique salt desert sanctuary home to Indian wild asses	22.616700	71.470000
+193	Nalsarovar Bird Sanctuary	Nalsarovar (Ahmedabad)	Gujarat	Wetland sanctuary popular for birdwatching and boating	22.853600	72.425000
+194	Saputara Hill Station	Saputara (Dang)	Gujarat	Gujarat’s only hill station with lush forests and cool climate	20.777100	73.765300
+195	Polo Forest	Abhapur (Sabarkantha)	Gujarat	Dense forest with ancient Jain and Hindu ruins, ideal for trekking	23.193800	73.028300
+196	Zarwani Waterfall	Kevadia (Narmada)	Gujarat	Beautiful waterfall inside Shoolpaneshwar Wildlife Sanctuary	21.881700	73.625400
+197	Statue of Unity	Kevadia (Narmada)	Gujarat	World’s tallest statue dedicated to Sardar Patel, with museum and viewing gallery	21.838000	73.719100
+198	White Rann of Kutch	Dhordo (Kutch)	Gujarat	White salt desert that glows under the moonlight, especially during Rann Utsav	23.862000	69.650000
+199	Somnath Temple	Somnath (Veraval)	Gujarat	One of the 12 Jyotirlingas, located on the Arabian Sea coast	20.898700	70.390600
+200	Dwarkadhish Temple	Dwarka	Gujarat	Ancient city of Lord Krishna and one of the Char Dham pilgrimage sites	22.241100	68.968600
+201	Palitana Temples	Palitana (Bhavnagar)	Gujarat	Jain pilgrimage site with over 900 temples on a hilltop	21.579400	71.852800
+202	Ambaji Temple	Ambaji (Banaskantha)	Gujarat	Shakti Peetha temple of Goddess Amba, surrounded by scenic hills	24.438000	72.864700
+203	Bhalka Tirth	Somnath (Veraval)	Gujarat	Site where Lord Krishna is believed to have left his mortal body	20.923700	70.360400
+204	Girnar Hill Temples	Junagadh	Gujarat	Hill with a series of temples dedicated to Jain and Hindu deities	21.519200	70.456600
+205	Ahmedabad Old City Heritage Walk	Ahmedabad	Gujarat	UNESCO World Heritage old city with pols, havelis, and heritage walks	23.022500	72.571400
+206	Sabarmati Ashram	Ahmedabad	Gujarat	Peaceful riverside ashram where Mahatma Gandhi lived and led the freedom movement	23.037100	72.556200
+207	Science City	Vadodara	Gujarat	Interactive science museum and park for education and family fun	22.310500	73.193200
+208	ISKCON Temple	Rajkot	Gujarat	Temple complex of the International Society for Krishna Consciousness	22.291400	70.820000
+209	Dutch & English Cemetery	Surat	Gujarat	Historical cemetery with Dutch and English tombs from the colonial era	21.191000	72.825800
+\.
+
+
+--
+-- Data for Name: placesData; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."placesData" (id, name, city, state, description, latitude, longitude, image_path, ratings) FROM stdin;
+1	Rani ki Vav	Patan	Gujarat	UNESCO heritage stepwell with intricate sculptures dedicated to water architecture	23.85892	72.10162	place_images/Rani_ki_Vav.jpg	4.7
+2	Sun Temple	Modhera	Gujarat	11th-century temple dedicated to the Sun God, a masterpiece of Solanki architecture	23.5835	72.133	place_images/Sun_Temple.jpg	4.7
+3	Laxmi Vilas Palace	Vadodara	Gujarat	Lavish palace of the Gaekwad dynasty, larger than Buckingham Palace	22.3072	73.1812	place_images/Laxmi_Vilas_Palace.jpg	4.4
+4	Champaner-Pavagadh Archaeological Park	Champaner	Gujarat	UNESCO World Heritage Site blending Hindu-Muslim architecture with forts and mosques	22.4914	73.5792	place_images/Champaner-Pavagadh_Archaeological_Park.jpg	4.4
+5	Dholavira 	Dholavira (Kutch)	Gujarat	Ancient city of the Indus Valley Civilization, now a UNESCO World Heritage Site	23.8493	69.6492	place_images/Dholavira_.jpg	4.5
+6	Uparkot Fort	Junagadh	Gujarat	Ancient fort in Junagadh with Buddhist caves and stepwells	21.5139	70.4581	place_images/Uparkot_Fort.jpg	4.3
+7	Mahabat Maqbara	Junagadh	Gujarat	19th-century Islamic mausoleum known for its fusion of Gothic and Indo-Islamic styles	21.5142	70.4592	place_images/Mahabat_Maqbara.jpg	4.4
+8	Vijay Vilas Palace	Mandvi	Gujarat	Royal summer palace with sea views and Bollywood shooting location	22.8187	69.2668	place_images/Vijay_Vilas_Palace.jpg	4.3
+9	Aina Mahal & Prag Mahal	Bhuj	Gujarat	Historical palaces showcasing Kutchi art, mirrorwork, and colonial influence	23.2447	69.6662	place_images/Aina_Mahal_&_Prag_Mahal.jpg	4.2
+10	Adalaj Stepwell	Adalaj (near Ahmedabad)	Gujarat	Architectural marvel of stepwell engineering with intricate carvings	23.0876	72.5143	place_images/Adalaj_Stepwell.jpg	4.5
+11	Gir National Park	Sasan Gir (Junagadh)	Gujarat	Only natural habitat of the Asiatic lions in the world	21.1833	70.7925	place_images/Gir_National_Park.jpg	4.7
+12	Blackbuck National Park	Velavadar (Bhavnagar)	Gujarat	Protected park with large populations of blackbucks and migratory birds	21.6424	72.703	place_images/Blackbuck_National_Park.jpg	4.7
+13	Wild Ass Sanctuary 	Dhrangadhra (Surendranagar)	Gujarat	Unique salt desert sanctuary home to Indian wild asses	22.6167	71.47	place_images/Wild_Ass_Sanctuary_.jpg	4.4
+14	Nalsarovar Bird Sanctuary	Nalsarovar (Ahmedabad)	Gujarat	Wetland sanctuary popular for birdwatching and boating	22.8536	72.425	place_images/Nalsarovar_Bird_Sanctuary.jpg	4.2
+15	Saputara Hill Station	Saputara (Dang)	Gujarat	Gujarat’s only hill station with lush forests and cool climate	20.7771	73.7653	place_images/Saputara_Hill_Station.jpg	4.5
+16	Polo Forest	Abhapur (Sabarkantha)	Gujarat	Dense forest with ancient Jain and Hindu ruins, ideal for trekking	23.1938	73.0283	place_images/Polo_Forest.jpg	4.5
+17	Zarwani Waterfall	Kevadia (Narmada)	Gujarat	Beautiful waterfall inside Shoolpaneshwar Wildlife Sanctuary	21.8817	73.6254	place_images/Zarwani_Waterfall.jpg	4.4
+18	Statue of Unity	Kevadia (Narmada)	Gujarat	World’s tallest statue dedicated to Sardar Patel, with museum and viewing gallery	21.838	73.7191	place_images/Statue_of_Unity.jpg	4.6
+19	White Rann of Kutch	Dhordo (Kutch)	Gujarat	White salt desert that glows under the moonlight, especially during Rann Utsav	23.862	69.65	place_images/White_Rann_of_Kutch.jpg	4.6
+20	Somnath Temple	Somnath (Veraval)	Gujarat	One of the 12 Jyotirlingas, located on the Arabian Sea coast	20.8987	70.3906	place_images/Somnath_Temple.jpg	4.8
+21	Dwarkadhish Temple	Dwarka	Gujarat	Ancient city of Lord Krishna and one of the Char Dham pilgrimage sites	22.2411	68.9686	place_images/Dwarkadhish_Temple.jpg	4.7
+22	Palitana Temples	Palitana (Bhavnagar)	Gujarat	Jain pilgrimage site with over 900 temples on a hilltop	21.5794	71.8528	place_images/Palitana_Temples.jpg	4.9
+23	Ambaji Temple	Ambaji (Banaskantha)	Gujarat	Shakti Peetha temple of Goddess Amba, surrounded by scenic hills	24.438	72.8647	place_images/Ambaji_Temple.jpg	4.5
+24	Bhalka Tirth	Somnath (Veraval)	Gujarat	Site where Lord Krishna is believed to have left his mortal body	20.9237	70.3604	place_images/Bhalka_Tirth.jpg	4.6
+25	Girnar Hill Temples	Junagadh	Gujarat	Hill with a series of temples dedicated to Jain and Hindu deities	21.5192	70.4566	place_images/Girnar_Hill_Temples.jpg	4.8
+26	Ahmedabad Old City Heritage Walk	Ahmedabad	Gujarat	UNESCO World Heritage old city with pols, havelis, and heritage walks	23.0225	72.5714	place_images/Ahmedabad_Old_City_Heritage_Walk.jpg	4.5
+27	Sabarmati Ashram	Ahmedabad	Gujarat	Peaceful riverside ashram where Mahatma Gandhi lived and led the freedom movement	23.0371	72.5562	place_images/Sabarmati_Ashram.jpg	4.6
+28	Science City	Vadodara	Gujarat	Interactive science museum and park for education and family fun	22.3105	73.1932	place_images/Science_City.jpg	4.7
+29	ISKCON Temple	Rajkot	Gujarat	Temple complex of the International Society for Krishna Consciousness	22.2914	70.82	place_images/ISKCON_Temple.jpg	4.7
+30	Dutch & English Cemetery	Surat	Gujarat	Historical cemetery with Dutch and English tombs from the colonial era	21.191	72.8258	place_images/Dutch_&_English_Cemetery.jpg	4.3
+31	Amber Fort	Jaipur	Rajasthan	UNESCO Hill Fort with palaces and underground passage to Jaigarh	26.985901	75.8507	place_images/Amber_Fort.jpg	4.6
+32	City Palace	Jaipur	Rajasthan	Royal palace complex featuring museums and lush gardens	26.9257	75.8236	place_images/City_Palace.jpg	4.4
+33	Hawa Mahal	Jaipur	Rajasthan	“Palace of Winds” with intricate lattice façade for royal women	26.923889	75.826667	place_images/Hawa_Mahal.jpg	4.5
+34	Jantar Mantar	Jaipur	Rajasthan	Astronomical observatory	26.9245	75.824	place_images/Jantar_Mantar.jpg	4.5
+35	Jaigarh Fort	Jaipur	Rajasthan	Hilltop fort housing the massive Jaivana cannon	26.9875	75.861	place_images/Jaigarh_Fort.jpg	4.5
+36	Nahargarh Fort	Jaipur	Rajasthan	Fort offering panoramic views of Jaipur city	26.9632	75.824	place_images/Nahargarh_Fort.jpg	4.5
+37	Jal Mahal	Jaipur	Rajasthan	“Water Palace” set in the middle of Man Sagar Lake	26.9508	75.794	place_images/Jal_Mahal.jpg	4.2
+38	Mehrangarh Fort	Jodhpur	Rajasthan	Impressive hill fortress overlooking the Blue City	26.2955	73.0193	place_images/Mehrangarh_Fort.jpg	4.6
+39	Umaid Bhawan Palace	Jodhpur	Rajasthan	Palace and museum	26.3075	73.0243	place_images/Umaid_Bhawan_Palace.jpg	4.5
+40	Mandore Gardens	Jodhpur	Rajasthan	Historic gardens with cenotaphs of Marwar rulers	26.3078	73.0093	place_images/Mandore_Gardens.jpg	4.3
+41	Jaisalmer Fort	Jaisalmer	Rajasthan	Living sandstone desert fort	26.9158	70.9124	place_images/Jaisalmer_Fort.jpg	4.4
+42	Patwon Ki Haveli	Jaisalmer	Rajasthan	Cluster of ornate Jain havelis	26.9152	70.9131	place_images/Patwon_Ki_Haveli.jpg	4.3
+43	Sam Sand Dunes	Sam	Rajasthan	Desert dunes perfect for camel safaris and sunsets	26.8783	70.9072	place_images/Sam_Sand_Dunes.jpg	4.8
+44	Bada Bagh	Jaisalmer	Rajasthan	Chhatri cenotaphs of Jaisalmer royalty	26.9316	70.8841	place_images/Bada_Bagh.jpg	4.3
+45	Osian Temples	Osian	Rajasthan	Ancient Hindu and Jain temples in the desert	26.435	70.0833	place_images/Osian_Temples.jpg	4.7
+46	Chittorgarh Fort	Chittorgarh	Rajasthan	Largest fort in India, tales of Rajput valor	24.8868	74.629799	place_images/Chittorgarh_Fort.jpg	4.6
+47	Ranakpur Temples	Ranakpur	Rajasthan	Jain temple complex nestled in Aravalli forests	24.8702	73.4118	place_images/Ranakpur_Temples.jpg	4.7
+48	Pushkar Lake & Temple	Pushkar	Rajasthan	Sacred lake with Brahma temple,  camel fair site	26.4898	74.5562	place_images/Pushkar_Lake_&_Temple.jpg	4.6
+49	Brahma Temple	Pushkar	Rajasthan	One of the rare temples dedicated to Lord Brahma	26.4844	74.5556	place_images/Brahma_Temple.jpg	4.6
+50	Dilwara Temples	Mount Abu	Rajasthan	Marble Jain temples and hill station retreat	24.5922	72.7123	place_images/Dilwara_Temples.jpg	4.6
+51	Trevor’s Tank & Honeymoon Point	Mount Abu	Rajasthan	Scenic viewpoints at Rajasthan’s only hill station	24.5667	72.7069	place_images/Trevor’s_Tank_&_Honeymoon_Point.jpg	4.2
+52	Gadisar Lake	Jaisalmer	Rajasthan	Historic artificial lake with ghats and birdlife	26.9271	70.911	place_images/Gadisar_Lake.jpg	4.4
+53	Sariska Tiger Reserve	Sariska	Rajasthan	Wildlife sanctuary known for tigers and leopards	26.8106	76.4492	place_images/Sariska_Tiger_Reserve.jpg	4.3
+54	Bundi Palace	Bundi	Rajasthan	Palace with intricate frescos and cliffside architecture	25.4288	75.6413	place_images/Bundi_Palace.jpg	4.4
+55	Chaurasi Khambon ki Chhatri	Bundi	Rajasthan	Eighty-four pillar cenotaph with ornate pillars	25.4302	75.6421	place_images/Chaurasi_Khambon_ki_Chhatri.jpg	4.6
+56	Taragarh Fort	Bundi	Rajasthan	Hill fort overlooking serene Bundi town	25.4249	75.6389	place_images/Taragarh_Fort.jpg	4.3
+57	Keoladeo National Park	Bharatpur	Rajasthan	UNESCO bird sanctuary popular among birdwatchers	27.1669	77.4902	place_images/Keoladeo_National_Park.jpg	4.4
+58	Deeg Palace	Deeg	Rajasthan	Former royal residence with water palaces and fountains	27.5396	77.5324	place_images/Deeg_Palace.jpg	4.4
+59	Govind Dev Ji Temple	Jaipur	Rajasthan	Major Krishna temple in the City Palace complex	26.9236	75.8208	place_images/Govind_Dev_Ji_Temple.jpg	4.9
+60	Galta Ji 	Jaipur	Rajasthan	Temple complex with natural springs and sacred pools	26.9272	75.8594	place_images/Galta_Ji_.jpg	4.4
+61	Khajuraho Temples	Khajuraho	Madhya Pradesh	UNESCO temples famed for erotic sculptures	24.84809	79.93351	place_images/Khajuraho_Temples.jpg	4.9
+62	Kanha National Park	Kanha	Madhya Pradesh	Tiger reserve inspired The Jungle Book	22.177	80.611	place_images/Kanha_National_Park.jpg	4.5
+63	Bandhavgarh National Park	Bandhavgarh	Madhya Pradesh	Sanctuary with high density of Bengal tigers	23.6712	80.6708	place_images/Bandhavgarh_National_Park.jpg	4.4
+64	Pench National Park	Pench	Madhya Pradesh	Biodiverse safari destination, rich forests and fauna	21.8817	79.2966	place_images/Pench_National_Park.jpg	\N
+65	Pachmarhi	Pachmarhi	Madhya Pradesh	Satpura hill station known for caves, waterfalls, and treks	22.4619	78.436	place_images/Pachmarhi.jpg	4.5
+66	Sanchi Stupa	Sanchi	Madhya Pradesh	3rd-century BCE Buddhist stupas	23.4856	77.7394	place_images/Sanchi_Stupa.jpg	4.7
+67	Bhimbetka Caves	Raisen	Madhya Pradesh	Prehistoric rock shelters with ancient cave paintings	23.5807	77.6608	place_images/Bhimbetka_Caves.jpg	4.6
+68	Orchha Fort Complex	Orchha	Madhya Pradesh	Riverside palaces and temples of Bundela era	25.325	78.5569	place_images/Orchha_Fort_Complex.jpg	4.5
+69	Gwalior Fort	Gwalior	Madhya Pradesh	Historic hill fort with palaces and museums	26.2247	78.1798	place_images/Gwalior_Fort.jpg	4.5
+70	Ujjain Mahakaleshwar Temple	Ujjain	Madhya Pradesh	One of the 12 Jyotirlinga shrines dedicated to Lord Shiva	23.18147	75.77969	place_images/Ujjain_Mahakaleshwar_Temple.jpg	4.8
+71	Omkareshwar Temple	Omkareshwar	Madhya Pradesh	Island Jyotirlinga temple shaped like the “Om” symbol	22.2503	75.8524	place_images/Omkareshwar_Temple.jpg	4.6
+72	Chitrakoot Falls	Chhindwara	Madhya Pradesh	Niagara of India—seasonal waterfall on Indravati River	22.35	80.493	place_images/Chitrakoot_Falls.jpg	4.6
+73	Mandu	Mandu	Madhya Pradesh	Romantic ruined city on Vindhya plateau with Afghan-era architecture	22.0499	75.365	place_images/Mandu.jpg	4.2
+74	Khajwa Falls	Satna	Madhya Pradesh	Scenic waterfall in dense forests	24.6	81.2	place_images/Khajwa_Falls.jpg	4.5
+75	Gandhi Sagar Dam	Mandsaur	Madhya Pradesh	Reservoir with wildlife sanctuary and boating facilities	24.025	75.07	place_images/Gandhi_Sagar_Dam.jpg	\N
+76	Bhedaghat Marble Rocks	Jabalpur	Madhya Pradesh	Dramatic marble gorge along the Narmada River	23.1689	79.9372	place_images/Bhedaghat_Marble_Rocks.jpg	4.7
+77	Dhuandhar Falls	Jabalpur	Madhya Pradesh	Majestic waterfall creating smoky mist over Narmada river	23.1588	79.9441	place_images/Dhuandhar_Falls.jpg	4.5
+78	Jabalpur Madan Mahal Fort	Jabalpur	Madhya Pradesh	Historic hilltop fort offering panoramic city views	23.18	79.937	place_images/Jabalpur_Madan_Mahal_Fort.jpg	\N
+79	Indore Sarafa Bazaar	Indore	Madhya Pradesh	Vibrant night market famous for street food	22.71792	75.83342	place_images/Indore_Sarafa_Bazaar.jpg	4.8
+80	Khajrana Ganesh Temple	Indore	Madhya Pradesh	Popular temple dedicated to Lord Ganesh	22.7427	75.8826	place_images/Khajrana_Ganesh_Temple.jpg	4.8
+81	Maheshwar	Maheshwar	Madhya Pradesh	Riverside town with Ahilya Devi Holkar’s palace on Narmada	22.35158	75.89947	place_images/Maheshwar.jpg	4.2
+82	Omkareshwar Ghats	Omkareshwar	Madhya Pradesh	Holy ghats along Narmada river for pilgrims	22.248	75.852	place_images/Omkareshwar_Ghats.jpg	4.5
+83	Tulsishyam Hot Springs	Alirajpur	Madhya Pradesh	Natural hot springs known for therapeutic value	21.815	74.555	place_images/Tulsishyam_Hot_Springs.jpg	4.6
+84	Rewa White Tigers Rescue Center	Rewa	Madhya Pradesh	Conservation center for white tigers	24.536	81.284	place_images/Rewa_White_Tigers_Rescue_Center.jpg	4.3
+85	Kuno National Park	Sheopur	Madhya Pradesh	Wildlife reserve planned for tiger relocation	25.182	78.39	place_images/Kuno_National_Park.jpg	4.4
+86	Chandela Museum	Khajuraho	Madhya Pradesh	Museum showcasing cultural artifacts from Khajuraho temples	24.85	79.933	place_images/Chandela_Museum.jpg	4.3
+87	Dhugin Hall, Bhopal	Bhopal	Madhya Pradesh	Modern cultural venue by Upper Lake	23.2679	77.41	place_images/Dhugin_Hall,_Bhopal.jpg	3.4
+88	Upper Lake Boating	Bhopal	Madhya Pradesh	Recreational boating on Bhopal’s largest lake	23.2599	77.4	place_images/Upper_Lake_Boating.jpg	4.4
+89	Bhimbetka Gond Art Stalls	Raisen	Madhya Pradesh	Local craft stalls near rock shelter site	23.5807	77.6608	place_images/Bhimbetka_Gond_Art_Stalls.jpg	4.6
+90	Gandhi Bhawan	Bhopal	Madhya Pradesh	Central museum dedicated to Mahatma Gandhi’s life	23.2595	77.4126	place_images/Gandhi_Bhawan.jpg	4.2
+91	Cellular Jail	Port Blair	Andaman and Nicobar Islands	Historic colonial prison, now a national memorial	11.675	92.748	place_images/Cellular_Jail.jpg	4.7
+92	Radhanagar Beach	Havelock Island	Andaman and Nicobar Islands	Pristine white sand beach	11.995	92.981	place_images/Radhanagar_Beach.jpg	4.8
+93	Elephant Beach	Havelock Island	Andaman and Nicobar Islands	Popular snorkeling and water sports spot	11.919	92.977	place_images/Elephant_Beach.jpg	4.6
+94	Neil Island	Neil Island	Andaman and Nicobar Islands	Laid-back island known for reefs	11.755	92.716	place_images/Neil_Island.jpg	4.7
+95	Ross Island	Port Blair	Andaman and Nicobar Islands	Ruins of colonial administrative HQ	11.622	92.726	place_images/Ross_Island.jpg	4.7
+96	Baratang Island	Baratang Island	Andaman and Nicobar Islands	Limestone caves and mud volcanoes	11.663	92.816	place_images/Baratang_Island.jpg	4.5
+97	North Bay Island	North Bay	Andaman and Nicobar Islands	Coral viewing & glass‑bottom boats	11.7	92.758	place_images/North_Bay_Island.jpg	4.3
+98	Chidiya Tapu	Port Blair	Andaman and Nicobar Islands	Sunset viewpoint & birding spot	11.633	92.684	place_images/Chidiya_Tapu.jpg	4.4
+99	Mahatma Gandhi Marine National Park	Wandoor	Andaman and Nicobar Islands	Protected coral reef park with snorkeling	11.516	92.712	place_images/Mahatma_Gandhi_Marine_National_Park.jpg	4.5
+100	Mount Harriet National Park	Port Blair	Andaman and Nicobar Islands	Hilltop park with panoramic sea views	11.626	92.764	place_images/Mount_Harriet_National_Park.jpg	4.5
+101	Viper Island	Port Blair	Andaman and Nicobar Islands	Historic penal site predating Cellular Jail	11.65	92.741	place_images/Viper_Island.jpg	4.4
+102	Barren Island	Barren Island	Andaman and Nicobar Islands	India’s only active volcano	12.277	93.86	place_images/Barren_Island.jpg	4.3
+103	Tirumala Venkateswara Temple	Tirupati	Andhra Pradesh	Famous Hindu pilgrimage site	13.6833	79.35	place_images/Tirumala_Venkateswara_Temple.jpg	4.7
+104	Araku Valley	Araku	Andhra Pradesh	Scenic hill station with coffee plantations	18.3277	82.8776	place_images/Araku_Valley.jpg	4.3
+105	Borra Caves	Visakhapatnam	Andhra Pradesh	Limestone caves with stalactites and stalagmites	18.35	82.6667	place_images/Borra_Caves.jpg	4.5
+106	Kailasagiri	Visakhapatnam	Andhra Pradesh	Hilltop park with sea views and statues	17.72	83.296	place_images/Kailasagiri.jpg	4.1
+107	Rushikonda Beach	Visakhapatnam	Andhra Pradesh	Popular water-sports beach	17.779	83.393	place_images/Rushikonda_Beach.jpg	4.5
+108	Undavalli Caves	Vijayawada	Andhra Pradesh	4th-century rock-cut cave temples	16.5	80.65	place_images/Undavalli_Caves.jpg	4.2
+109	Amaravati Stupa	Amaravati	Andhra Pradesh	Ancient Buddhist monument	16.547	80.653	place_images/Amaravati_Stupa.jpg	4.4
+110	Lepakshi Temple	Lepakshi	Andhra Pradesh	Temple with hanging pillar	13.78	77.65	place_images/Lepakshi_Temple.jpg	4.7
+111	Ahobilam	Kurnool	Andhra Pradesh	Sacred shrines of Lord Narasimha	15.233	78.667	place_images/Ahobilam.jpg	4.9
+112	Gandikota 	Kadapa	Andhra Pradesh	Fort on dramatic river gorge	14.427	78.238	place_images/Gandikota_.jpg	3.9
+113	Sri Kalahasti Temple	Srikalahasti	Andhra Pradesh	Vayu Lingam Shiva temple	13.749	79.698	place_images/Sri_Kalahasti_Temple.jpg	4.7
+114	Belum Caves	Kurnool	Andhra Pradesh	Second-largest cave system in India	15.4167	78.75	place_images/Belum_Caves.jpg	4.4
+115	Rajahmundry Ghats	Rajahmundry	Andhra Pradesh	Pilgrim ghats & river boat rides	16.989	81.796	place_images/Rajahmundry_Ghats.jpg	4.4
+116	Kolleru Lake	Eluru	Andhra Pradesh	Freshwater lake & bird sanctuary	16.5833	81.0167	place_images/Kolleru_Lake.jpg	4.2
+117	Papikonda Hills	Rajahmundry	Andhra Pradesh	Hill cruises along the Godavari River	17	81.8	place_images/Papikonda_Hills.jpg	4.3
+118	Simhachalam Temple	Visakhapatnam	Andhra Pradesh	Lord Narasimha shrine	17.785	83.297	place_images/Simhachalam_Temple.jpg	4.7
+119	Maredumilli Forest	Maredumilli	Andhra Pradesh	Eco‑tourism area with waterfalls	17.2667	81.8667	place_images/Maredumilli_Forest.jpg	4.4
+120	Vijayawada Durga Temple	Vijayawada	Andhra Pradesh	Temple on Indrakeeladri hill	16.506	80.648	place_images/Vijayawada_Durga_Temple.jpg	4.7
+121	ISKCON Temple	Tirupati	Andhra Pradesh	Krishna worship and cultural center	13.641	79.417	place_images/ISKCON_Temple.jpg	4.7
+122	Manginapudi Beach	Machilipatnam	Andhra Pradesh	Black‑sand beach by Bay of Bengal	16.188	81.135	place_images/Manginapudi_Beach.jpg	4.1
+123	Tawang Monastery	Tawang	Arunachal Pradesh	Largest Buddhist monastery in India	27.586	92.279	place_images/Tawang_Monastery.jpg	4.7
+124	Sela Pass	Tawang	Arunachal Pradesh	Snow-covered mountain pass	27.605	92.008	place_images/Sela_Pass.jpg	4.8
+125	Ziro Valley	Ziro	Arunachal Pradesh	UNESCO-style rice fields & tribal culture	27.6167	93.8167	place_images/Ziro_Valley.jpg	3.9
+126	Namdapha National Park	Changlang	Arunachal Pradesh	Diverse wildlife reserve in eastern Himalayas	27.2	96.35	place_images/Namdapha_National_Park.jpg	4.4
+127	Bomdila Monastery	Bomdila	Arunachal Pradesh	Scenic Buddhist monastery in the hills	27.25	92.4	place_images/Bomdila_Monastery.jpg	4.6
+128	Dirang Valley	Dirang	Arunachal Pradesh	Valley with hot springs & monasteries	27.415	92.625	place_images/Dirang_Valley.jpg	4.1
+129	Mechuka Valley	Mechuka	Arunachal Pradesh	Remote valley with tribal heritage	28.091	95.303	place_images/Mechuka_Valley.jpg	4.9
+130	Itanagar Gompa	Itanagar	Arunachal Pradesh	Buddhist temple in capital city	27.0844	93.6059	place_images/Itanagar_Gompa.jpg	4.5
+131	Pakhui Wildlife Sanctuary	Seijosa	Arunachal Pradesh	Tiger reserve & birding hotspot	27.167	92.9	place_images/Pakhui_Wildlife_Sanctuary.jpg	4.2
+132	Parshuram Kund	Lohit	Arunachal Pradesh	Pilgrimage site on Lohit River	28.033	95.799	place_images/Parshuram_Kund.jpg	4.5
+133	Roing	Roing	Arunachal Pradesh	Gateway to Mayudia Pass & archaeology	28.115	95.525	place_images/Roing.jpg	4.6
+134	Bhismaknagar Fort	Roing	Arunachal Pradesh	Ancient fort linked to Harish Chandra legend	28.11	95.51	place_images/Bhismaknagar_Fort.jpg	4.8
+135	Kaziranga National Park	Kohora	Assam	UNESCO rhino sanctuary	26.5775	93.1711	place_images/Kaziranga_National_Park.jpg	4.5
+136	Majuli Island	Majuli	Assam	World’s largest river island	26.956	94.176	place_images/Majuli_Island.jpg	4.5
+137	Kamakhya Temple	Guwahati	Assam	Shakti Peetha atop Nilachal Hill	26.1711	91.7132	place_images/Kamakhya_Temple.jpg	4.6
+138	Manas National Park	Barpeta	Assam	Biosphere reserve & tiger park	26.746	91	place_images/Manas_National_Park.jpg	4.3
+139	Umananda Temple	Guwahati	Assam	Riverside temple on the Brahmaputra	26.155	91.742	place_images/Umananda_Temple.jpg	4.5
+140	Sualkuchi	Sualkuchi	Assam	Silk-weaving village	26.22	91.6	place_images/Sualkuchi.jpg	3.9
+141	Haflong	Haflong	Assam	Assam’s only hill station	25.152	92.413	place_images/Haflong.jpg	4.5
+142	Dibru-Saikhowa National Park	Tinsukia	Assam	Wetland park with birds and wild horses	27.462	95.712	place_images/Dibru-Saikhowa_National_Park.jpg	4.3
+143	Pobitora Wildlife Sanctuary	Morigaon	Assam	Rhino sanctuary	26.41	92.38	place_images/Pobitora_Wildlife_Sanctuary.jpg	4.4
+144	Tezpur	Tezpur	Assam	Cultural town on Brahmaputra banks	26.637	92.798	place_images/Tezpur.jpg	4.2
+145	Sibsagar	Sivasagar	Assam	Ahom-era temples and tanks	26.991	94.643	place_images/Sibsagar.jpg	4
+146	Hajo	Hajo	Assam	Sacred to Hindus, Muslims, Buddhists	26.18	91.61	place_images/Hajo.jpg	4.6
+147	Barpeta Satra	Barpeta	Assam	Vaishnavite monastery	26.315	91.01	place_images/Barpeta_Satra.jpg	4.7
+148	Chandubi Lake	Kamrup	Assam	Earthquake-formed lake	26.016	91.27	place_images/Chandubi_Lake.jpg	4.4
+149	Bogamati	Baksa	Assam	Scenic hill-forest picnic spot	26.65	91.5	place_images/Bogamati.jpg	\N
+150	Mahabodhi Temple	Bodh Gaya	Bihar	UNESCO Buddhist site of Buddha’s enlightenment	24.695	84.991	place_images/Mahabodhi_Temple.jpg	4.7
+151	Nalanda Ruins	Nalanda	Bihar	Ancient university ruins	25.135	85.442	place_images/Nalanda_Ruins.jpg	4.6
+152	Vishnupad Temple	Gaya	Bihar	Temple marking Lord Vishnu’s footprint	24.798	85.001	place_images/Vishnupad_Temple.jpg	4.6
+153	Rajgir Hot Springs	Rajgir	Bihar	Sacred hot springs in a mountainous valley	25.03	85.425	place_images/Rajgir_Hot_Springs.jpg	4.3
+154	Takht Sri Patna Sahib	Patna	Bihar	Birthplace of Guru Gobind Singh Ji	25.62	85.129	place_images/Takht_Sri_Patna_Sahib.jpg	4.7
+155	Golghar	Patna	Bihar	Historic granary with panoramic views	25.602	85.115	place_images/Golghar.jpg	4.2
+156	Barabar Caves	Jehanabad	Bihar	Ancient rock-cut caves linked to Jainism	24.768	85.008	place_images/Barabar_Caves.jpg	4.4
+157	Mundeshwari Temple	Kaimur	Bihar	One of India’s oldest functional temples	24.721	83.676	place_images/Mundeshwari_Temple.jpg	4.6
+158	Ashokan Pillar	Vaishali	Bihar	Pillar marking Buddha’s visit	25.68	85.3	place_images/Ashokan_Pillar.jpg	4.6
+159	Kesaria Stupa	Kesariya	Bihar	Large Buddhist stupa	26.738	84.971	place_images/Kesaria_Stupa.jpg	4.3
+160	Bihar Museum	Patna	Bihar	Modern museum of state heritage	25.594	85.123	place_images/Bihar_Museum.jpg	4.5
+161	Maner Sharif	Patna	Bihar	Sufi shrine complex	25.555	85.036	place_images/Maner_Sharif.jpg	4.1
+162	Bodhgaya Museum	Bodh Gaya	Bihar	Artifacts from Buddhist & Mauryan eras	24.695	84.992	place_images/Bodhgaya_Museum.jpg	4.2
+163	Kakolat Waterfall	Nawada	Bihar	Picturesque waterfall with mythological ties	24.886	85.594	place_images/Kakolat_Waterfall.jpg	4.3
+164	Eco Park	Patna	Bihar	Urban lakeside recreational park	25.59	85.14	place_images/Eco_Park.jpg	4.5
+165	Chitrakote Falls	Jagdalpur	Chhattisgarh	India’s widest waterfall, called “Niagara of India”	19.096	82.049	place_images/Chitrakote_Falls.jpg	4.6
+166	Tirathgarh Falls	Jagdalpur	Chhattisgarh	Multi-tiered waterfall in Kanger Valley NP	19.088	82.065	place_images/Tirathgarh_Falls.jpg	4.6
+167	Barnawapara Sanctuary	Mahasamund	Chhattisgarh	Rich flora and fauna sanctuary	21.2	82.077	place_images/Barnawapara_Sanctuary.jpg	4.4
+168	Kanger Valley NP	Jagdalpur	Chhattisgarh	Caves, streams, and dense forest	19.055	82.107	place_images/Kanger_Valley_NP.jpg	4.2
+169	Danteshwari Temple	Dantewada	Chhattisgarh	Ancient Shakti Peetha shrine	18.904	81.35	place_images/Danteshwari_Temple.jpg	4.6
+170	Bhoramdeo Temple	Kawardha	Chhattisgarh	10th-century temple complex	22.004	81.238	place_images/Bhoramdeo_Temple.jpg	4.4
+171	Sirpur Archaeological Site	Mahasamund	Chhattisgarh	Ruins of Buddhist & Hindu temples	21.166	82.103	place_images/Sirpur_Archaeological_Site.jpg	4.5
+172	Rajim	Rajim	Chhattisgarh	Spiritual “Prayagraj” of Chhattisgarh	21.251	82.06	place_images/Rajim.jpg	4.3
+173	Mainpat	Mainpat	Chhattisgarh	Hill station with Tibetan colony	23.373	83.855	place_images/Mainpat.jpg	4.2
+174	Bastar Palace	Jagdalpur	Chhattisgarh	Heritage royal residence	19.071	82.028	place_images/Bastar_Palace.jpg	\N
+175	Kutumsar Caves	Kanger Valley	Chhattisgarh	Deep limestone cave system	19.058	82.11	place_images/Kutumsar_Caves.jpg	4.5
+176	Maitri Bagh Zoo	Bhilai	Chhattisgarh	Zoo with musical fountain and garden	21.207	81.369	place_images/Maitri_Bagh_Zoo.jpg	4
+177	Dongargarh Temple	Dongargarh	Chhattisgarh	Hill‑top Maa Bambleshwari shrine	21.352	81.542	place_images/Dongargarh_Temple.jpg	4.6
+178	Madku Dweep	Bilaspur	Chhattisgarh	River island with archaeological remnants	22.103	82.085	place_images/Madku_Dweep.jpg	4.1
+179	Jogimara Caves	Ramgarh	Chhattisgarh	Ancient caves with prehistoric art	22.123	82.12	place_images/Jogimara_Caves.jpg	4.1
+180	Devka Beach	Daman	Daman and Diu	Popular beach with amusement park and promenade	20.408	72.828	place_images/Devka_Beach.jpg	4.1
+181	Jampore Beach	Daman	Daman and Diu	Calm beach ideal for swimming and relaxation	20.401	72.819	place_images/Jampore_Beach.jpg	4.3
+182	St. Jerome Fort	Diu	Daman and Diu	16th-century Portuguese fort with sea views	20.716	70.995	place_images/St._Jerome_Fort.jpg	4
+183	Naida Caves	Diu	Daman and Diu	Limestone caves near Nagoa Beach	20.7175	70.9958	place_images/Naida_Caves.jpg	4.4
+184	Nagoa Beach	Diu	Daman and Diu	White sand beach with water sports	20.7179	71.0046	place_images/Nagoa_Beach.jpg	4.4
+185	Diu Fort 	Diu	Daman and Diu	Imposing sea fort built by the Portuguese	20.7155	70.967	place_images/Diu_Fort_.jpg	4.4
+186	INS Khukri Memorial	Diu	Daman and Diu	Naval memorial for ship sunk in 1971 war	20.702	70.987	place_images/INS_Khukri_Memorial.jpg	4.6
+187	St. Paul’s Church	Diu	Daman and Diu	One of Asia’s largest churches, dating to 17th century	20.7125	70.9853	place_images/St._Paul’s_Church.jpg	4.3
+188	Gaoji Gully Beach	Diu	Daman and Diu	Secluded sandy beach with rock formations	20.7132	70.9988	place_images/Gaoji_Gully_Beach.jpg	4.2
+189	Chakratirth Beach	Daman	Daman and Diu	Popular beach near city center	20.4175	72.8425	place_images/Chakratirth_Beach.jpg	4.4
+190	Moti Daman Fort	Daman	Daman and Diu	Historic Portuguese fort in Daman city	20.42	72.844	place_images/Moti_Daman_Fort.jpg	4.3
+191	St Paul’s Church	Moti Daman	Daman and Diu	17th-century Baroque church with ornate interiors	20.4205	72.8445	place_images/St_Paul’s_Church.jpg	4.3
+192	Red Fort	Delhi	Delhi	Iconic 17th-century Mughal fort and UNESCO site	28.6562	77.241	place_images/Red_Fort.jpg	4.5
+193	Qutub Minar	Delhi	Delhi	Tallest brick minaret in the world	28.5244	77.1855	place_images/Qutub_Minar.jpg	\N
+194	India Gate	Delhi	Delhi	War memorial in central Delhi	28.6129	77.2295	place_images/India_Gate.jpg	4.6
+195	Lotus Temple	Delhi	Delhi	Bahá’í House of Worship known for lotus shape	28.5535	77.2588	place_images/Lotus_Temple.jpg	4.5
+196	Humayun’s Tomb	Delhi	Delhi	Mughal tomb and UNESCO World Heritage Site	28.5933	77.2507	place_images/Humayun’s_Tomb.jpg	4.5
+197	Akshardham Temple	Delhi	Delhi	Modern Hindu mandir complex with cultural exhibits	28.6121	77.2773	place_images/Akshardham_Temple.jpg	4.6
+198	Jama Masjid	Delhi	Delhi	One of India’s largest mosques, built in the 17th century	28.6507	77.2334	place_images/Jama_Masjid.jpg	4.5
+199	Rashtrapati Bhavan	Delhi	Delhi	Presidential residence with Mughal Gardens	28.6143	77.1997	place_images/Rashtrapati_Bhavan.jpg	4.7
+200	Chandni Chowk	Delhi	Delhi	Historic market famous for street food and old bazaars	28.6562	77.2303	place_images/Chandni_Chowk.jpg	3.8
+201	Hauz Khas Complex	Delhi	Delhi	Medieval reservoir, mosque, and urban village area	28.5495	77.1994	place_images/Hauz_Khas_Complex.jpg	4.4
+202	Swaminarayan Akshardham	Delhi	Delhi	Cultural complex dedicated to Swaminarayan	28.6085	77.2775	place_images/Swaminarayan_Akshardham.jpg	4.6
+203	Rani Ki Vav 	Delhi	Delhi	Replica stepwell showcasing sandstone craftsmanship	28.612	77.2275	place_images/Rani_Ki_Vav_.jpg	4.7
+204	National Museum	Delhi	Delhi	Comprehensive museum of Indian history and art	28.612254	77.227232	place_images/National_Museum.jpg	4.6
+205	Jantar Mantar	Delhi	Delhi	Historic astronomical observatory	28.632645	77.219506	place_images/Jantar_Mantar.jpg	4.2
+206	Mehrauli Archaeological Park	Delhi	Delhi	Ruins of ancient structures near Qutub complex	28.5276	77.1869	place_images/Mehrauli_Archaeological_Park.jpg	4.3
+207	Agrasen ki Baoli	Delhi	Delhi	Ancient stepwell in city centre	28.6326	77.2206	place_images/Agrasen_ki_Baoli.jpg	4.2
+208	Purana Qila	Delhi	Delhi	Old Fort built during Sher Shah Suri’s era	28.6167	77.233333	place_images/Purana_Qila.jpg	4.2
+209	National Rail Museum	Delhi	Delhi	Gallery of vintage trains and rail artifacts	28.646575	77.21998	place_images/National_Rail_Museum.jpg	4.4
+210	Lodhi Garden	Delhi	Delhi	Park with tombs from 15th‑17th century	28.5933	77.2417	place_images/Lodhi_Garden.jpg	4.5
+211	Dilli Haat	Delhi	Delhi	Craft bazaar and food plaza with regional stores	28.5512	77.2087	place_images/Dilli_Haat.jpg	4.3
+212	Shri Aapti Shiv Mandir	Silvassa	Dadra and Nagar Haveli	Ancient Shiva temple in the state capital	20.2699	73.0021	place_images/Shri_Aapti_Shiv_Mandir.jpg	4.5
+213	Vanganga Lake Garden	Silvassa	Dadra and Nagar Haveli	Scenic garden surrounding a lake	20.2718	73.0121	place_images/Vanganga_Lake_Garden.jpg	4.2
+214	Hirwa Van Garden	Silvassa	Dadra and Nagar Haveli	Green park with children’s play area	20.2785	73.0089	place_images/Hirwa_Van_Garden.jpg	4.1
+215	Lion Safari Wildlife Park	Silvassa	Dadra and Nagar Haveli	Safari park featuring lions and deer	20.2571	73.0371	place_images/Lion_Safari_Wildlife_Park.jpg	3.6
+216	Dudhni Lake	Dudhani	Dadra and Nagar Haveli	Riverfront lake popular for water sports	20.2165	72.995	place_images/Dudhni_Lake.jpg	4.4
+217	Satmalia Deer Park	Silvassa	Dadra and Nagar Haveli	Deer park near lion safari	20.26	73.0162	place_images/Satmalia_Deer_Park.jpg	4.1
+218	Smarak Theatre & Museum	Silvassa	Dadra and Nagar Haveli	Museum showcasing tribal artifacts and anti-colonial history	20.2701	73.0067	place_images/Smarak_Theatre_&_Museum.jpg	4
+219	Someshwar Waterfall	Silvassa	Dadra and Nagar Haveli	Rain-fed waterfall with forest backdrop	20.2745	73.0102	place_images/Someshwar_Waterfall.jpg	4.2
+220	Timber Trail Camping Site	Silvassa	Dadra and Nagar Haveli	Adventure camping and zipline nearby	20.2667	73.02	place_images/Timber_Trail_Camping_Site.jpg	3.8
+221	St. Joseph’s Church	Silvassa	Dadra and Nagar Haveli	Historic church with Gothic architecture	20.2705	73.0078	place_images/St._Joseph’s_Church.jpg	4.7
+222	Calangute Beach	Calangute	Goa	One of the busiest and most popular beaches in Goa	15.5453	73.7549	place_images/Calangute_Beach.jpg	4.4
+223	Baga Beach	Baga	Goa	Lively beach known for nightlife and water sports	15.547	73.75	place_images/Baga_Beach.jpg	4.4
+224	Anjuna Beach	Anjuna	Goa	Famous for flea market and trance parties	15.6092	73.7442	place_images/Anjuna_Beach.jpg	4.4
+225	Fort Aguada	Sinquerim	Goa	17th-century Portuguese fort overlooking the sea	15.5006	73.775	place_images/Fort_Aguada.jpg	4.2
+226	Basilica of Bom Jesus	Old Goa	Goa	UNESCO site housing St. Francis Xavier’s remains	15.5009	73.9134	place_images/Basilica_of_Bom_Jesus.jpg	4.5
+227	Se Cathedral	Old Goa	Goa	One of Asia’s largest churches, dedicated to St. Catherine	15.5033	73.9127	place_images/Se_Cathedral.jpg	4.5
+228	Dudhsagar Falls	Mollem	Goa	Spectacular four-tiered waterfall on the Mandovi River	15.3338	74.313	place_images/Dudhsagar_Falls.jpg	4.6
+229	Chapora Fort	Chapora	Goa	Scenic hilltop fort with panoramic beach views	15.6395	73.7037	place_images/Chapora_Fort.jpg	4.2
+230	Palolem Beach	Canacona	Goa	Picturesque crescent-shaped beach in South Goa	15.011	73.9857	place_images/Palolem_Beach.jpg	4.6
+231	Colva Beach	Colva	Goa	Long sandy beach popular with families	15.3705	73.9268	place_images/Colva_Beach.jpg	4.3
+232	Arvalem Caves & Waterfall	Bicholim	Goa	Historic Buddhist caves and scenic waterfall	15.5853	74.0156	place_images/Arvalem_Caves_&_Waterfall.jpg	4.1
+233	Church of Our Lady of the Immaculate Conception	Panaji	Goa	Baroque-style church in the state capital	15.4923	73.8266	place_images/Church_of_Our_Lady_of_the_Immaculate_Conception.jpg	4.4
+234	Baga Fort	Baga	Goa	Ruins of a small fort overlooking Baga beach	15.546	73.749	place_images/Baga_Fort.jpg	4.5
+235	Sinquerim Beach	Sinquerim	Goa	Blue-flag beach near Aguada fort	15.502	73.777	place_images/Sinquerim_Beach.jpg	4.5
+236	Miramar Beach	Panaji	Goa	Sandy beachfront near the state capital	15.4775	73.83	place_images/Miramar_Beach.jpg	4.2
+237	Candolim Beach	Candolim	Goa	Family-friendly beach with water sports	15.5327	73.7792	place_images/Candolim_Beach.jpg	4.5
+238	Vasco da Gama Port	Vasco da Gama	Goa	Major port city and gateway to hinterland	15.3993	73.8126	place_images/Vasco_da_Gama_Port.jpg	3.7
+239	Spice Plantations	Ponda	Goa	Tour of local spice gardens	15.4147	73.9416	place_images/Spice_Plantations.jpg	4.1
+240	Tambdi Surla Temple	Tambdi Surla	Goa	11th-century Shiva temple in village setting	15.4801	74.0259	place_images/Tambdi_Surla_Temple.jpg	4.8
+241	Morjim Beach	Morjim	Goa	Turtle nesting beach with quieter vibe	15.6003	73.7472	place_images/Morjim_Beach.jpg	\N
+242	Rohtang Pass	Manali	Himachal Pradesh	High mountain pass with snow and scenic views	32.379	77.154	place_images/Rohtang_Pass.jpg	4.7
+243	Solang Valley	Manali	Himachal Pradesh	Adventure sports hub near Manali	32.251	77.167	place_images/Solang_Valley.jpg	4.5
+244	Hidimba Devi Temple	Manali	Himachal Pradesh	Ancient wooden temple set in pine forest	32.239	77.189	place_images/Hidimba_Devi_Temple.jpg	4.6
+245	Mall Road	Shimla	Himachal Pradesh	Popular promenade in colonial Shimla	31.1048	77.1734	place_images/Mall_Road.jpg	4.6
+246	Jakhoo Temple	Shimla	Himachal Pradesh	Temple dedicated to Hanuman with city views	31.1047	77.1546	place_images/Jakhoo_Temple.jpg	4.8
+247	Kullu Valley	Kullu	Himachal Pradesh	Lush valley along Beas River	31.957	77.1144	place_images/Kullu_Valley.jpg	4.3
+248	Great Himalayan National Park	Kullu	Himachal Pradesh	UNESCO forest biodiversity area	31.826	77.234	place_images/Great_Himalayan_National_Park.jpg	4.5
+249	Dharamshala	Dharamshala	Himachal Pradesh	Base of Dalai Lama with Tibetan culture	32.2195	76.3234	place_images/Dharamshala.jpg	4.4
+250	McLeod Ganj	Dharamshala	Himachal Pradesh	Hill town known as “Little Lhasa”	32.2396	76.3156	place_images/McLeod_Ganj.jpg	4.2
+251	Chamba	Chamba	Himachal Pradesh	Historic hill town with temples	32.53	76.261	place_images/Chamba.jpg	4.6
+252	Spiti Valley	Spiti	Himachal Pradesh	Cold desert valley with monasteries	32.224	78.004	place_images/Spiti_Valley.jpg	\N
+253	Kinnaur	Kinnaur	Himachal Pradesh	High-altitude district with tribal culture	31.06	78.394	place_images/Kinnaur.jpg	\N
+254	Bir Billing	Bir	Himachal Pradesh	Paragliding capital of India	32.044	76.329	place_images/Bir_Billing.jpg	4.2
+255	Chandigarh 	Chandigarh	Himachal Pradesh	Artistic garden of sculptures	30.6797	76.79	place_images/Chandigarh_.jpg	3.5
+256	Tirthan Valley	Tirthan	Himachal Pradesh	Scenic trout river valley	31.688	77.238	place_images/Tirthan_Valley.jpg	4.7
+257	Karna Lake	Kurukshetra	Haryana	Historic lake mentioned in Mahabharata	29.97	76.85	place_images/Karna_Lake.jpg	4.2
+258	Sheikh Chilli Tomb	Kurukshetra	Haryana	Mughal-era architectural mausoleum	29.967	76.83	place_images/Sheikh_Chilli_Tomb.jpg	4.3
+259	Panipat Battlefield	Panipat	Haryana	Site of historic battles including 1526 & 1761	29.39	76.97	place_images/Panipat_Battlefield.jpg	4.2
+260	Morni Hills	Morni	Haryana	Hilly forest retreat with waterfalls	30.933	76.735	place_images/Morni_Hills.jpg	4.2
+261	Fatehabad Fort	Fatehabad	Haryana	Ruins of medieval fort by Firoz Shah Tughlaq	29.52	75.45	place_images/Fatehabad_Fort.jpg	3.9
+262	Bhondsi Lake	Gurgaon	Haryana	Urban lake and bird watching spot	28.41	77.08	place_images/Bhondsi_Lake.jpg	4.6
+263	Sheetal Kund	Narnaul	Haryana	Spring-fed tank with historic shrine	28.062	76.111	place_images/Sheetal_Kund.jpg	4.7
+264	Sector 10 Market	Gurgaon	Haryana	Popular urban shopping & cafe area	28.4595	77.0266	place_images/Sector_10_Market.jpg	5
+265	Sultanpur National Park	Gurgaon	Haryana	Important bird sanctuary with migratory birds	28.4727	77.0403	place_images/Sultanpur_National_Park.jpg	4.2
+266	Bara Bair Mosque	Jagadhri	Haryana	Historic mosque with Indo-Islamic architecture	30.136	77.28	place_images/Bara_Bair_Mosque.jpg	5
+267	Surajkund	Faridabad	Haryana	Annual crafts fair and reservoir	28.4813	77.3026	place_images/Surajkund.jpg	4.1
+268	Pinjore Gardens	Pinjore	Haryana	Mughal gardens by Raja Ravi Varma	30.909	76.865	place_images/Pinjore_Gardens.jpg	4.3
+269	Dassam Falls	Ranchi	Jharkhand	Tiered waterfall on Kanchi River	23.307	85.296	place_images/Dassam_Falls.jpg	4.5
+270	Hundru Falls	Ranchi	Jharkhand	Classic waterfall and rock pool	23.4	85.346	place_images/Hundru_Falls.jpg	4.4
+271	Jonha Falls	Ranchi	Jharkhand	Scenic waterfall with plunge pool	23.315	85.302	place_images/Jonha_Falls.jpg	4.4
+272	Jagannath Temple	Ranchi	Jharkhand	Temple with annual Rath Yatra	23.354	85.338	place_images/Jagannath_Temple.jpg	4.7
+273	Betla National Park	Latehar	Jharkhand	Tiger reserve in Palamau division	23.152	84.215	place_images/Betla_National_Park.jpg	4.1
+274	Baidyanath Temple	Deoghar	Jharkhand	One of India’s 12 Jyotirlingas	24.485	86.69	place_images/Baidyanath_Temple.jpg	4.6
+275	Tapin Dam	Deoghar	Jharkhand	Scenic reservoir with boating	24.483	86.686	place_images/Tapin_Dam.jpg	4.5
+276	Rajrappa Temple	Ramgarh	Jharkhand	Temple at confluence of Damodar & Bhairavi rivers	23.613	85.54	place_images/Rajrappa_Temple.jpg	4.6
+277	Hazaribagh	Hazaribagh	Jharkhand	Town & plateau with national park	23.993	85.361	place_images/Hazaribagh.jpg	3.9
+278	Parasnath Hill	Giridih	Jharkhand	Highest Jain pilgrimage site	23.784	86.411	place_images/Parasnath_Hill.jpg	4.7
+279	Rock Garden	Ranchi	Jharkhand	Lakeside rock-themed park	23.356	85.324	place_images/Rock_Garden.jpg	3.8
+280	Sun Temple	Ranchi	Jharkhand	Modern temple atop hill	23.345	85.335	place_images/Sun_Temple.jpg	4.7
+281	Dal Lake	Srinagar	Jammu and Kashmir	Iconic lake famed for houseboats and shikaras	34.0837	74.7973	place_images/Dal_Lake.jpg	4.6
+282	Gulmarg	Gulmarg	Jammu and Kashmir	Alpine meadow and ski resort	34.0498	74.3814	place_images/Gulmarg.jpg	4.6
+283	Pahalgam	Pahalgam	Jammu and Kashmir	Riverside hill town, gateway to Amarnath	34.0108	75.3179	place_images/Pahalgam.jpg	4.2
+284	Sonamarg	Sonamarg	Jammu and Kashmir	Scenic hill station by Sindh River	34.267	75.336	place_images/Sonamarg.jpg	4.4
+285	Shankaracharya Temple	Srinagar	Jammu and Kashmir	Ancient temple overlooking Srinagar	34.1043	74.8147	place_images/Shankaracharya_Temple.jpg	4.8
+286	Mughal Gardens	Srinagar	Jammu and Kashmir	Chashme Shahi & Nishat Gardens by Dal Lake	34.085	74.81	place_images/Mughal_Gardens.jpg	4.4
+287	Betaab Valley	Pahalgam	Jammu and Kashmir	Scenic valley named after Bollywood film	33.957	75.236	place_images/Betaab_Valley.jpg	4.6
+288	Kupwara	Kupwara	Jammu and Kashmir	Less-explored district with scenic vistas	34.5286	74.2547	place_images/Kupwara.jpg	4.1
+289	Dachigam National Park	Srinagar	Jammu and Kashmir	Wildlife reserve for hangul deer	34.083	74.61	place_images/Dachigam_National_Park.jpg	4.4
+290	Verinag Spring	Anantnag	Jammu and Kashmir	Natural spring with Mughal garden	33.6565	75.1889	place_images/Verinag_Spring.jpg	\N
+291	Achabal Gardens	Anantnag	Jammu and Kashmir	Mughal terraced garden by spring	33.7166	75.1341	place_images/Achabal_Gardens.jpg	4.3
+292	Zanskar Valley	Leh-Ladakh	Jammu and Kashmir	Remote Himalayan valley with trekking	33.64	76.07	place_images/Zanskar_Valley.jpg	4.5
+293	Patnitop	Udhampur	Jammu and Kashmir	Hill resort on Batote–Kishtwar road	33.0169	75.1782	place_images/Patnitop.jpg	3.7
+294	Vaishno Devi Temple	Katra	Jammu and Kashmir	Major pilgrimage cave shrine	33.1212	75.24	place_images/Vaishno_Devi_Temple.jpg	4.7
+295	Raghunath Temple	Srinagar	Jammu and Kashmir	Large temple complex in Srinagar	34.0798	74.8265	place_images/Raghunath_Temple.jpg	4.7
+296	Masroor Rock Cut Temple	Masroor	Himachal Pradesh	Underground monolithic temple complex (8th‑10th century)	31.77	76.696	place_images/Masroor_Rock_Cut_Temple.jpg	4.6
+297	Khajjiar	Khajjiar	Himachal Pradesh	“Mini Switzerland” of India with lush meadows & lake	31.91	76.164	place_images/Khajjiar.jpg	4.7
+298	Naina Devi Temple	Bilaspur	Himachal Pradesh	Hilltop temple with panoramic views	31.4166	76.5129	place_images/Naina_Devi_Temple.jpg	4.8
+299	Barot Valley	Barot	Himachal Pradesh	Scenic valley along Uhl River, ideal for trout fishing	31.46	77.075	place_images/Barot_Valley.jpg	\N
+300	Chamera Lake	Chamera	Himachal Pradesh	Man-made reservoir with boating activities	32.415	76.124	place_images/Chamera_Lake.jpg	4.4
+301	Great Himalayan Trails Base	Shimla	Himachal Pradesh	Starting point for long trekking routes	31.1048	77.1734	place_images/Great_Himalayan_Trails_Base.jpg	5
+302	Mcleodganj Cricket Stadium	Dharamshala	Himachal Pradesh	Iconic stadium with Himalayan backdrop	32.2435	76.3319	place_images/Mcleodganj_Cricket_Stadium.jpg	4.5
+303	Palampur Tea Gardens	Palampur	Himachal Pradesh	Rolling tea plantations and quaint town	32.121	76.5368	place_images/Palampur_Tea_Gardens.jpg	4.6
+304	Chitkul Village	Chitkul	Himachal Pradesh	Last inhabited village on old Indo‑Tibetan highway	31.238	78.348	place_images/Chitkul_Village.jpg	4.4
+305	Tashijong Monastery	Barot	Himachal Pradesh	Tibetan Buddhist monastery in serene setting	31.458	77.075	place_images/Tashijong_Monastery.jpg	4.6
+306	Surajkund Mela Grounds	Faridabad	Haryana	Venue of annual cultural fair and crafts bazaar	28.48	77.307	place_images/Surajkund_Mela_Grounds.jpg	4.4
+307	Bhuteshwar Temple	Hodal	Haryana	Ancient Shiva temple with religious significance	27.7166	77.2025	place_images/Bhuteshwar_Temple.jpg	4.5
+308	Kalesar National Park	Yamunanagar	Haryana	Shivalik forests with wildlife and greenery	30.106	77.207	place_images/Kalesar_National_Park.jpg	4.3
+309	Pinjore Baoli	Pinjore	Haryana	Historical stepwell in Pinjore Gardens	30.91	76.867	place_images/Pinjore_Baoli.jpg	4.4
+310	Dhosi Hill	Narnaul	Haryana	Mythological hill with ancient temple and dhuni	28.041	76.19	place_images/Dhosi_Hill.jpg	4.5
+311	Badkhal Lake	Faridabad	Haryana	Once scenic seasonal lake, now restored eco-site	28.3775	77.3242	place_images/Badkhal_Lake.jpg	3.7
+312	Chandimandir Sahib	Chandigarh	Haryana	Gurbani town & temple of Sikh history	30.79	76.76	place_images/Chandimandir_Sahib.jpg	4.5
+313	Asigarh Fort	Hansi	Haryana	Ruins of early medieval fort of King Asoka	29.096	75.957	place_images/Asigarh_Fort.jpg	4.4
+314	Pehowa Saraswati Tirtha	Pehowa	Haryana	Sacred pilgrimage site on Ghaggar River	29.87	76.533	place_images/Pehowa_Saraswati_Tirtha.jpg	4.1
+315	Surajkund Lake	Faridabad	Haryana	Reservoir adjacent to Surajkund and mela grounds	28.478	77.3075	place_images/Surajkund_Lake.jpg	4.2
+316	Hundru Falls Viewpoint	Ranchi	Jharkhand	Scenic viewing point above the waterfall	23.405	85.345	place_images/Hundru_Falls_Viewpoint.jpg	4.2
+317	Pahari Mandir	Ranchi	Jharkhand	Temple atop Ranchi hill with city views	23.339	85.326	place_images/Pahari_Mandir.jpg	4.6
+318	Rajrappa Falls	Ramgarh	Jharkhand	Waterfall and confluence near Rajrappa Temple	23.6135	85.5378	place_images/Rajrappa_Falls.jpg	4.3
+319	Betla Palace	Latehar	Jharkhand	Heritage palace near Betla National Park	23.1508	84.2098	place_images/Betla_Palace.jpg	4.1
+320	Gonda Hill	Ranchi	Jharkhand	Religious hill with temple dedicated to Shiva	23.3455	85.3422	place_images/Gonda_Hill.jpg	4.3
+321	Parasnath Waterfall	Giridih	Jharkhand	Seasonal waterfall near Parasnath Hill	23.7845	86.405	place_images/Parasnath_Waterfall.jpg	4.2
+322	Hajaribagh Hilltop Park	Hazaribagh	Jharkhand	Panoramic hill park overlooking town	24	85.368	place_images/Hajaribagh_Hilltop_Park.jpg	4
+323	Netarhat Viewpoint	Latehar	Jharkhand	Sunrise and sunset vantage point in forests	23.489	84.594	place_images/Netarhat_Viewpoint.jpg	4.5
+324	Anthropological Museum	Ranchi	Jharkhand	Tribal culture exhibit museum	23.3415	85.3372	place_images/Anthropological_Museum.jpg	4.2
+325	Deori Mandir	Ramgarh	Jharkhand	Ancient temple dedicated to Lord Shiva	23.63	85.532	place_images/Deori_Mandir.jpg	4.7
+326	Gurez Valley	Bandipora	Jammu and Kashmir	Remote valley known for tulip fields	34.529	74.691	place_images/Gurez_Valley.jpg	4.1
+327	Shankaracharya Hill	Srinagar	Jammu and Kashmir	Hill with ancient temple and city views	34.102	74.824	place_images/Shankaracharya_Hill.jpg	\N
+328	Char Chinar	Srinagar	Jammu and Kashmir	Group of iconic chinar trees on Dal Lake	34.084	74.7975	place_images/Char_Chinar.jpg	4.5
+329	Kishtwar National Park	Kishtwar	Jammu and Kashmir	Protected area with diverse Himalayan fauna	33.338	75.785	place_images/Kishtwar_National_Park.jpg	4.2
+330	Doodhpathri	Budgam	Jammu and Kashmir	Valley known for meadows and streams	33.139	75.197	place_images/Doodhpathri.jpg	4.5
+331	Gurez River Valley	Bandipora	Jammu and Kashmir	River valley with scenic mountain landscapes	34.546	74.667	place_images/Gurez_River_Valley.jpg	5
+332	Peer Ki Gali	Shopian	Jammu and Kashmir	Mountain pass on Mughal Road	33.687	75.147	place_images/Peer_Ki_Gali.jpg	4.5
+333	Tarsar Marsar Lakes	Anantnag	Jammu and Kashmir	Alpine twin lakes in Lidder Valley	33.7	75.117	place_images/Tarsar_Marsar_Lakes.jpg	4.6
+334	Sinthan Top	Kishtwar	Jammu and Kashmir	High-altitude trekking pass	33.212	75.362	place_images/Sinthan_Top.jpg	4.6
+335	Wular Lake	Bandipora	Jammu and Kashmir	One of Asia’s largest freshwater lakes	34.249	74.549	place_images/Wular_Lake.jpg	4.5
+336	Mysore Palace	Mysore	Karnataka	Lavish palace of the Wodeyar dynasty	12.30513	76.655326	place_images/Mysore_Palace.jpg	4.6
+337	Chamundi Hill	Mysore	Karnataka	Hill shrine overlooking Mysore city	12.3346	76.7138	place_images/Chamundi_Hill.jpg	4.2
+338	Brindavan Gardens	Mysore	Karnataka	Terraced gardens with musical fountain on Krishnaraja Sagar dam	12.4126	76.6142	place_images/Brindavan_Gardens.jpg	4.3
+339	Kodagu	Madikeri	Karnataka	Coffee hills and waterfalls in Western Ghats	12.4263	75.7382	place_images/Kodagu.jpg	\N
+340	Abbey Falls	Madikeri	Karnataka	Scenic waterfall in Coorg	12.4238	75.7466	place_images/Abbey_Falls.jpg	4.2
+341	Nagarhole National Park	Nagarhole	Karnataka	Tiger reserve with rich wildlife	12.264	76.355	place_images/Nagarhole_National_Park.jpg	4.4
+342	Hampi	Hampi	Karnataka	UNESCO site with Vijayanagara ruins	15.335	76.46	place_images/Hampi.jpg	4.5
+343	Virupaksha Temple	Hampi	Karnataka	Active temple from Vijayanagara era	15.3359	76.462	place_images/Virupaksha_Temple.jpg	4.7
+344	Badami Caves	Badami	Karnataka	Rock-cut cave temples dating 6th century	15.9164	75.6762	place_images/Badami_Caves.jpg	4.6
+345	Pattadakal	Pattadakal	Karnataka	UNESCO group of Chalukyan temples	15.8662	75.9022	place_images/Pattadakal.jpg	3.8
+346	Aihole	Aihole	Karnataka	Ancient temple site of Chalukyan era	16.1749	75.9611	place_images/Aihole.jpg	4.6
+347	Vijaypura	Bijapur	Karnataka	Historic city with Gol Gumbaz mausoleum	16.8301	75.7152	place_images/Vijaypura.jpg	4
+348	Gol Gumbaz	Bijapur	Karnataka	Monumental mausoleum with whispering gallery	16.83405	75.7446	place_images/Gol_Gumbaz.jpg	4.5
+349	Gokarna Beach	Gokarna	Karnataka	Sacred beach town with temples and beaches	14.551	74.314	place_images/Gokarna_Beach.jpg	4.4
+350	Om Beach	Gokarna	Karnataka	Beach shaped like the Om symbol	14.5466	74.3205	place_images/Om_Beach.jpg	4.5
+351	Murudeshwar Temple	Murudeshwar	Karnataka	Temple with world’s second tallest Shiva statue	14.094	74.5228	place_images/Murudeshwar_Temple.jpg	3.8
+352	Jog Falls	Sagara	Karnataka	India’s highest plunge waterfall	14.2366	74.5015	place_images/Jog_Falls.jpg	4.6
+353	Coastal Udupi	Udupi	Karnataka	Famous Krishna Temple and beaches	13.34088	74.742142	place_images/Coastal_Udupi.jpg	4
+354	Sri Mukhi Hanuman Temple	Udupi	Karnataka	Hilltop Hanuman temple with city views	13.3406	74.7458	place_images/Sri_Mukhi_Hanuman_Temple.jpg	4.8
+355	Kudremukh	Kudremukh	Karnataka	Hills and national park ideal for trekking	12.6235	75.3487	place_images/Kudremukh.jpg	4.7
+356	Dandeli Wildlife Sanctuary	Dandeli	Karnataka	Dense moist deciduous forest reserve	15.3112	74.6079	place_images/Dandeli_Wildlife_Sanctuary.jpg	4.5
+357	Mahabaleshwar Temple	Gokarna	Karnataka	Hill cave temple of Lord Shiva	14.5459	74.3188	place_images/Mahabaleshwar_Temple.jpg	4.7
+358	St. Mary’s Island	Malpe	Karnataka	Columnar basalt rock formation islands	13.3584	74.7041	place_images/St._Mary’s_Island.jpg	4.5
+359	Kabini	Nagarhole	Karnataka	Riverfront eco-tourism & wildlife area	11.9886	76.5032	place_images/Kabini.jpg	4.4
+360	Shivanasamudra Falls	Shivanasamudra	Karnataka	Twin waterfalls on Kaveri River	12.305	77.258	place_images/Shivanasamudra_Falls.jpg	4.4
+361	Bull Temple	Bengaluru	Karnataka	Historic temple dedicated to Nandi bull	12.9508	77.5642	place_images/Bull_Temple.jpg	4.7
+362	Lalbagh Botanical Garden	Bengaluru	Karnataka	Iconic botanical garden in city center	12.9507	77.5848	place_images/Lalbagh_Botanical_Garden.jpg	4.4
+363	Bangalore Palace	Bengaluru	Karnataka	Majestic Tudor-style palace	12.99858	77.59299	place_images/Bangalore_Palace.jpg	4.2
+364	Cubbon Park	Bengaluru	Karnataka	Green lung in the heart of the city	12.9754	77.5927	place_images/Cubbon_Park.jpg	4.4
+365	Bannerghatta National Park	Bengaluru	Karnataka	Wildlife safari and zoo near the city	12.8006	77.577	place_images/Bannerghatta_National_Park.jpg	4.4
+366	Nandi Hills	Chikkaballapura	Karnataka	Popular weekend hill retreat with sunrise views	13.37	77.6833	place_images/Nandi_Hills.jpg	3.7
+367	Hesaraghatta Lake	Bengaluru	Karnataka	Man-made lake and bird sanctuary	13.097	77.4097	place_images/Hesaraghatta_Lake.jpg	4.3
+368	Ranganathittu Bird Sanctuary	Mandya	Karnataka	Small river islet bird sanctuary	12.4143	76.686	place_images/Ranganathittu_Bird_Sanctuary.jpg	4.4
+369	Chikmagalur	Chikmagalur	Karnataka	Coffee hills and Mullayanagiri peak	13.3181	75.7754	place_images/Chikmagalur.jpg	4.2
+370	Kurubarahalli Lake	Bengaluru	Karnataka	Urban lake for birding and walking	12.9285	77.4803	place_images/Kurubarahalli_Lake.jpg	5
+371	ISKCON Temple	Bengaluru	Karnataka	Modern Krishna temple and cultural complex	13.0216	77.5695	place_images/ISKCON_Temple.jpg	4.7
+372	National Gallery of Modern Art	Bengaluru	Karnataka	Contemporary art museum in Mayura Park	12.9795	77.5714	place_images/National_Gallery_of_Modern_Art.jpg	4.4
+373	Vidhana Soudha	Bengaluru	Karnataka	Impressive neo-Dravidian state legislature building	12.9797	77.5907	place_images/Vidhana_Soudha.jpg	4.6
+374	Backwaters of Alleppey	Alappuzha	Kerala	Canal-system network ideal for houseboats	9.498	76.33878	place_images/Backwaters_of_Alleppey.jpg	4.6
+375	Fort Kochi	Kochi	Kerala	Historic district with colonial buildings & Chinese fishing nets	9.9658	76.2401	place_images/Fort_Kochi.jpg	4.6
+376	Munnar Tea Plantations	Munnar	Kerala	Lush tea gardens in Western Ghats	10.0889	77.0595	place_images/Munnar_Tea_Plantations.jpg	3.8
+377	Eravikulam National Park	Munnar	Kerala	Protected area for Nilgiri Tahr and Neelakurinji blooms	10.0913	77.0952	place_images/Eravikulam_National_Park.jpg	4.3
+378	Vagamon	Vagamon	Kerala	Hill station with meadows and pine forests	9.8168	76.9188	place_images/Vagamon.jpg	4.8
+379	Periyar	Thekkady	Kerala	Wildlife sanctuary with boat safaris	9.6063	77.1268	place_images/Periyar.jpg	4.1
+380	Athirappilly Falls	Thrissur	Kerala	Largest waterfall in Kerala	10.2232	76.7013	place_images/Athirappilly_Falls.jpg	4.6
+381	Wayanad Wildlife Sanctuary	Kalpetta	Kerala	Tiger and elephant reserve in Wayanad Hills	11.6852	76.13	place_images/Wayanad_Wildlife_Sanctuary.jpg	3.9
+382	Edakkal Caves	Wayanad	Kerala	Prehistoric petroglyphs in hill caves	11.5152	76.0996	place_images/Edakkal_Caves.jpg	4.1
+383	Kumarakom Bird Sanctuary	Kumarakom	Kerala	Migratory bird sanctuary on Vembanad Lake	9.5786	76.4877	place_images/Kumarakom_Bird_Sanctuary.jpg	3.8
+384	Bekal Fort	Bekal	Kerala	Coastal fort overlooking Arabian Sea	12.4976	74.9907	place_images/Bekal_Fort.jpg	4.5
+385	Malampuzha Gardens	Palakkad	Kerala	Popular landscaped garden by reservoir	10.80248	76.632028	place_images/Malampuzha_Gardens.jpg	4.2
+386	Thiruvananthapuram Padmanabhaswamy Temple	Thiruvananthapuram	Kerala	Iconic Hindu temple with rich history	8.4821	76.9471	place_images/Thiruvananthapuram_Padmanabhaswamy_Temple.jpg	4.7
+387	Kovalam Beach	Kovalam	Kerala	Famous crescent-shaped beach	8.4145	76.9784	place_images/Kovalam_Beach.jpg	3.8
+388	Varkala Cliff	Varkala	Kerala	Scenic cliff-top beach town	8.7241	76.716091	place_images/Varkala_Cliff.jpg	4.6
+389	Bekal Beach	Bekal	Kerala	Beach next to Bekal Fort	12.498	74.99	place_images/Bekal_Beach.jpg	4.4
+390	Naval School of Krishna	Kochi	Kerala	Historic residence associated with Shankaracharya	9.98	76.3	place_images/Naval_School_of_Krishna.jpg	4.6
+391	Poovar Island	Poovar	Kerala	Estuary island with sunset cruises	8.4396	77.1333	place_images/Poovar_Island.jpg	4.3
+392	Cherai Beach	Cochin	Kerala	Beach near Kochi with backwater lagoon	10.195	76.169	place_images/Cherai_Beach.jpg	4.4
+393	Mattancherry Palace	Kochi	Kerala	Dutch palace built by Portuguese and Dutch	9.9653	76.237	place_images/Mattancherry_Palace.jpg	4.2
+394	Jewish Synagogue	Kochi	Kerala	One of oldest active synagogues in Commonwealth	9.966	76.242	place_images/Jewish_Synagogue.jpg	4.6
+395	Valara Waterfalls	Idukki	Kerala	Highway waterfall with easy access	10.0667	76.8433	place_images/Valara_Waterfalls.jpg	4.2
+396	Meenmutty Falls	Wayanad	Kerala	Three-tiered waterfall in forest	11.5959	76.1552	place_images/Meenmutty_Falls.jpg	4.4
+397	Silent Valley National Park	Palakkad	Kerala	Pristine evergreen forest reserve	11.0472	76.3246	place_images/Silent_Valley_National_Park.jpg	4.5
+398	Periyar Lake	Thekkady	Kerala	Man-made lake inside Periyar tiger reserve	9.6031	77.1174	place_images/Periyar_Lake.jpg	\N
+399	Thusharagiri Falls	Kodenchery	Kerala	Multi-tiered scenic waterfall	11.2673	76.1513	place_images/Thusharagiri_Falls.jpg	4.5
+400	Alappuzha Lighthouse	Alappuzha	Kerala	Waterside lighthouse next to beach	9.4985	76.336	place_images/Alappuzha_Lighthouse.jpg	4.4
+401	Munroe Island	Alappuzha	Kerala	Islet at confluence of Kallada & Ashtamudi backwaters	9.272322	76.466371	place_images/Munroe_Island.jpg	4.9
+402	Ponmudi	Thiruvananthapuram	Kerala	Hill station with tea gardens	8.741	77.017	place_images/Ponmudi.jpg	4.1
+403	Veli Tourist Village	Thiruvananthapuram	Kerala	Beach lagoon park with toy train	8.484	76.931	place_images/Veli_Tourist_Village.jpg	4.2
+404	Karunagappally Beach	Karunagappally	Kerala	Quiet beach with local fishing community	9.006	76.523	place_images/Karunagappally_Beach.jpg	4.4
+405	Bekal Bay Lighthouse	Bekal	Kerala	Lighthouse near Bekal Fort	12.4985	74.991	place_images/Bekal_Bay_Lighthouse.jpg	4.5
+406	Kozhikode Beach	Kozhikode	Kerala	Popular city beach with food stalls	11.2462	75.78	place_images/Kozhikode_Beach.jpg	4.5
+407	Silent Valley Viewpoint	Palakkad	Kerala	Lookout deck with forest views	11.0475	76.325	place_images/Silent_Valley_Viewpoint.jpg	4.5
+408	Gateway of India	Mumbai	Maharashtra	Iconic arch monument by the sea	18.922	72.8347	place_images/Gateway_of_India.jpg	4.6
+409	Elephanta Caves	Mumbai	Maharashtra	UNESCO rock-cut temples on Elephanta Island	18.9632	72.9318	place_images/Elephanta_Caves.jpg	4.3
+410	Marine Drive	Mumbai	Maharashtra	Scenic seaside boulevard known as Queen’s Necklace	18.9431	72.8239	place_images/Marine_Drive.jpg	4.6
+411	Chhatrapati Shivaji Terminus	Mumbai	Maharashtra	Historic railway station UNESCO site	18.9402	72.8353	place_images/Chhatrapati_Shivaji_Terminus.jpg	4.5
+412	Haji Ali Dargah	Mumbai	Maharashtra	Iconic mosque on an islet	18.9825	72.8129	place_images/Haji_Ali_Dargah.jpg	4.4
+413	Ajanta Caves	Aurangabad	Maharashtra	UNESCO Buddhist cave complex	20.553	75.7033	place_images/Ajanta_Caves.jpg	4.6
+414	Ellora Caves	Aurangabad	Maharashtra	UNESCO rock-cut temples from multiple religions	20.0266	75.1795	place_images/Ellora_Caves.jpg	4.7
+415	Bibi Ka Maqbara	Aurangabad	Maharashtra	Marble mausoleum, “Taj of the Deccan”	19.884	75.366	place_images/Bibi_Ka_Maqbara.jpg	4.2
+416	Shirdi Saibaba Temple	Shirdi	Maharashtra	Major pilgrimage site	19.7662	74.4777	place_images/Shirdi_Saibaba_Temple.jpg	4.7
+417	Trimbakeshwar Temple	Trimbak	Maharashtra	One of 12 Jyotirlingas	20.091	73.567	place_images/Trimbakeshwar_Temple.jpg	4.7
+418	Nasik Wineries	Nashik	Maharashtra	Wine tourism region with vineyards	19.9975	73.7898	place_images/Nasik_Wineries.jpg	4.3
+419	Pandharpur	Pandharpur	Maharashtra	Famous Vithoba pilgrimage town	17.677	75.055	place_images/Pandharpur.jpg	3.9
+420	Tapola	Tapola	Maharashtra	Shivsagar Lake scenic locale	17.075	73.958	place_images/Tapola.jpg	4.6
+421	Mahabaleshwar	Mahabaleshwar	Maharashtra	Hill station famed for strawberries & viewpoints	17.923	73.657	place_images/Mahabaleshwar.jpg	4.5
+422	Pratapgad Fort	Mahabaleshwar	Maharashtra	Historic fort with scenic trails	17.925	73.589	place_images/Pratapgad_Fort.jpg	4.6
+423	Matheran	Matheran	Maharashtra	Car-free hill station near Mumbai	18.99	73.267	place_images/Matheran.jpg	4.7
+424	Lonavala	Lonavala	Maharashtra	Hill station and weekend getaway	18.755	73.4042	place_images/Lonavala.jpg	4.2
+425	Khandala	Khandala	Maharashtra	Twin hill station next to Lonavala	18.743	73.407	place_images/Khandala.jpg	4.4
+426	Bhaja Caves	Lonavala	Maharashtra	Ancient Buddhist rock-cut caves	18.743	73.436	place_images/Bhaja_Caves.jpg	4.4
+427	Karla Caves	Karli	Maharashtra	Rock-cut Buddhist shrines	18.0425	73.842	place_images/Karla_Caves.jpg	4.4
+428	Alibaug Beach	Alibaug	Maharashtra	Coastal beach destination near Mumbai port	18.6379	72.8758	place_images/Alibaug_Beach.jpg	4.2
+429	Murud-Janjira Fort	Murud	Maharashtra	Island fort off the Alibaug coast	18.295	72.965	place_images/Murud-Janjira_Fort.jpg	4.4
+430	Tadoba Andhari Tiger Reserve	Tadoba	Maharashtra	Renowned tiger sanctuary	20.1067	79.5803	place_images/Tadoba_Andhari_Tiger_Reserve.jpg	4.5
+431	Chandrabhaga Beach	Konkan	Maharashtra	Scenic beach near Chandipur	17.11	73.231	place_images/Chandrabhaga_Beach.jpg	4.6
+432	Ganpatipule	Ratnagiri	Maharashtra	Temple town and beach	16.6363	73.3361	place_images/Ganpatipule.jpg	4.2
+433	Ajinkyatara Fort	Satara	Maharashtra	Hill fort overlooking Satara city	17.683	73.993	place_images/Ajinkyatara_Fort.jpg	4.5
+434	Siddhivinayak Temple	Mumbai	Maharashtra	Famous Ganesh temple	19.01709	72.84925	place_images/Siddhivinayak_Temple.jpg	4.8
+435	Shreeram Maharaj Temple	Ramtek	Maharashtra	Hill temple with mythological significance	26.428	79.242	place_images/Shreeram_Maharaj_Temple.jpg	4.6
+436	Bhimashankar Temple	Pune	Maharashtra	Jyotirlinga shrine in dense forest	19.051	73.6	place_images/Bhimashankar_Temple.jpg	4.7
+437	Murudeshwar Beach	Murudeshwar	Maharashtra	Beach with huge Shiva statue	14.094	74.5228	place_images/Murudeshwar_Beach.jpg	4.5
+438	Bhandardara Lake	Ahmednagar	Maharashtra	Dam lake in Western Ghats	19.607	73.647	place_images/Bhandardara_Lake.jpg	4.6
+439	Rajmachi Fort	Lonavala	Maharashtra	Twin forts accessible via trekking	18.688	73.409	place_images/Rajmachi_Fort.jpg	4
+440	Lonar Crater Lake	Lonar	Maharashtra	Impact crater lake of volcanic origin	19.9858	76.51	place_images/Lonar_Crater_Lake.jpg	4.5
+441	Bhandup Lake	Mumbai	Maharashtra	Urban reservoir with green surroundings	19.125	72.904	place_images/Bhandup_Lake.jpg	4.6
+442	Chandrapur Tadoba	Chandrapur	Maharashtra	Dry deciduous forest tiger reserve	20.094	79.583	place_images/Chandrapur_Tadoba.jpg	4.5
+443	Elephanta Island	Mumbai	Maharashtra	Island temple site UNESCO	18.9632	72.9318	place_images/Elephanta_Island.jpg	4.4
+444	Lalgun, Waki Lake	Satara	Maharashtra	Scenic reservoir area	18.088	74.05	place_images/Lalgun,_Waki_Lake.jpg	4.1
+445	Devrai Art Village	Alibaug	Maharashtra	Cultural centre promoting eco-art	18.611	72.887	place_images/Devrai_Art_Village.jpg	4.4
+446	Bangaram Island	Lakshadweep	Lakshadweep	Uninhabited coral island with crystal waters	10.5039	72.3336	place_images/Bangaram_Island.jpg	4.7
+447	Agatti Island	Agatti	Lakshadweep	Island with runway and lagoon jetty	10.822	72.173	place_images/Agatti_Island.jpg	4.7
+448	Kadmat Island	Lakshadweep	Lakshadweep	Coral atoll with scuba diving spots	10.919	72.636	place_images/Kadmat_Island.jpg	4.6
+449	Kavaratti Beach	Kavaratti	Lakshadweep	Capital island with mosque and lighthouse	10.566	72.646	place_images/Kavaratti_Beach.jpg	4.9
+450	Minicoy Island	Lakshadweep	Lakshadweep	Southernmost coral island with lighthouse	8.277	73.05	place_images/Minicoy_Island.jpg	4.6
+451	Kalpeni Island	Lakshadweep	Lakshadweep	Ring-shaped island with beaches	10.193	72.654	place_images/Kalpeni_Island.jpg	4.6
+452	Andrott Island	Lakshadweep	Lakshadweep	Historical island with mosque ruins	10.738	72.219	place_images/Andrott_Island.jpg	4.6
+453	Chetlat Island	Lakshadweep	Lakshadweep	Northern coral islet with marine life	11	72.38	place_images/Chetlat_Island.jpg	4.3
+454	Amini Island	Lakshadweep	Lakshadweep	Coral island known for weaving traditions	11.138	72.634	place_images/Amini_Island.jpg	\N
+455	Thinnakara Island	Lakshadweep	Lakshadweep	Private resort islet with lagoon	10.563	72.634	place_images/Thinnakara_Island.jpg	4.8
+456	Suheli Island	Lakshadweep	Lakshadweep	Uninhabited coral reef atoll	10.1	72.6	place_images/Suheli_Island.jpg	4.6
+457	Pitti Bird Sanctuary	Lakshadweep	Lakshadweep	Tiny islet sanctuary for seabirds	11.196	72.803	place_images/Pitti_Bird_Sanctuary.jpg	4.2
+458	Short Island	Lakshadweep	Lakshadweep	Small islet near Bangaram lagoon	10.501	72.338	place_images/Short_Island.jpg	\N
+459	Cheriyam Island	Lakshadweep	Lakshadweep	Coral islet in Bangaram atoll	10.517	72.342	place_images/Cheriyam_Island.jpg	\N
+460	Parali 1 Island	Lakshadweep	Lakshadweep	Part of coral cay group	10.541	72.33	place_images/Parali_1_Island.jpg	4.7
+461	Parali 2 Island	Lakshadweep	Lakshadweep	Sister islet to Parali 1	10.546	72.328	place_images/Parali_2_Island.jpg	5
+462	Parali 3 Island	Lakshadweep	Lakshadweep	Includes beach and lagoon	10.55	72.325	place_images/Parali_3_Island.jpg	5
+463	Suhelipad Island	Lakshadweep	Lakshadweep	Very small atoll fragment	10.536	72.327	place_images/Suhelipad_Island.jpg	4.5
+464	Viringili Island	Lakshadweep	Lakshadweep	Tiny island near Kavaratti	10.55	72.655	place_images/Viringili_Island.jpg	4.5
+465	Maliku Atoll	Minicoy	Lakshadweep	Local name for Minicoy coral formation	8.28	73.053	place_images/Maliku_Atoll.jpg	4.5
+466	Cherrapunji	East Khasi Hills	Meghalaya	One of the wettest places on Earth	25.2849	91.7256	place_images/Cherrapunji.jpg	4.2
+467	Mawsynram	East Khasi Hills	Meghalaya	Wettest place on Earth	25.3018	91.581	place_images/Mawsynram.jpg	3.9
+468	Living Root Bridge	Cherrapunji	Meghalaya	Cementless bridge made from tree roots	25.2896	91.7247	place_images/Living_Root_Bridge.jpg	4.7
+469	Nohkalikai Falls	Cherrapunji	Meghalaya	India’s tallest plunge waterfall	25.2908	91.7203	place_images/Nohkalikai_Falls.jpg	4.7
+470	Elephant Falls	Shillong	Meghalaya	Tiered waterfall accessible near Shillong	25.5244	91.8779	place_images/Elephant_Falls.jpg	4.4
+471	Shillong Peak	Shillong	Meghalaya	Highest point in Shillong with panoramic views	25.6244	91.8711	place_images/Shillong_Peak.jpg	4.4
+472	Umiam Lake	Shillong	Meghalaya	Scenic artificial lake, boating and hill views	25.6177	91.8719	place_images/Umiam_Lake.jpg	4.6
+473	Mawlynnong	East Khasi Hills	Meghalaya	Asia’s cleanest village, living root attractions	25.1463	91.7293	place_images/Mawlynnong.jpg	3.8
+474	Krang Suri Falls	Mawkyrwat	Meghalaya	Honey-coloured waterfall in forest corridors	25.1529	91.7499	place_images/Krang_Suri_Falls.jpg	4.7
+475	Dawki	West Jaintia Hills	Meghalaya	Border town with crystal-clear Umngot river	25.2686	92.017	place_images/Dawki.jpg	4.1
+476	Double Decker Living Root Bridge	Mawlynnong	Meghalaya	Root bridge stacked in two levels	25.1442	91.73	place_images/Double_Decker_Living_Root_Bridge.jpg	4.7
+477	Jaintia Hills Caves	Khasi & Jaintia Hills	Meghalaya	Extensive limestone cave systems	25.5	92.1	place_images/Jaintia_Hills_Caves.jpg	4.3
+478	Bangla Sahib Monolith	Shillong	Meghalaya	Natural limestone structure atop hill ridge	25.551	91.876	place_images/Bangla_Sahib_Monolith.jpg	4.8
+479	Ward's Lake	Shillong	Meghalaya	Popular artificial lake and garden in Shillong	25.5753	91.8836	place_images/Ward's_Lake.jpg	4.5
+480	Lady Hydari Park	Shillong	Meghalaya	Botanical garden with zoo and deer park	25.5749	91.8789	place_images/Lady_Hydari_Park.jpg	4.1
+481	Elephant Falls Viewpoint	Shillong	Meghalaya	Platform overlooking Elephant Falls	25.5246	91.8775	place_images/Elephant_Falls_Viewpoint.jpg	4.6
+482	Air Force Museum	Shillong	Meghalaya	Exhibits on WWII and air operations in NE	25.5556	91.8786	place_images/Air_Force_Museum.jpg	4.5
+483	Police Bazaar	Shillong	Meghalaya	Vibrant shopping and food hub	25.5723	91.879	place_images/Police_Bazaar.jpg	3.6
+484	Don Bosco Museum	Shillong	Meghalaya	Cultural & anthropological exhibits of NE tribes	25.5744	91.8856	place_images/Don_Bosco_Museum.jpg	4.4
+485	Sweet Falls	Cherrapunji	Meghalaya	Hidden waterfall off tourist path	25.283	91.722	place_images/Sweet_Falls.jpg	4.3
+486	Loktak Lake	Moirang	Manipur	Largest freshwater lake with floating phumdis	24.5006	93.8793	place_images/Loktak_Lake.jpg	4.6
+487	Keibul Lamjao National Park	Moirang	Manipur	World’s only floating national park	24.5833	93.9025	place_images/Keibul_Lamjao_National_Park.jpg	4.3
+488	Shirui Lily Sanctuary	Ukhrul	Manipur	Habitat of rare Shirui lily (state flower)	24.6166	94.3658	place_images/Shirui_Lily_Sanctuary.jpg	4.3
+489	Khonghampat Orchidarium	Imphal	Manipur	Orchid conservation and display centre	24.8049	93.9473	place_images/Khonghampat_Orchidarium.jpg	4
+490	Imphal War Cemetery	Imphal	Manipur	Memorial to WWII soldiers	24.799	93.9372	place_images/Imphal_War_Cemetery.jpg	4.2
+491	Kangla Fort	Imphal	Manipur	Ancient palace & seat of Manipur royalty	24.8096	93.9368	place_images/Kangla_Fort.jpg	4.3
+492	Ima Keithel 	Imphal	Manipur	Largest all-women-run market in Asia	24.8173	93.9365	place_images/Ima_Keithel_.jpg	4.3
+493	Shree Govindajee Temple	Imphal	Manipur	Major historic Vaishnavite temple	24.7992	93.9359	place_images/Shree_Govindajee_Temple.jpg	4.4
+494	Yangoupokpi-Lokchao Wildlife Sanctuary	Chandel	Manipur	Biodiverse wildlife area bordering Myanmar	24.3772	93.8136	place_images/Yangoupokpi-Lokchao_Wildlife_Sanctuary.jpg	4.2
+495	Mount Koubru	Manipur	Manipur	Sacred mountain of Meitei mythology	24.975	93.8922	place_images/Mount_Koubru.jpg	4.5
+496	Thoubal Phanjoubam Waterfall	Thoubal	Manipur	Scenic waterfall in tribal region	24.51	93.936	place_images/Thoubal_Phanjoubam_Waterfall.jpg	4.3
+497	Tamenglong	Tamenglong	Manipur	Hilly rugged region with remote tribal villages	24.8	93.922	place_images/Tamenglong.jpg	\N
+498	Hapta Kangjeibung Polo Ground	Imphal	Manipur	One of world’s oldest polo grounds	24.804	93.937	place_images/Hapta_Kangjeibung_Polo_Ground.jpg	4.8
+499	Sekmai Wetland	Imphal	Manipur	Freshwater wetland with migratory birds	24.82	93.924	place_images/Sekmai_Wetland.jpg	5
+500	Shija Hospital	Imphal	Manipur	Historic hospital landmark	24.828	93.959	place_images/Shija_Hospital.jpg	3.9
+501	Waithou Lake	Kakching	Manipur	Pilgrimage lake with hill backdrop	24.4276	93.9272	place_images/Waithou_Lake.jpg	4.2
+502	Gupteswar Temple	Churachandpur	Manipur	Natural cave temple dedicated to Shiva	24.3333	93.3333	place_images/Gupteswar_Temple.jpg	4.3
+503	Iril River Tourist Spot	Imphal	Manipur	Scenic spot for picnics and fishing	24.817	93.9	place_images/Iril_River_Tourist_Spot.jpg	4.4
+504	Yairipok Tourist Spot	Thoubal	Manipur	Popular riverfront recreational area	24.549	93.973	place_images/Yairipok_Tourist_Spot.jpg	4.2
+505	Phaibung Village	Senapati	Manipur	Traditional tribal village in hills	25.006	94.119	place_images/Phaibung_Village.jpg	4.9
+506	Aizawl	Aizawl	Mizoram	Capital city atop ridge with panoramic views	23.7271	92.7176	place_images/Aizawl.jpg	4.1
+507	Tam Dil Lake	Serchhip	Mizoram	Serene lake and scenic recreational site	23.458	92.791	place_images/Tam_Dil_Lake.jpg	4.3
+508	Vantawng Falls	Serchhip	Mizoram	Highest waterfall in the state	23.4833	92.9286	place_images/Vantawng_Falls.jpg	4.2
+509	Reiek Heritage Village	Aizawl	Mizoram	Cultural village with model traditional Mizo huts	23.7278	92.6883	place_images/Reiek_Heritage_Village.jpg	4.5
+510	Mizoram State Museum	Aizawl	Mizoram	Museum on tribal heritage and history	23.7276	92.718	place_images/Mizoram_State_Museum.jpg	4.1
+511	Durtlang Hills	Aizawl	Mizoram	Panoramic viewpoints over the city	23.75	92.7	place_images/Durtlang_Hills.jpg	3.6
+512	Solomon’s Temple	Aizawl	Mizoram	Christian church with distinctive Gandharan-style design	23.7202	92.714	place_images/Solomon’s_Temple.jpg	4.4
+513	Hakhal Wildlife Sanctuary	Aizawl	Mizoram	Protected reserve for tropical forest fauna	23.7945	92.8518	place_images/Hakhal_Wildlife_Sanctuary.jpg	4.5
+514	Saitual Peak	Aizawl	Mizoram	Hilltop with temple and sunset views	23.5	92.8333	place_images/Saitual_Peak.jpg	\N
+515	Vaphai Lengteng Wildlife Sanctuary	Champhai	Mizoram	Forest sanctuary near Myanmar border	23.0186	93.2337	place_images/Vaphai_Lengteng_Wildlife_Sanctuary.jpg	4
+516	Palak Wildlife Sanctuary	Lawngtlai	Mizoram	Lowland sanctuary with diverse birdlife	22.45	92.7	place_images/Palak_Wildlife_Sanctuary.jpg	\N
+517	Lunglei Eco Park	Lunglei	Mizoram	Green public park with viewpoints	22.88	92.75	place_images/Lunglei_Eco_Park.jpg	3.7
+518	Chhinga Veng Park	Aizawl	Mizoram	Recreational lakeside park in city	23.7285	92.7178	place_images/Chhinga_Veng_Park.jpg	3
+519	Hmuifang Tlang	Aizawl	Mizoram	Forest-covered sacred mountain trek	23.542	92.837	place_images/Hmuifang_Tlang.jpg	4.4
+520	Lengpui Airport	Aizawl	Mizoram	State’s domestic airport amidst hills	23.8337	92.7074	place_images/Lengpui_Airport.jpg	3.7
+521	Mamit Church	Mamit	Mizoram	Historic church in west Mizoram	23.463	92.507	place_images/Mamit_Church.jpg	3.7
+522	Khawnglung Wildlife Sanctuary	Serchhip	Mizoram	Biodiversity-rich forest reserve	23.0692	92.8034	place_images/Khawnglung_Wildlife_Sanctuary.jpg	1
+523	Neihbawih Peak	Vairengte	Mizoram	Historic hill with WWII ruins	24.15	92.65	place_images/Neihbawih_Peak.jpg	4.4
+524	Kohima War Cemetery	Kohima	Nagaland	WWII cemetery dedicated to Battle of Kohima	25.6669	94.112	place_images/Kohima_War_Cemetery.jpg	\N
+525	Dzukou Valley	Phek	Nagaland	Alpine valley with seasonal flowers and camping	25.6612	94.1473	place_images/Dzukou_Valley.jpg	4.7
+526	Khonoma Village	Khonoma	Nagaland	Green village and first community-based conservation reserve	25.6133	94.2197	place_images/Khonoma_Village.jpg	4.5
+527	Meghalaya Viewpoint	Kohima	Nagaland	Panorama of Kohima cityscape	25.6585	94.1125	place_images/Meghalaya_Viewpoint.jpg	4.5
+528	Nagaland State Museum	Kohima	Nagaland	Displays tribal art and artifacts	25.6735	94.1222	place_images/Nagaland_State_Museum.jpg	4
+529	Shilloi Lake	Tuensang	Nagaland	Sacred tribal lake on forested hills	26.1432	94.8248	place_images/Shilloi_Lake.jpg	4.3
+530	Intanki Wildlife Sanctuary	Kohima	Nagaland	Protected area with tropical forest fauna	25.6887	94.1271	place_images/Intanki_Wildlife_Sanctuary.jpg	4
+531	Tuophema Village	Chümoukedima	Nagaland	Leaf-shaped church and heritage village	25.592	93.7525	place_images/Tuophema_Village.jpg	4.5
+532	Chumukedima Garden	Chümoukedima	Nagaland	Well-maintained local garden space	25.5761	93.6722	place_images/Chumukedima_Garden.jpg	3.7
+533	Sukapha Samashan	Dimapur	Nagaland	War memorial dedicated to Ahom king Sukapha	25.9126	93.7156	place_images/Sukapha_Samashan.jpg	4.2
+534	Dimapur Zoo	Dimapur	Nagaland	City zoo and wildlife spot	25.9169	93.7311	place_images/Dimapur_Zoo.jpg	3.7
+535	Termalam Therapeutic Sulphur Springs	Chumukedima	Nagaland	Hot springs believed to have health benefits	25.6399	93.7138	place_images/Termalam_Therapeutic_Sulphur_Springs.jpg	\N
+536	Solo Village	Wokha	Nagaland	Heritage village with cultural significance	26.12	94.109	place_images/Solo_Village.jpg	\N
+537	Khuzama Village	Kohima	Nagaland	Traditional village showcasing Angami Naga life	25.645	94.112	place_images/Khuzama_Village.jpg	4.9
+538	Nagaland Zoological Park	Dimapur	Nagaland	Large forested zoo with native species	25.91	93.734	place_images/Nagaland_Zoological_Park.jpg	3.7
+539	Dhulikhel Viewpoint	Kohima	Nagaland	Hilltop spot with panoramic views	25.683	94.105	place_images/Dhulikhel_Viewpoint.jpg	3.9
+540	Yimyu Viewpoint	Chümoukedima	Nagaland	Scenic overlook near Kohima highway	25.618	93.762	place_images/Yimyu_Viewpoint.jpg	4.3
+541	Shilloi Lake Viewpoint	Tuensang	Nagaland	Vista point above Shilloi Lake	26.145	94.825	place_images/Shilloi_Lake_Viewpoint.jpg	5
+542	St. Joseph Cathedral	Kohima	Nagaland	Historic cathedral in capital city	25.6662	94.1198	place_images/St._Joseph_Cathedral.jpg	4.7
+543	Lady Keane College Grounds	Shillong	Nagaland	Gardens & sport grounds in national-level college	25.5736	95.9873	place_images/Lady_Keane_College_Grounds.jpg	4.4
+544	Jagannath Temple	Puri	Odisha	Famous Jagannath temple and Rath Yatra site	19.8135	85.8312	place_images/Jagannath_Temple.jpg	4.2
+545	Konark Sun Temple	Konark	Odisha	UNESCO Sun Temple with chariot architecture	19.8872	86.094	place_images/Konark_Sun_Temple.jpg	4.7
+546	Lingaraj Temple	Bhubaneswar	Odisha	Ancient 11th‑century Shaivite temple	20.2683	85.839	place_images/Lingaraj_Temple.jpg	4.6
+547	Chilika Lake	Chilika	Odisha	Asia’s largest brackish water lagoon	19.6736	85.312	place_images/Chilika_Lake.jpg	4.3
+548	Udayagiri & Khandagiri	Bhubaneswar	Odisha	Rock-cut Jain caves dating to 2nd century BCE	20.2825	85.7995	place_images/Udayagiri_&_Khandagiri.jpg	4.5
+549	Dhauli Shanti Stupa	Bhubaneswar	Odisha	Peace pagoda on Buddhist historical site	20.227	85.8285	place_images/Dhauli_Shanti_Stupa.jpg	4.5
+550	Raghurajpur Crafts Village	Puri	Odisha	Heritage artisan village of Pattachitra painters	19.8369	85.812	place_images/Raghurajpur_Crafts_Village.jpg	4.6
+551	Nandankanan Zoo	Bhubaneswar	Odisha	Zoölogical park & botanical garden	20.215	85.8345	place_images/Nandankanan_Zoo.jpg	\N
+552	Surya Mandap at Konark Beach	Konark	Odisha	Beach near Sun Temple with scenic sunsets	19.899	86.096	place_images/Surya_Mandap_at_Konark_Beach.jpg	4
+553	Barabati Fort	Cuttack	Odisha	13th‑century fort and archaeological site	20.4623	85.88	place_images/Barabati_Fort.jpg	4.5
+554	Mukutmanipur Beach	Puri	Odisha	Sandy beach near Puri coast	19.812	85.837	place_images/Mukutmanipur_Beach.jpg	4.4
+555	Brahmeswar Temple	Bhadrak	Odisha	Ancient temple with intricate carvings	20.9967	86.2429	place_images/Brahmeswar_Temple.jpg	4.7
+556	Hirakud Dam	Sambalpur	Odisha	One of India’s longest earthen dams	21.5038	83.8365	place_images/Hirakud_Dam.jpg	\N
+557	Khandadhar Falls	Sundargarh	Odisha	Tall waterfall in dense forest	22.155	84.658	place_images/Khandadhar_Falls.jpg	4.5
+558	Debrigarh Wildlife Sanctuary	Bargarh	Odisha	Forest reserve and tribal community site	21.3171	83.6854	place_images/Debrigarh_Wildlife_Sanctuary.jpg	4.4
+559	Daringbadi	Kandhamal	Odisha	“Kashmir of Odisha” hill station	20.45	84.2179	place_images/Daringbadi.jpg	4.3
+560	Similipal National Park	Mayurbhanj	Odisha	Biosphere reserve with wildlife	21.591	86.3867	place_images/Similipal_National_Park.jpg	4.3
+561	Satkosia Gorge	Angul	Odisha	River gorge & wildlife sanctuary	20.624	84.86	place_images/Satkosia_Gorge.jpg	4.4
+562	Rajarani Temple	Bhubaneswar	Odisha	11th‑century temple built of red sandstone	20.2845	85.8371	place_images/Rajarani_Temple.jpg	4.4
+563	Sudarshan Crafts Park	Bhubaneswar	Odisha	Showcase village for Odisha crafts	20.307	85.819	place_images/Sudarshan_Crafts_Park.jpg	4.2
+564	Chandipur Beach	Balasore	Odisha	Tidal beach where sea recedes remarkably	21.45	86.899	place_images/Chandipur_Beach.jpg	4.2
+565	Ugratara Temple	Sambalpur	Odisha	Important tantric temple by river	21.4815	83.9701	place_images/Ugratara_Temple.jpg	4.7
+566	Rameshwar Temple	Talcher	Odisha	Historic temple complex in old town	20.6333	86.3933	place_images/Rameshwar_Temple.jpg	4.4
+567	Bhitarkanika National Park	Kendrapara	Odisha	Mangrove forest and saltwater crocodiles	20.68	86.63	place_images/Bhitarkanika_National_Park.jpg	4.4
+568	Mayurbhanj Palace	Baripada	Odisha	Royal residence of Mayurbhanj princely state	21.4833	86.8667	place_images/Mayurbhanj_Palace.jpg	\N
+569	Zero Point at Daringbadi	Daringbadi	Odisha	Tourist lookout point in hills	20.44	84.216	place_images/Zero_Point_at_Daringbadi.jpg	4.5
+570	Devkund Waterfall	Keonjhar	Odisha	Hidden forest waterfall trek site	21.6	86.283	place_images/Devkund_Waterfall.jpg	4.6
+571	Ananta Vasudev Temple	Bhadrak	Odisha	Ancient temple dedicated to Lord Vishnu	21.065	86.33	place_images/Ananta_Vasudev_Temple.jpg	4.6
+572	Old Town Heritage Walk	Bhubaneswar	Odisha	Walking route showcasing temples and architecture	20.27	85.84	place_images/Old_Town_Heritage_Walk.jpg	4.6
+573	Golden Temple	Amritsar	Punjab	Iconic Sikh gurdwara with gold-plated exterior	31.62	74.8765	place_images/Golden_Temple.jpg	4.9
+574	Jallianwala Bagh	Amritsar	Punjab	Historic site of 1919 massacre	31.633	74.8723	place_images/Jallianwala_Bagh.jpg	4.6
+575	Wagah Border	Amritsar	Punjab	Daily Indian–Pakistani flag lowering ceremony	31.6187	74.5788	place_images/Wagah_Border.jpg	4.8
+576	Partition Museum	Amritsar	Punjab	Museum dedicated to India’s Partition history	31.628	74.8745	place_images/Partition_Museum.jpg	4.6
+577	Maharaja Ranjit Singh Museum	Amritsar	Punjab	Museum housed in summer palace	31.6214	74.8594	place_images/Maharaja_Ranjit_Singh_Museum.jpg	4.4
+578	Durgiana Temple	Amritsar	Punjab	Hindu temple resembling Golden Temple	31.6222	74.867	place_images/Durgiana_Temple.jpg	4.7
+579	Qila Mubarak	Patiala	Punjab	Historic fort & palace complex	30.3296	76.3895	place_images/Qila_Mubarak.jpg	4.5
+580	Sheikh Chilli’s Tomb	Patiala	Punjab	Mausoleum of Mughal scholar Sheikh Chilli	30.3356	76.4001	place_images/Sheikh_Chilli’s_Tomb.jpg	4.3
+581	Baradari Gardens	Patiala	Punjab	18th‑century Mughal garden	30.3362	76.391	place_images/Baradari_Gardens.jpg	4.4
+582	Rangla Punjab Haveli	Patiala	Punjab	Cultural village experience	30.3385	76.393	place_images/Rangla_Punjab_Haveli.jpg	4.6
+583	Rock Garden	Chandigarh	Punjab	Sculptural garden of recycled materials	30.7333	76.7794	place_images/Rock_Garden.jpg	3.8
+584	Sukhna Lake	Chandigarh	Punjab	Reservoir with walkways and boating	30.7346	76.773	place_images/Sukhna_Lake.jpg	4.6
+585	Capitol Complex	Chandigarh	Punjab	Le Corbusier‑designed government buildings	30.7415	76.7684	place_images/Capitol_Complex.jpg	4.5
+586	Pinjore Gardens	Panchkula	Punjab	Baroque‑style Mughal gardens in foothills	30.91	76.868	place_images/Pinjore_Gardens.jpg	4.3
+587	Shri Anandpur Sahib	Anandpur Sahib	Punjab	Sacred Sikh pilgrimage site and Hola Mohalla fair	31.219	76.5	place_images/Shri_Anandpur_Sahib.jpg	4.5
+588	Damdama Lake	Gurgaon	Punjab	Boatpoints & leisure lake near NCR	28.4069	77.046	place_images/Damdama_Lake.jpg	3.6
+589	Kila Raipur Rural Games Village	Ludhiana	Punjab	Spectacle of rural sports festival	30.887	75.845	place_images/Kila_Raipur_Rural_Games_Village.jpg	4.5
+590	Ranjit Sagar Dam	Pathankot	Punjab	Reservoir on Ravi River	32.235	75.768	place_images/Ranjit_Sagar_Dam.jpg	\N
+591	Gurudwara Manji Sahib	Chheharta Sahib	Punjab	Historic Sikh gurdwara on canal	31.637	74.776	place_images/Gurudwara_Manji_Sahib.jpg	4.8
+592	Anand Wildlife Sanctuary	Patiala	Punjab	Protected forest reserve	30.246	76.553	place_images/Anand_Wildlife_Sanctuary.jpg	4.4
+593	Harike Wetland	Firozpur	Punjab	Important bird area & wetland	31.2894	74.5233	place_images/Harike_Wetland.jpg	4.2
+594	Kiratpur Sahib	Rupnagar	Punjab	Town on Sutlej with historic gurdwaras	31.215	76.39	place_images/Kiratpur_Sahib.jpg	3.9
+595	Moti Bagh Palace	Patiala	Punjab	Heritage palace during royalty	30.3296	76.3979	place_images/Moti_Bagh_Palace.jpg	4.3
+596	Barnala Gurudwara	Barnala	Punjab	Local gurudwara in religious circuit	30.379	75.229	place_images/Barnala_Gurudwara.jpg	4.6
+597	Vir Sikh Temple	Chandigarh	Punjab	Gurudwara near Sukhna Lake	30.739	76.772	place_images/Vir_Sikh_Temple.jpg	4.8
+598	Talwandi Sabo	Bathinda	Punjab	Sikh pilgrim town on Ghaggar River	30.197	74.983	place_images/Talwandi_Sabo.jpg	4.8
+599	Jhaja Sahib Gurudwara	Moga	Punjab	Historic Sikh temple of Baba Bhaniara	30.817	75.168	place_images/Jhaja_Sahib_Gurudwara.jpg	4.8
+600	Fateh burj	Mohali	Punjab	Monument with tallest victory tower	30.736	76.707	place_images/Fateh_burj.jpg	4.5
+601	Chimnabai Falls	Chandigarh	Punjab	Hill falls near Chandigarh	30.74	76.828	place_images/Chimnabai_Falls.jpg	4.4
+602	Kushalnagar Kabir Chaura	Hoshiarpur	Punjab	Pilgrimage site of Kabir panth	31.516	75.914	place_images/Kushalnagar_Kabir_Chaura.jpg	5
+603	Naina Devi Temple	Una	Punjab	Goddess temple atop hill in Haridwar	31.472	76.388	place_images/Naina_Devi_Temple.jpg	4.8
+604	Bhakra Dam	Bilaspur	Punjab	One of India’s tallest gravity dams	31.82	76.357	place_images/Bhakra_Dam.jpg	4.4
+605	Bhima Devi Temple	Kurukshetra	Punjab	Ancient temple near historic city	30.004	76.854	place_images/Bhima_Devi_Temple.jpg	4.8
+606	Muktsar Sahib	Sri Muktsar Sahib	Punjab	Historic Sikh town of battlefields	30.47	74.52	place_images/Muktsar_Sahib.jpg	4.3
+607	Rose Garden	Chandigarh	Chandigarh	Largest rose garden in Asia	30.7225	76.7762	place_images/Rose_Garden.jpg	4.3
+608	Rock Garden	Chandigarh	Chandigarh	Sculptural garden of recycled materials	30.7333	76.7794	place_images/Rock_Garden.jpg	3.8
+609	Sukhna Lake	Chandigarh	Chandigarh	Leisure lake with stroll paths and boating	30.7346	76.773	place_images/Sukhna_Lake.jpg	4.6
+610	Capitol Complex	Chandigarh	Chandigarh	Le Corbusier’s legislative buildings	30.7415	76.7684	place_images/Capitol_Complex.jpg	4.5
+611	Japanese Garden	Chandigarh	Chandigarh	Themed garden with pagoda and waterfall	30.735	76.791	place_images/Japanese_Garden.jpg	4.2
+612	Chhatbir Zoo	Chandigarh	Chandigarh	Large zoo on Zirakpur road	30.722	76.811	place_images/Chhatbir_Zoo.jpg	4.3
+613	Pinjore Gardens	Chandigarh	Chandigarh	Baroque Mughal garden nearby	30.91	76.868	place_images/Pinjore_Gardens.jpg	4.3
+614	Leisure Valley	Chandigarh	Chandigarh	Tree-lined promenade for events	30.731	76.786	place_images/Leisure_Valley.jpg	4.5
+615	Government Museum	Chandigarh	Chandigarh	Museum with Gandharan art & sculptures	30.743	76.774	place_images/Government_Museum.jpg	4.4
+616	Sector 17 Plaza	Chandigarh	Chandigarh	Major shopping and entertainment hub	30.733	76.779	place_images/Sector_17_Plaza.jpg	4.6
+617	ISBT Sector 43	Chandigarh	Chandigarh	Interstate bus terminal of region	30.7434	76.792	place_images/ISBT_Sector_43.jpg	4.4
+618	Mohali Cricket Stadium	Chandigarh	Chandigarh	International cricket ground	30.7046	76.7179	place_images/Mohali_Cricket_Stadium.jpg	4.4
+619	Terraced Garden	Chandigarh	Chandigarh	Flower gardens near leisure valley	30.737	76.785	place_images/Terraced_Garden.jpg	4.5
+620	Garden of Fragrance	Chandigarh	Chandigarh	Rose & herbal-flower garden	30.6905	76.79	place_images/Garden_of_Fragrance.jpg	4.6
+621	Le Corbusier Centre	Chandigarh	Chandigarh	Museum dedicated to city’s planner	30.736	76.768	place_images/Le_Corbusier_Centre.jpg	4.4
+622	Sri Aurobindo Ashram	Puducherry	Puducherry	Spiritual community foundation site	11.9346	79.8283	place_images/Sri_Aurobindo_Ashram.jpg	4.7
+623	Promenade Beach	Puducherry	Puducherry	Seaside walk lined with cafes & statues	11.9341	79.8386	place_images/Promenade_Beach.jpg	4.5
+624	Auroville	Auroville	Puducherry	International spiritual township	12.0056	79.81	place_images/Auroville.jpg	4
+625	Botanical Garden	Puducherry	Puducherry	Historic garden with exotic plant species	11.931	79.846	place_images/Botanical_Garden.jpg	4.5
+626	Paradise Beach	Puducherry	Puducherry	Island beach accessible by boat	11.947	79.765	place_images/Paradise_Beach.jpg	4.5
+627	French Quarter	Puducherry	Puducherry	Colonial-era town with colored villas	11.935	79.829	place_images/French_Quarter.jpg	4.6
+628	Auroville Beach	Auroville	Puducherry	Serene beach of the township	12.005	79.842	place_images/Auroville_Beach.jpg	4.1
+629	Manakula Vinayagar Temple	Puducherry	Puducherry	Ancient Ganesha temple near beach	11.9169	79.83	place_images/Manakula_Vinayagar_Temple.jpg	4.7
+630	Rock Beach	Puducherry	Puducherry	Northern beach stretch with promenade	11.933	79.813	place_images/Rock_Beach.jpg	4.5
+631	Duplex Beach	Puducherry	Puducherry	Smaller sandy beach near Promenade	11.93	79.813	place_images/Duplex_Beach.jpg	4.5
+632	Arikamedu Archaeological Site	Puducherry	Puducherry	Roman trade port ruins	11.8773	79.822	place_images/Arikamedu_Archaeological_Site.jpg	3.6
+633	Ousteri Lake	Ousteri	Puducherry	Freshwater lake and bird sanctuary	11.914	79.758	place_images/Ousteri_Lake.jpg	4
+634	Chunnambar Boat House	Chunnambar	Puducherry	Backwater boating & water sports	11.8745	79.838	place_images/Chunnambar_Boat_House.jpg	4.1
+635	Serenity Beach	Puducherry	Puducherry	Quiet surf beach north of Promenade	11.957	79.836	place_images/Serenity_Beach.jpg	4.3
+636	Karaikal Beach	Karaikal	Puducherry	Calm beach with lighthouse	10.92	79.84	place_images/Karaikal_Beach.jpg	4.3
+637	Thiruvetkalam Beach	Puducherry	Puducherry	Tranquil seashore south of town	11.905	79.82	place_images/Thiruvetkalam_Beach.jpg	4.6
+638	Muthukuda Temple	Puducherry	Puducherry	Ancient temple with local worship	11.918	79.835	place_images/Muthukuda_Temple.jpg	4.3
+639	Villianur Temple	Villianur	Puducherry	Historic Dravidian-style temple	12.016	79.782	place_images/Villianur_Temple.jpg	4.6
+640	Gangtok	Gangtok	Sikkim	State capital nestled in the Himalayas	27.3389	88.6065	place_images/Gangtok.jpg	4.4
+641	Rumtek Monastery	Gangtok	Sikkim	Major Tibetan Buddhist monastery	27.3659	88.6074	place_images/Rumtek_Monastery.jpg	4.6
+642	Tsomgo Lake	Gangtok	Sikkim	Glacial alpine lake, often frozen	27.337	88.638	place_images/Tsomgo_Lake.jpg	4.7
+643	Baba Harbhajan Singh Mandir	Gangtok	Sikkim	Memorial temple at Nathula Highway	27.317	88.654	place_images/Baba_Harbhajan_Singh_Mandir.jpg	4.7
+644	Nathula Pass	Nathula	Sikkim	Mountain pass on Indo‑China border	27.321	88.855	place_images/Nathula_Pass.jpg	4.7
+645	Pelling	Pelling	Sikkim	Hill town with views of Kanchenjunga	27.1058	88.1254	place_images/Pelling.jpg	4.2
+646	Pemayangtse Monastery	Pelling	Sikkim	Important Buddhist monastery	27.1154	88.1234	place_images/Pemayangtse_Monastery.jpg	4.6
+647	Yuksom	Yuksom	Sikkim	Gateway to hiking trails to Kanchenjunga	27.3209	88.2039	place_images/Yuksom.jpg	4.6
+648	Khecheopalri Lake	Khecheopalri	Sikkim	Sacred lake revered by Buddhists	27.3122	88.2677	place_images/Khecheopalri_Lake.jpg	4.5
+649	Namchi	Namchi	Sikkim	Known for giant Shiva statue and gardens	27.1667	88.3246	place_images/Namchi.jpg	4.6
+650	Ravangla	Ravangla	Sikkim	Hill station with Buddha park	27.244	88.345	place_images/Ravangla.jpg	4.4
+651	Tarku Viewpoint	Ravangla	Sikkim	Sunrise views over mountain peaks	27.2452	88.3458	place_images/Tarku_Viewpoint.jpg	4.8
+652	Dzongri Trek	Geyzing	Sikkim	Popular trekking route in Himalayas	27.3589	88.375	place_images/Dzongri_Trek.jpg	4.3
+653	Zuluk	Zuluk	Sikkim	Historic Silk Route hamlet	27.1749	88.7116	place_images/Zuluk.jpg	4.5
+654	Kupup Lake	Kupup	Sikkim	High-altitude lake on Old Silk Road	27.3435	88.733	place_images/Kupup_Lake.jpg	4.7
+655	Phodong Monastery	Phodong	Sikkim	Ancient Buddhist monastery	27.374	88.483	place_images/Phodong_Monastery.jpg	4.6
+656	Tashiding Monastery	Tashiding	Sikkim	Holy monastery with scenic valley views	27.3	88.47	place_images/Tashiding_Monastery.jpg	4.6
+657	Rabdentse Ruins	Namchi	Sikkim	Remains of old Sikkimese capital	27.3125	88.3278	place_images/Rabdentse_Ruins.jpg	4.4
+658	Pemako Sanctuary	West Sikkim	Sikkim	Remote biodiversity hotspot	27.025	88.59	place_images/Pemako_Sanctuary.jpg	4.9
+659	Singalila National Park	West Sikkim	Sikkim	High-altitude park known for red pandas	27.1	88.123	place_images/Singalila_National_Park.jpg	4.7
+660	Charminar	Hyderabad	Telangana	Iconic 16th‑century mosque and monument	17.3616	78.4747	place_images/Charminar.jpg	4.5
+661	Golconda Fort	Hyderabad	Telangana	Historic fortress with light & sound show	17.3833	78.4011	place_images/Golconda_Fort.jpg	4.4
+662	Hussain Sagar Lake	Hyderabad	Telangana	Man-made lake with Buddha statue island	17.4239	78.4738	place_images/Hussain_Sagar_Lake.jpg	4.4
+663	Salar Jung Museum	Hyderabad	Telangana	Major museum of art and antiquities	17.3715	78.4804	place_images/Salar_Jung_Museum.jpg	4.4
+664	Ramoji Film City	Hyderabad	Telangana	World’s largest film studio complex	17.2544	78.4283	place_images/Ramoji_Film_City.jpg	4.4
+665	Chowmahalla Palace	Hyderabad	Telangana	Former Nizam palace complex	17.3616	78.4795	place_images/Chowmahalla_Palace.jpg	4.4
+666	Mecca Masjid	Hyderabad	Telangana	One of India’s largest mosques	17.3615	78.4786	place_images/Mecca_Masjid.jpg	4.7
+667	Qutb Shahi Tombs	Hyderabad	Telangana	Royal cemetery of Golconda dynasty	17.3797	78.3971	place_images/Qutb_Shahi_Tombs.jpg	4.4
+668	Birla Mandir	Hyderabad	Telangana	Marble temple overlooking the city	17.4107	78.469	place_images/Birla_Mandir.jpg	4.7
+669	Nehru Zoological Park	Hyderabad	Telangana	Large safari and zoo complex	17.3656	78.4836	place_images/Nehru_Zoological_Park.jpg	4.2
+670	Chilkur Balaji Temple	Hyderabad	Telangana	Noted “Visa temple” near Osman Sagar	17.2906	78.3294	place_images/Chilkur_Balaji_Temple.jpg	4.7
+671	Osman Sagar	Hyderabad	Telangana	Reservoir also called Gandipet Lake	17.3333	78.3815	place_images/Osman_Sagar.jpg	4.2
+672	Shilparamam	Hyderabad	Telangana	Cultural village showcasing crafts	17.3322	78.4569	place_images/Shilparamam.jpg	4.3
+673	Bhongir Fort	Bhongir	Telangana	Hill fort with panoramic views	17.5158	78.8888	place_images/Bhongir_Fort.jpg	\N
+674	Warangal Fort	Warangal	Telangana	Medieval Kakatiya fort ruins	17.9834	79.601	place_images/Warangal_Fort.jpg	4.4
+675	Ramappa Temple	Palampet	Telangana	UNESCO Kakatiya Temple of Thousand Pillars	18.3669	79.563	place_images/Ramappa_Temple.jpg	4.7
+676	Thousand Pillar Temple	Hanamakonda	Telangana	Medieval Hindu temple	18.0248	79.5776	place_images/Thousand_Pillar_Temple.jpg	4.5
+677	Bhadrakali Temple	Warangal	Telangana	Temple atop hill with scenic views	17.968	79.595	place_images/Bhadrakali_Temple.jpg	4.8
+678	Laknavaram Lake	Warangal	Telangana	Scenic lake with hanging bridge	18.0169	79.8954	place_images/Laknavaram_Lake.jpg	4.4
+679	Kakatiya Musical Garden	Warangal	Telangana	Gardens with musical fountain shows	17.9683	79.5868	place_images/Kakatiya_Musical_Garden.jpg	3.7
+680	Kompally Lake	Hyderabad	Telangana	Lakeside urban green space	17.5253	78.5246	place_images/Kompally_Lake.jpg	4.2
+681	Paigah Tombs	Hyderabad	Telangana	Finely sculpted tomb complex	17.3838	78.4942	place_images/Paigah_Tombs.jpg	\N
+682	Falaknuma Palace	Hyderabad	Telangana	Palace-turned-hotel with city views	17.372	78.4971	place_images/Falaknuma_Palace.jpg	4.7
+683	Meenakshi Patnam	Hyderabad	Telangana	Ancient village turned heritage site	17.4	78.45	place_images/Meenakshi_Patnam.jpg	4.3
+684	Neerajaa Rock Gardens	Warangal	Telangana	Sculpture garden with water features	18	79.583	place_images/Neerajaa_Rock_Gardens.jpg	4.7
+685	Keesaragutta Temple	Hyderabad	Telangana	Ancient Siva temple on hill	17.638	78.57	place_images/Keesaragutta_Temple.jpg	4.7
+686	Shamirpet Lake	Hyderabad	Telangana	Pleasure lake with island park	17.636	78.545	place_images/Shamirpet_Lake.jpg	4.3
+687	Nizamsagar Reservoir	Nizamabad	Telangana	Large irrigation lake with boat rides	18.38	78.1	place_images/Nizamsagar_Reservoir.jpg	\N
+688	Basara Saraswathi Temple	Basara	Telangana	Famous temple of goddess Saraswati	17.7703	78.2819	place_images/Basara_Saraswathi_Temple.jpg	4.6
+689	Kundavada Botanical Gardens	Warangal	Telangana	Urban botanical garden near fort	17.986	79.576	place_images/Kundavada_Botanical_Gardens.jpg	4.5
+690	Govindarajaswamy Temple	Nalgonda	Telangana	Village temple with Dravidian architecture	17.002	79.201	place_images/Govindarajaswamy_Temple.jpg	4.7
+691	Medak Cathedral	Medak	Telangana	Largest church in South India	18.058	78.267	place_images/Medak_Cathedral.jpg	4.6
+692	Alampur Navabrahma Temples	Alampur	Telangana	Group of seven early Chalukyan temples	16.814	78.676	place_images/Alampur_Navabrahma_Temples.jpg	4.8
+693	Ujjayanta Palace	Agartala	Tripura	Former state royal palace, now museum	23.836	91.2812	place_images/Ujjayanta_Palace.jpg	4.5
+694	Neermahal	Udaipur	Tripura	Water palace in Rudrasagar Lake	23.509	91.442	place_images/Neermahal.jpg	4.4
+695	Tripura Sundari Temple	Udaipur	Tripura	One of the 51 Shakti Peethas	23.4883	91.4628	place_images/Tripura_Sundari_Temple.jpg	4.7
+696	Jagannath Temple	Agartala	Tripura	Temple of Lord Jagannath	23.8364	91.286	place_images/Jagannath_Temple.jpg	4.8
+697	Jampui Hills	Kanchanpur	Tripura	Scenic hill station in North Tripura	24.157	91.753	place_images/Jampui_Hills.jpg	4.5
+698	Pilak Heritage Site	Amarpur	Tripura	Ancient Buddhist and Hindu ruins	23.636	91.326	place_images/Pilak_Heritage_Site.jpg	4.3
+699	Sepahijala Wildlife Sanctuary	Sonamura	Tripura	Wildlife park near Agartala	23.665	91.327	place_images/Sepahijala_Wildlife_Sanctuary.jpg	4.1
+700	Gumti Wildlife Sanctuary	Udaipur	Tripura	Sanctuary around reservoir	23.6156	91.4331	place_images/Gumti_Wildlife_Sanctuary.jpg	4.1
+701	Rajnagar Beach	Rajnagar	Tripura	Sandy riverbank beach	23.5172	91.4074	place_images/Rajnagar_Beach.jpg	4.4
+702	Unakoti	Unakoti	Tripura	Rock-cut sculptures of gods and deities	24.255	91.717	place_images/Unakoti.jpg	4.5
+703	Kamalasagar Lake	Kanchanpur	Tripura	Historical tank and recreation spot	24.2453	91.7676	place_images/Kamalasagar_Lake.jpg	4.2
+704	Chabimura	Belonia	Tripura	Huge rock carvings on gorge	23.008	91.445	place_images/Chabimura.jpg	4.5
+705	Dasarath Deb Memorial Hall	Agartala	Tripura	State cultural museum	23.831	91.279	place_images/Dasarath_Deb_Memorial_Hall.jpg	3.8
+706	Boxanagar Palace	Agartala	Tripura	Royal palace with manicured gardens	23.8315	91.27	place_images/Boxanagar_Palace.jpg	4.4
+707	Ambassa Church	Dhalai	Tripura	Historic colonial-era church	23.8319	91.953	place_images/Ambassa_Church.jpg	4.3
+708	Marina Beach	Chennai	Tamil Nadu	Longest urban beach in India	13.048	80.282	place_images/Marina_Beach.jpg	4.3
+709	Kapaleeshwarar Temple	Chennai	Tamil Nadu	Historic Dravidian-style temple	13.0452	80.2675	place_images/Kapaleeshwarar_Temple.jpg	4.8
+710	Fort St. George	Chennai	Tamil Nadu	First British fortress in India	13.0827	80.2756	place_images/Fort_St._George.jpg	4.3
+711	Santhome Cathedral	Chennai	Tamil Nadu	Gothic cathedral built over St. Thomas grave	13.0448	80.2684	place_images/Santhome_Cathedral.jpg	4.7
+712	Ooty Botanical Gardens	Udhagamandalam	Tamil Nadu	Extensive hill gardens	11.411	76.703	place_images/Ooty_Botanical_Gardens.jpg	4.3
+713	Nilgiri Mountain Railway	Udhagamandalam	Tamil Nadu	Heritage toy train route	11.4172	76.6958	place_images/Nilgiri_Mountain_Railway.jpg	\N
+714	Dolphin’s Nose	Coonoor	Tamil Nadu	Scenic viewpoint in Nilgiris	11.3538	76.7852	place_images/Dolphin’s_Nose.jpg	4.3
+715	Avalanche Lake	Coonoor	Tamil Nadu	Alpine lake in Nilgiri Hills	11.3028	76.7888	place_images/Avalanche_Lake.jpg	4.4
+716	Yercaud Lake	Yercaud	Tamil Nadu	Hill station lake in Shevaroys	11.7828	78.2341	place_images/Yercaud_Lake.jpg	4.2
+717	Kodaikanal Lake	Kodaikanal	Tamil Nadu	Star-shaped freshwater lake	10.238	77.4899	place_images/Kodaikanal_Lake.jpg	4.5
+718	Pamban Bridge	Rameswaram	Tamil Nadu	Iconic rail bridge to Rameswaram Island	9.2728	79.1594	place_images/Pamban_Bridge.jpg	4.7
+719	Ramanathaswamy Temple	Rameswaram	Tamil Nadu	Famous temple with longest corridor	9.2873	79.312	place_images/Ramanathaswamy_Temple.jpg	4.7
+720	Meenakshi Amman Temple	Madurai	Tamil Nadu	Historic temple with colorful towers	9.9196	78.119	place_images/Meenakshi_Amman_Temple.jpg	4.7
+721	Thirumalai Nayakkar Palace	Madurai	Tamil Nadu	17th-century palace with courtyard	9.9185	78.119	place_images/Thirumalai_Nayakkar_Palace.jpg	\N
+722	Gandhi Memorial Museum	Madurai	Tamil Nadu	Museum on India’s freedom struggle	9.9164	78.1203	place_images/Gandhi_Memorial_Museum.jpg	4.3
+723	Kanyakumari Vivekananda Rock Memorial	Kanyakumari	Tamil Nadu	Memorial on island off cape tip	8.0822	77.5639	place_images/Kanyakumari_Vivekananda_Rock_Memorial.jpg	4.6
+724	Thirparappu Waterfall	Kanyakumari	Tamil Nadu	Scenic waterfall and pool	8.3552	77.4214	place_images/Thirparappu_Waterfall.jpg	4.4
+725	Courtallam Falls	Courtallam	Tamil Nadu	Popular seasonal waterfall	8.9364	77.2849	place_images/Courtallam_Falls.jpg	4.5
+726	Papanasam Dam	Papanasam	Tamil Nadu	Dam and recreational area	8.7842	77.2864	place_images/Papanasam_Dam.jpg	\N
+727	Mudumalai National Park	The Nilgiris	Tamil Nadu	Tiger reserve in Western Ghats	11.5333	76.5	place_images/Mudumalai_National_Park.jpg	4.4
+728	Annamalaiyar Temple	Thiruvannamalai	Tamil Nadu	Major Shiva temple at Arunachala hill	12.226	79.0722	place_images/Annamalaiyar_Temple.jpg	4.7
+729	Yelagiri Hills	Vellore	Tamil Nadu	Hill station known for trekking and boating	12.6188	78.626	place_images/Yelagiri_Hills.jpg	4.2
+730	Mahabalipuram Shore Temple	Mahabalipuram	Tamil Nadu	UNESCO temple by the sea	12.6131	80.1971	place_images/Mahabalipuram_Shore_Temple.jpg	4.6
+731	Pancha Rathas	Mahabalipuram	Tamil Nadu	Rock-cut temple of five chariots	12.614	80.1964	place_images/Pancha_Rathas.jpg	4.7
+732	Arjuna’s Penance	Mahabalipuram	Tamil Nadu	Giant rock relief carving	12.6178	80.1974	place_images/Arjuna’s_Penance.jpg	4.6
+733	Vedanthangal Bird Sanctuary	Vedanthangal	Tamil Nadu	Wetland sanctuary for migratory birds	12.5937	79.928	place_images/Vedanthangal_Bird_Sanctuary.jpg	4.3
+734	Guindy National Park	Chennai	Tamil Nadu	Urban wildlife reserve	13.0265	80.236	place_images/Guindy_National_Park.jpg	4.1
+735	Elliot’s Beach	Chennai	Tamil Nadu	Popular beach in Besant Nagar	12.9811	80.2505	place_images/Elliot’s_Beach.jpg	4.4
+736	St. Thomas Mount	Chennai	Tamil Nadu	Hill shrine associated with St. Thomas	13.0084	80.2174	place_images/St._Thomas_Mount.jpg	4.6
+737	Chidambaram Nataraja Temple	Chidambaram	Tamil Nadu	Ancient temple of dancing Shiva	11.4114	79.6958	place_images/Chidambaram_Nataraja_Temple.jpg	4.7
+738	Thanjavur Brihadeeswarar Temple	Thanjavur	Tamil Nadu	UNESCO Dravidian architecture temple	10.7824	79.1317	place_images/Thanjavur_Brihadeeswarar_Temple.jpg	4.8
+739	Chettinad Mansions	Chettinad	Tamil Nadu	Heritage homes of Chettiar community	10.7525	78.6856	place_images/Chettinad_Mansions.jpg	4.3
+740	Meghamalai	Theni	Tamil Nadu	Tea estate hill station	9.8553	77.2497	place_images/Meghamalai.jpg	4.5
+741	Valparai	Coimbatore	Tamil Nadu	Hill resort in Anaimalai Hills	10.3319	76.9816	place_images/Valparai.jpg	4
+742	Yercaud Observatory	Yercaud	Tamil Nadu	Amateur astronomy viewpoint	11.7988	78.2251	place_images/Yercaud_Observatory.jpg	4.6
+743	Thiruvalluvar Statue	Kanyakumari	Tamil Nadu	Tall monument of poet-philosopher	8.08	77.5633	place_images/Thiruvalluvar_Statue.jpg	4.5
+744	Kanniyakumari Sunset Point	Kanyakumari	Tamil Nadu	Meeting point of waters and stunning sunsets	8.0868	77.5438	place_images/Kanniyakumari_Sunset_Point.jpg	4.5
+745	Taj Mahal	Agra	Uttar Pradesh	UNESCO mausoleum of love built by Shah Jahan	27.175144	78.042142	place_images/Taj_Mahal.jpg	4.6
+746	Agra Fort	Agra	Uttar Pradesh	Historic Mughal fortress and palace complex	27.179714	78.021058	place_images/Agra_Fort.jpg	4.5
+747	Fatehpur Sikri	Fatehpur Sikri	Uttar Pradesh	UNESCO city built by Emperor Akbar	27.093	77.66	place_images/Fatehpur_Sikri.jpg	3.9
+748	Itmad-ud-Daulah	Agra	Uttar Pradesh	Marble “Baby Taj” monument	27.166301	78.040596	place_images/Itmad-ud-Daulah.jpg	4.4
+749	Mathura	Mathura	Uttar Pradesh	Birthplace of Lord Krishna	27.492413	77.673675	place_images/Mathura.jpg	4.3
+750	Vrindavan	Vrindavan	Uttar Pradesh	Holy town with Krishna temples	27.5615	77.6737	place_images/Vrindavan.jpg	4
+751	Varanasi Ghats	Varanasi	Uttar Pradesh	Ancient riverfront steps on the Ganges	25.3176	82.9739	place_images/Varanasi_Ghats.jpg	4.6
+752	Sarnath	Sarnath	Uttar Pradesh	Buddhist pilgrimage site where Buddha first taught	25.3975	83.0161	place_images/Sarnath.jpg	4.1
+753	Allahabad Fort	Prayagraj	Uttar Pradesh	Riverfront Mughal fort by confluence of rivers	25.4445	81.8404	place_images/Allahabad_Fort.jpg	4.3
+754	Triveni Sangam	Prayagraj	Uttar Pradesh	Sacred meeting point of three rivers	25.4234	81.8483	place_images/Triveni_Sangam.jpg	4.6
+755	Jhansi Fort	Jhansi	Uttar Pradesh	Large hilltop fort of Maratha and Bundela rulers	25.4535	78.5737	place_images/Jhansi_Fort.jpg	4.4
+756	Chitrakoot	Chitrakoot	Uttar Pradesh	Sacred town associated with the epic Ramayana	24.8785	79.0729	place_images/Chitrakoot.jpg	3.9
+757	Ayodhya	Ayodhya	Uttar Pradesh	Birthplace of Lord Rama and pilgrimage city	26.7998	82.2025	place_images/Ayodhya.jpg	4.2
+758	Lucknow Residency	Lucknow	Uttar Pradesh	Historic British era ruin with museum	26.8517	80.9462	place_images/Lucknow_Residency.jpg	4.3
+759	Bara Imambara	Lucknow	Uttar Pradesh	Grand Shia congregational hall	26.8467	80.9429	place_images/Bara_Imambara.jpg	4.4
+760	Rumi Darwaza	Lucknow	Uttar Pradesh	Impressive Awadhi gateway	26.8467	80.9462	place_images/Rumi_Darwaza.jpg	4.5
+761	Chattar Manzil	Lucknow	Uttar Pradesh	Former palace on Lucknow’s riverfront	26.8462	80.945	place_images/Chattar_Manzil.jpg	4.1
+762	Dudhwa National Park	Lakhimpur Kheri	Uttar Pradesh	Tiger reserve and biodiversity habitat	28.5349	80.8757	place_images/Dudhwa_National_Park.jpg	4.3
+763	Buddha Park	Sarnath	Uttar Pradesh	Public park with Buddha statue and stupas	25.3968	83.0155	place_images/Buddha_Park.jpg	4.3
+764	Allahabad Museum	Prayagraj	Uttar Pradesh	Museum showcasing regional history and art	25.435	81.8468	place_images/Allahabad_Museum.jpg	4.4
+765	Kasmanda Palace	Kannauj	Uttar Pradesh	Ruined palace built by King Jai Chandra	27.06	79.9178	place_images/Kasmanda_Palace.jpg	4.5
+766	Mehtab Bagh	Agra	Uttar Pradesh	Gardens opposite Taj Mahal across Yamuna	27.1767	78.0425	place_images/Mehtab_Bagh.jpg	4.2
+767	Gomti Riverfront	Lucknow	Uttar Pradesh	Scenic riverside promenade	26.8467	80.946	place_images/Gomti_Riverfront.jpg	4.3
+768	Naimisharanya	Sitapur	Uttar Pradesh	Sacred forest mentioned in Mahabharata	29.224	79.6196	place_images/Naimisharanya.jpg	4.5
+769	Chandrika Devi Temple	Sitapur	Uttar Pradesh	Ancient hill shrine dedicated to Devi	27.49	80.687	place_images/Chandrika_Devi_Temple.jpg	4.7
+770	Pilibhit Tiger Reserve	Pilibhit	Uttar Pradesh	Forested national park habitat for tigers	28.6324	79.8007	place_images/Pilibhit_Tiger_Reserve.jpg	4.3
+771	Chandramauxi Devi Temple	Banda	Uttar Pradesh	Local pilgrimage temple on hills	25.485	80.297	place_images/Chandramauxi_Devi_Temple.jpg	5
+772	Lucknow Zoo	Lucknow	Uttar Pradesh	Public zoo with varied wildlife	26.8531	80.9489	place_images/Lucknow_Zoo.jpg	4.3
+773	Kushinagar	Kushinagar	Uttar Pradesh	Site of Buddha’s Mahaparinirvana	26.7497	83.8891	place_images/Kushinagar.jpg	4.3
+774	Unnao Lake	Unnao	Uttar Pradesh	Seasonal wetland near Kanpur-Lucknow highway	26.492	80.397	place_images/Unnao_Lake.jpg	3.1
+775	Haridwar	Haridwar	Uttarakhand	Holy city on Ganges famous for Ganga aarti	29.9457	78.1642	place_images/Haridwar.jpg	3.4
+776	Rishikesh	Rishikesh	Uttarakhand	Yoga capital & adventure hub on Ganges	30.0869	78.2676	place_images/Rishikesh.jpg	4.2
+777	Badrinath Temple	Badrinath	Uttarakhand	One of the Char Dham pilgrimage shrines	30.7433	79.493	place_images/Badrinath_Temple.jpg	4.8
+778	Kedarnath Temple	Kedarnath	Uttarakhand	Mountain temple dedicated to Lord Shiva	30.7346	79.0661	place_images/Kedarnath_Temple.jpg	4.7
+779	Yamunotri Temple	Uttarkashi	Uttarakhand	Source of Yamuna River and pilgrimage site	30.7296	78.4645	place_images/Yamunotri_Temple.jpg	4.8
+780	Gangotri Temple	Uttarkashi	Uttarakhand	Temple near source of Ganges river	30.9941	78.9425	place_images/Gangotri_Temple.jpg	4.8
+781	Valley of Flowers	Chamoli	Uttarakhand	UNESCO alpine valley full of flowers in summer	30.7298	79.6052	place_images/Valley_of_Flowers.jpg	4.7
+782	Auli	Chamoli	Uttarakhand	Ski-resort with panoramic Himalayan views	30.674	79.644	place_images/Auli.jpg	3.7
+783	Nainital	Nainital	Uttarakhand	Popular hill station around a lake	29.3919	79.4542	place_images/Nainital.jpg	4
+784	Jim Corbett NP	Nainital	Uttarakhand	First national park of India, tiger reserve	29.53	78.774	place_images/Jim_Corbett_NP.jpg	4.4
+785	Munsiyari	Pithoragarh	Uttarakhand	Base for Panchachuli Trek	29.928	80.103	place_images/Munsiyari.jpg	4.2
+786	Mussoorie	Dehradun	Uttarakhand	“Queen of Hills” scenic mountainous town	30.4595	78.0642	place_images/Mussoorie.jpg	4.5
+787	Dharasu Dam	Tehri	Uttarakhand	Reservoir near Tehri Dam	30.404	78.611	place_images/Dharasu_Dam.jpg	4.3
+788	Dehradun	Dehradun	Uttarakhand	City nestled in Shivalik foothills	30.3165	78.0322	place_images/Dehradun.jpg	4.6
+789	Kempty Falls	Mussoorie	Uttarakhand	Popular waterfall picnic spot	30.39	78.062	place_images/Kempty_Falls.jpg	4.2
+790	Ranikhet	Almora	Uttarakhand	Hill station with forest and temples	29.638	79.418	place_images/Ranikhet.jpg	4.6
+791	Mukteshwar	Nainital	Uttarakhand	Clifftop temple with Himalayan views	29.4682	79.621	place_images/Mukteshwar.jpg	3.9
+792	Bhadrakali Temple	Haldwani	Uttarakhand	Hilltop temple overlooking city	29.2167	79.5125	place_images/Bhadrakali_Temple.jpg	4.8
+793	Binsar Wildlife Sanctuary	Chamoli	Uttarakhand	Oak forest sanctuary with Himalayan vistas	29.79	79.487	place_images/Binsar_Wildlife_Sanctuary.jpg	4.4
+794	Roopkund Trek	Chamoli	Uttarakhand	Glacial lake with ancient skeletal remains	30.314	79.529	place_images/Roopkund_Trek.jpg	4.6
+795	Hemkund Sahib	Chamoli	Uttarakhand	Sikh pilgrimage lake shrine at high altitude	30.946	79.629	place_images/Hemkund_Sahib.jpg	4.8
+796	Naukuchiatal	Nainital	Uttarakhand	Lake shaped like nine corners	29.4266	79.5256	place_images/Naukuchiatal.jpg	4.5
+797	Mukteshwar Dham	Nainital	Uttarakhand	Hill shrine and heritage college	29.488	79.619	place_images/Mukteshwar_Dham.jpg	4.7
+798	Kasardevi Temple	Almora	Uttarakhand	Ancient Shiva temple with valley views	29.6428	79.4522	place_images/Kasardevi_Temple.jpg	4.8
+799	Binsar Eco Park	Almora	Uttarakhand	Garden with Himalayan panoramas	29.638	79.418	place_images/Binsar_Eco_Park.jpg	4.6
+800	Victoria Memorial	Kolkata	West Bengal	Iconic marble memorial museum	22.5448	88.3426	place_images/Victoria_Memorial.jpg	4.6
+801	Howrah Bridge	Kolkata	West Bengal	Cantilever bridge over the Hooghly river	22.5768	88.3433	place_images/Howrah_Bridge.jpg	4.6
+802	Dakshineswar Kali Temple	Kolkata	West Bengal	Famous riverside temple of Kali	22.6222	88.3663	place_images/Dakshineswar_Kali_Temple.jpg	4.7
+803	Belur Math	Howrah	West Bengal	Headquarters of Ramakrishna Mission	22.6358	88.3495	place_images/Belur_Math.jpg	4.7
+804	Sundarbans National Park	Sundarbans	West Bengal	Largest mangrove forest & tiger reserve	21.9498	88.878	place_images/Sundarbans_National_Park.jpg	4.4
+805	Darjeeling Himalayan Railway	Darjeeling	West Bengal	UNESCO “Toy Train” mountain railway	27.041	88.2665	place_images/Darjeeling_Himalayan_Railway.jpg	\N
+806	Tiger Hill	Mirik	West Bengal	Sunrise view over Kanchenjunga	27.3644	88.255	place_images/Tiger_Hill.jpg	4.5
+807	Darjeeling Tea Gardens	Darjeeling	West Bengal	Famed tea estates in Himalayas	27.041	88.2665	place_images/Darjeeling_Tea_Gardens.jpg	4.3
+808	Bishnupur Temples	Bishnupur	West Bengal	Terracotta temples of Malla era	23.2388	87.3226	place_images/Bishnupur_Temples.jpg	4.6
+809	Murshidabad	Murshidabad	West Bengal	Historic city on the banks of Ganges	24.187	88.265	place_images/Murshidabad.jpg	3.4
+810	Kalimpong	Kalimpong	West Bengal	Hill station with monasteries & views	27.0662	88.4727	place_images/Kalimpong.jpg	4.3
+811	Silk Villages 	Bolpur	West Bengal	Tagore’s university town and craft hub	23.684	87.684	place_images/Silk_Villages_.jpg	4.4
+812	Belur Math Ferry Ghat	Howrah	West Bengal	Riverside departure to Belur Math	22.6379	88.3517	place_images/Belur_Math_Ferry_Ghat.jpg	4.5
+813	Buxa Tiger Reserve	Alipurduar	West Bengal	Protected forest & wildlife sanctuary	26.6967	89.6078	place_images/Buxa_Tiger_Reserve.jpg	4.4
+814	Mirik Lake	Mirik	West Bengal	Scenic lakeside hill town	26.8883	88.149	place_images/Mirik_Lake.jpg	4.4
+815	Jalpaiguri Forest	Jalpaiguri	West Bengal	Forest ecosystem & wildlife habitat	26.518	88.722	place_images/Jalpaiguri_Forest.jpg	5
+816	Siliguri Corridor Viewpoint	Siliguri	West Bengal	Lookout over India‑Bangladesh border area	26.7086	88.428	place_images/Siliguri_Corridor_Viewpoint.jpg	5
+817	Time Museum	Kolkata	West Bengal	Unique museum of clocks and timepieces	22.569	88.363	place_images/Time_Museum.jpg	4.2
+818	Fractional Art Village	Santiniketan	West Bengal	Local artisans and crafts hub	23.68	87.685	place_images/Fractional_Art_Village.jpg	4.4
+819	ISKCON Temple	Kolkata	West Bengal	Large temple dedicated to Lord Krishna	22.5434	88.358	place_images/ISKCON_Temple.jpg	4.7
+820	Marble Palace	Kolkata	West Bengal	19th-century mansion with art collection	22.585	88.33	place_images/Marble_Palace.jpg	\N
+821	Eco Park	Kolkata	West Bengal	Large urban park in New Town	22.5599	88.4806	place_images/Eco_Park.jpg	4.5
+822	Nicco Park	Kolkata	West Bengal	Amusement park with rides and lake	22.598	88.423	place_images/Nicco_Park.jpg	4.4
+823	Science City	Kolkata	West Bengal	Science museum with space exhibits	22.568	88.448	place_images/Science_City.jpg	4
+824	Alipore Zoo	Kolkata	West Bengal	One of India’s oldest zoological parks	22.53	88.346	place_images/Alipore_Zoo.jpg	4.3
+825	Princep Ghat	Kolkata	West Bengal	Riverside promenade & sunset spot	22.5387	88.3345	place_images/Princep_Ghat.jpg	4.5
+826	St. Paul’s Cathedral	Kolkata	West Bengal	Gothic cathedral by Cathedral Road	22.5445	88.348	place_images/St._Paul’s_Cathedral.jpg	4.6
+827	Belur Math Gardens	Howrah	West Bengal	Gardens surrounding Belur Math	22.635	88.347	place_images/Belur_Math_Gardens.jpg	\N
+828	Malda Historic Town	Malda	West Bengal	Ancient ruins & riverside history	25.001	88.14	place_images/Malda_Historic_Town.jpg	3.9
+829	Pangong Tso	        Leh	Jammu and Kashmir	Stunning high-altitude lake that extends into China	33.749	77.54	place_images/Pangong_Tso.jpg	4.8
+830	Nubra Valley	        Diskit	Jammu and Kashmir	Cold desert valley with sand dunes and double-humped Bactrian camels	34.524	77.5521	place_images/Nubra_Valley.jpg	4.8
+831	Khardung La	        Leh	Jammu and Kashmir	One of the highest motorable roads in the world at 5,359 meters	34.2783	77.6067	place_images/Khardung_La.jpg	4.8
+832	Leh Palace	            Leh	Jammu and Kashmir	17th-century nine-storey royal palace overlooking Leh town	34.1667	77.5848	place_images/leh_pages.jpeg	4.4
+833	Shanti Stupa	        Leh	Jammu and Kashmir	White-domed Buddhist stupa with panoramic views of Leh	34.1645	77.5848	place_images/Shanti_Stupa.jpg	4.7
+834	Hemis Monastery	    Hemis	Jammu and Kashmir	Largest and richest monastery in Ladakh	33.8818	77.5832	place_images/Hemis_Monastery.jpg	4.6
+835	Tso Moriri Lake	    Korzok	Jammu and Kashmir	Remote alpine lake in Changthang region	32.9956	78.3276	place_images/Tso_Moriri_Lake.jpg	4.7
+836	Magnetic Hill	        Leh	Jammu and Kashmir	Gravity-defying hill where vehicles appear to roll uphill	34.1716	77.5474	place_images/Magnetic_Hill.jpg	4.4
+837	Zanskar Valley	        Padum	Jammu and Kashmir	Scenic remote valley known for trekking, rafting, and frozen Chadar Trek	33.4648	76.8821	place_images/Zanskar_Valley.jpg	4.5
+838	Lamayuru Monastery	Lamayuru	Jammu and Kashmir	Oldest monastery in Ladakh amidst lunar-like landscape	34.2833	76.7689	place_images/Lamayuru_Monastery.jpg	4.6
+839	Alchi Monastery	    Alchi	Jammu and Kashmir	Ancient monastery with Indo-Tibetan wall paintings	34.2258	76.8445	place_images/Alchi_Monastery.jpg	4.6
+840	Thiksey Monastery	Thiksey	Jammu and Kashmir	12-story monastery resembling Potala Palace with giant Maitreya statue	34.0594	77.6355	place_images/Thiksey_Monastery.jpg	4.7
+841	Spituk Monastery	    Spituk	Jammu and Kashmir	Hilltop Buddhist monastery near Leh Airport	34.1233	77.5361	place_images/Spituk_Monastery.jpg	4.7
+842	Shey Palace	        Shey	Jammu and Kashmir	Former royal palace with large gold-plated Buddha statue	34.0522	77.648	place_images/Shey_Palace.jpg	4.4
+843	Stok Palace	        Stok	Jammu and Kashmir	Current royal residence of the Namgyal dynasty	34.0161	77.6012	place_images/Stok_Palace.jpg	4.5
+844	Turtuk Village	        Turtuk	Jammu and Kashmir	Last Indian village near the Pakistan border	34.8542	76.8276	place_images/Turtuk_Village.jpg	4.9
+845	Basgo Monastery	    Basgo	Jammu and Kashmir	Historic fortress and monastery with ancient murals	34.1811	77.3969	place_images/Basgo_Monastery.jpg	4.6
+846	Phugtal Monastery	Lingshed	Jammu and Kashmir	Cliffside monastery built into a cave, reachable by trek	33.2903	77.2828	place_images/Phugtal_Monastery.jpg	4.8
+847	Chadar Trek Route	Zanskar River	Jammu and Kashmir	Frozen river trek done in winter over Zanskar River	33.5333	77.2167	place_images/Chadar_Trek_Route.jpg	5
+848	Hanle Observatory	    Hanle	Jammu and Kashmir	One of the world’s highest astronomical observatories	32.7773	78.9603	place_images/Hanle_Observatory.jpg	4.6
+\.
+
+
+--
+-- Data for Name: placesdata; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.placesdata (id, name, city, state, description, latitude, longitude) FROM stdin;
+1	Rani ki Vav	Patan	Gujarat	UNESCO heritage stepwell with intricate sculptures dedicated to water architecture	23.858920	72.101620
+2	Sun Temple	Modhera	Gujarat	11th-century temple dedicated to the Sun God, a masterpiece of Solanki architecture	23.583500	72.133000
+3	Laxmi Vilas Palace	Vadodara	Gujarat	Lavish palace of the Gaekwad dynasty, larger than Buckingham Palace	22.307200	73.181200
+4	Champaner-Pavagadh Archaeological Park	Champaner	Gujarat	UNESCO World Heritage Site blending Hindu-Muslim architecture with forts and mosques	22.491400	73.579200
+5	Dholavira (Indus Valley Civilization Site)	Dholavira (Kutch)	Gujarat	Ancient city of the Indus Valley Civilization, now a UNESCO World Heritage Site	23.849300	69.649200
+6	Uparkot Fort	Junagadh	Gujarat	Ancient fort in Junagadh with Buddhist caves and stepwells	21.513900	70.458100
+7	Mahabat Maqbara	Junagadh	Gujarat	19th-century Islamic mausoleum known for its fusion of Gothic and Indo-Islamic styles	21.514200	70.459200
+8	Vijay Vilas Palace	Mandvi	Gujarat	Royal summer palace with sea views and Bollywood shooting location	22.818700	69.266800
+9	Aina Mahal & Prag Mahal	Bhuj	Gujarat	Historical palaces showcasing Kutchi art, mirrorwork, and colonial influence	23.244700	69.666200
+10	Adalaj Stepwell	Adalaj (near Ahmedabad)	Gujarat	Architectural marvel of stepwell engineering with intricate carvings	23.087600	72.514300
+11	Gir National Park	Sasan Gir (Junagadh)	Gujarat	Only natural habitat of the Asiatic lions in the world	21.183300	70.792500
+12	Blackbuck National Park	Velavadar (Bhavnagar)	Gujarat	Protected park with large populations of blackbucks and migratory birds	21.642400	72.703000
+13	Wild Ass Sanctuary (Little Rann of Kutch)	Dhrangadhra (Surendranagar)	Gujarat	Unique salt desert sanctuary home to Indian wild asses	22.616700	71.470000
+14	Nalsarovar Bird Sanctuary	Nalsarovar (Ahmedabad)	Gujarat	Wetland sanctuary popular for birdwatching and boating	22.853600	72.425000
+15	Saputara Hill Station	Saputara (Dang)	Gujarat	Gujarat’s only hill station with lush forests and cool climate	20.777100	73.765300
+16	Polo Forest	Abhapur (Sabarkantha)	Gujarat	Dense forest with ancient Jain and Hindu ruins, ideal for trekking	23.193800	73.028300
+17	Zarwani Waterfall	Kevadia (Narmada)	Gujarat	Beautiful waterfall inside Shoolpaneshwar Wildlife Sanctuary	21.881700	73.625400
+18	Statue of Unity	Kevadia (Narmada)	Gujarat	World’s tallest statue dedicated to Sardar Patel, with museum and viewing gallery	21.838000	73.719100
+19	White Rann of Kutch	Dhordo (Kutch)	Gujarat	White salt desert that glows under the moonlight, especially during Rann Utsav	23.862000	69.650000
+20	Somnath Temple	Somnath (Veraval)	Gujarat	One of the 12 Jyotirlingas, located on the Arabian Sea coast	20.898700	70.390600
+21	Dwarkadhish Temple	Dwarka	Gujarat	Ancient city of Lord Krishna and one of the Char Dham pilgrimage sites	22.241100	68.968600
+22	Palitana Temples	Palitana (Bhavnagar)	Gujarat	Jain pilgrimage site with over 900 temples on a hilltop	21.579400	71.852800
+23	Ambaji Temple	Ambaji (Banaskantha)	Gujarat	Shakti Peetha temple of Goddess Amba, surrounded by scenic hills	24.438000	72.864700
+24	Bhalka Tirth	Somnath (Veraval)	Gujarat	Site where Lord Krishna is believed to have left his mortal body	20.923700	70.360400
+25	Girnar Hill Temples	Junagadh	Gujarat	Hill with a series of temples dedicated to Jain and Hindu deities	21.519200	70.456600
+26	Ahmedabad Old City Heritage Walk	Ahmedabad	Gujarat	UNESCO World Heritage old city with pols, havelis, and heritage walks	23.022500	72.571400
+27	Sabarmati Ashram	Ahmedabad	Gujarat	Peaceful riverside ashram where Mahatma Gandhi lived and led the freedom movement	23.037100	72.556200
+28	Science City	Vadodara	Gujarat	Interactive science museum and park for education and family fun	22.310500	73.193200
+29	ISKCON Temple	Rajkot	Gujarat	Temple complex of the International Society for Krishna Consciousness	22.291400	70.820000
+30	Dutch & English Cemetery	Surat	Gujarat	Historical cemetery with Dutch and English tombs from the colonial era	21.191000	72.825800
+31	Amber Fort	Jaipur	Rajasthan	UNESCO Hill Fort with palaces and underground passage to Jaigarh	26.985901	75.850700
+32	City Palace	Jaipur	Rajasthan	Royal palace complex featuring museums and lush gardens	26.925700	75.823600
+33	Hawa Mahal	Jaipur	Rajasthan	“Palace of Winds” with intricate lattice façade for royal women	26.923889	75.826667
+34	Jantar Mantar	Jaipur	Rajasthan	Astronomical observatory; UNESCO World Heritage site	26.924500	75.824000
+35	Jaigarh Fort	Jaipur	Rajasthan	Hilltop fort housing the massive Jaivana cannon	26.987500	75.861000
+36	Nahargarh Fort	Jaipur	Rajasthan	Fort offering panoramic views of Jaipur city	26.963200	75.824000
+37	Jal Mahal	Jaipur	Rajasthan	“Water Palace” set in the middle of Man Sagar Lake	26.950800	75.794000
+38	Mehrangarh Fort	Jodhpur	Rajasthan	Impressive hill fortress overlooking the Blue City	26.295500	73.019300
+39	Umaid Bhawan Palace	Jodhpur	Rajasthan	Palace and museum; part luxury hotel	26.307500	73.024300
+40	Mandore Gardens	Jodhpur	Rajasthan	Historic gardens with cenotaphs of Marwar rulers	26.307800	73.009300
+41	Jaisalmer Fort	Jaisalmer	Rajasthan	Living sandstone desert fort; UNESCO Hill Fort site	26.915800	70.912400
+42	Patwon Ki Haveli	Jaisalmer	Rajasthan	Cluster of ornate Jain havelis	26.915200	70.913100
+43	Sam Sand Dunes	Sam	Rajasthan	Desert dunes perfect for camel safaris and sunsets	26.878300	70.907200
+44	Bada Bagh	Jaisalmer	Rajasthan	Chhatri cenotaphs of Jaisalmer royalty	26.931600	70.884100
+45	Osian Temples	Osian	Rajasthan	Ancient Hindu and Jain temples in the desert	26.435000	70.083300
+46	Chittorgarh Fort	Chittorgarh	Rajasthan	Largest fort in India; tales of Rajput valor	24.886800	74.629799
+47	Ranakpur Temples	Ranakpur	Rajasthan	Jain temple complex nestled in Aravalli forests	24.870200	73.411800
+48	Pushkar Lake & Temple	Pushkar	Rajasthan	Sacred lake with Brahma temple; camel fair site	26.489800	74.556200
+49	Brahma Temple	Pushkar	Rajasthan	One of the rare temples dedicated to Lord Brahma	26.484400	74.555600
+50	Mount Abu (Dilwara Temples)	Mount Abu	Rajasthan	Marble Jain temples and hill station retreat	24.592200	72.712300
+51	Trevor’s Tank & Honeymoon Point	Mount Abu	Rajasthan	Scenic viewpoints at Rajasthan’s only hill station	24.566700	72.706900
+52	Gadisar Lake	Jaisalmer	Rajasthan	Historic artificial lake with ghats and birdlife	26.927100	70.911000
+53	Sariska Tiger Reserve	Sariska	Rajasthan	Wildlife sanctuary known for tigers and leopards	26.810600	76.449200
+54	Bundi Palace	Bundi	Rajasthan	Palace with intricate frescos and cliffside architecture	25.428800	75.641300
+55	Chaurasi Khambon ki Chhatri	Bundi	Rajasthan	Eighty-four pillar cenotaph with ornate pillars	25.430200	75.642100
+56	Taragarh Fort	Bundi	Rajasthan	Hill fort overlooking serene Bundi town	25.424900	75.638900
+57	Keoladeo National Park	Bharatpur	Rajasthan	UNESCO bird sanctuary popular among birdwatchers	27.166900	77.490200
+58	Deeg Palace	Deeg	Rajasthan	Former royal residence with water palaces and fountains	27.539600	77.532400
+59	Govind Dev Ji Temple	Jaipur	Rajasthan	Major Krishna temple in the City Palace complex	26.923600	75.820800
+60	Galta Ji (Monkey Temple)	Jaipur	Rajasthan	Temple complex with natural springs and sacred pools	26.927200	75.859400
+61	Khajuraho Temples	Khajuraho	Madhya Pradesh	UNESCO temples famed for erotic sculptures	24.848090	79.933510
+62	Kanha National Park	Kanha	Madhya Pradesh	Tiger reserve inspired The Jungle Book; dense wildlife	22.177000	80.611000
+63	Bandhavgarh National Park	Bandhavgarh	Madhya Pradesh	Sanctuary with high density of Bengal tigers	23.671200	80.670800
+64	Pench National Park	Pench	Madhya Pradesh	Biodiverse safari destination, rich forests and fauna	21.881700	79.296600
+65	Pachmarhi	Pachmarhi	Madhya Pradesh	Satpura hill station known for caves, waterfalls, and treks	22.461900	78.436000
+66	Sanchi Stupa	Sanchi	Madhya Pradesh	3rd-century BCE Buddhist stupas; UNESCO World Heritage	23.485600	77.739400
+67	Bhimbetka Caves	Raisen	Madhya Pradesh	Prehistoric rock shelters with ancient cave paintings	23.580700	77.660800
+68	Orchha Fort Complex	Orchha	Madhya Pradesh	Riverside palaces and temples of Bundela era	25.325000	78.556900
+69	Gwalior Fort	Gwalior	Madhya Pradesh	Historic hill fort with palaces and museums	26.224700	78.179800
+70	Ujjain Mahakaleshwar Temple	Ujjain	Madhya Pradesh	One of the 12 Jyotirlinga shrines dedicated to Lord Shiva	23.181470	75.779690
+71	Omkareshwar Temple	Omkareshwar	Madhya Pradesh	Island Jyotirlinga temple shaped like the “Om” symbol	22.250300	75.852400
+72	Chitrakoot Falls	Chhindwara	Madhya Pradesh	Niagara of India—seasonal waterfall on Indravati River	22.350000	80.493000
+73	Mandu (Mandav)	Mandu	Madhya Pradesh	Romantic ruined city on Vindhya plateau with Afghan-era architecture	22.049900	75.365000
+74	Khajwa Falls	Satna	Madhya Pradesh	Scenic waterfall in dense forests	24.600000	81.200000
+75	Gandhi Sagar Dam	Mandsaur	Madhya Pradesh	Reservoir with wildlife sanctuary and boating facilities	24.025000	75.070000
+76	Bhedaghat Marble Rocks	Jabalpur	Madhya Pradesh	Dramatic marble gorge along the Narmada River	23.168900	79.937200
+77	Dhuandhar Falls	Jabalpur	Madhya Pradesh	Majestic waterfall creating smoky mist over Narmada river	23.158800	79.944100
+78	Jabalpur Madan Mahal Fort	Jabalpur	Madhya Pradesh	Historic hilltop fort offering panoramic city views	23.180000	79.937000
+79	Indore Sarafa Bazaar	Indore	Madhya Pradesh	Vibrant night market famous for street food	22.717920	75.833420
+80	Khajrana Ganesh Temple	Indore	Madhya Pradesh	Popular temple dedicated to Lord Ganesh	22.742700	75.882600
+81	Maheshwar	Maheshwar	Madhya Pradesh	Riverside town with Ahilya Devi Holkar’s palace on Narmada	22.351580	75.899470
+82	Omkareshwar Ghats	Omkareshwar	Madhya Pradesh	Holy ghats along Narmada river for pilgrims	22.248000	75.852000
+83	Tulsishyam Hot Springs	Alirajpur	Madhya Pradesh	Natural hot springs known for therapeutic value	21.815000	74.555000
+84	Rewa White Tigers Rescue Center	Rewa	Madhya Pradesh	Conservation center for white tigers	24.536000	81.284000
+85	Kuno National Park	Sheopur	Madhya Pradesh	Wildlife reserve planned for tiger relocation	25.182000	78.390000
+86	Chandela Museum	Khajuraho	Madhya Pradesh	Museum showcasing cultural artifacts from Khajuraho temples	24.850000	79.933000
+87	Dhugin Hall, Bhopal	Bhopal	Madhya Pradesh	Modern cultural venue by Upper Lake	23.267900	77.410000
+88	Upper Lake Boating	Bhopal	Madhya Pradesh	Recreational boating on Bhopal’s largest lake	23.259900	77.400000
+89	Bhimbetka Gond Art Stalls	Raisen	Madhya Pradesh	Local craft stalls near rock shelter site	23.580700	77.660800
+90	Gandhi Bhawan	Bhopal	Madhya Pradesh	Central museum dedicated to Mahatma Gandhi’s life	23.259500	77.412600
+91	Cellular Jail	Port Blair	Andaman and Nicobar Islands	Historic colonial prison, now a national memorial	11.675000	92.748000
+92	Radhanagar Beach	Havelock Island	Andaman and Nicobar Islands	Pristine white sand beach	11.995000	92.981000
+93	Elephant Beach	Havelock Island	Andaman and Nicobar Islands	Popular snorkeling and water sports spot	11.919000	92.977000
+94	Neil Island	Neil Island	Andaman and Nicobar Islands	Laid-back island known for reefs	11.755000	92.716000
+95	Ross Island	Port Blair	Andaman and Nicobar Islands	Ruins of colonial administrative HQ	11.622000	92.726000
+96	Baratang Island	Baratang Island	Andaman and Nicobar Islands	Limestone caves and mud volcanoes	11.663000	92.816000
+97	North Bay Island	North Bay	Andaman and Nicobar Islands	Coral viewing & glass‑bottom boats	11.700000	92.758000
+98	Chidiya Tapu	Port Blair	Andaman and Nicobar Islands	Sunset viewpoint & birding spot	11.633000	92.684000
+99	Mahatma Gandhi Marine National Park	Wandoor	Andaman and Nicobar Islands	Protected coral reef park with snorkeling	11.516000	92.712000
+100	Mount Harriet National Park	Port Blair	Andaman and Nicobar Islands	Hilltop park with panoramic sea views	11.626000	92.764000
+101	Viper Island	Port Blair	Andaman and Nicobar Islands	Historic penal site predating Cellular Jail	11.650000	92.741000
+102	Barren Island	Barren Island	Andaman and Nicobar Islands	India’s only active volcano	12.277000	93.860000
+103	Tirumala Venkateswara Temple	Tirupati	Andhra Pradesh	Famous Hindu pilgrimage site	13.683300	79.350000
+104	Araku Valley	Araku	Andhra Pradesh	Scenic hill station with coffee plantations	18.327700	82.877600
+105	Borra Caves	Visakhapatnam	Andhra Pradesh	Limestone caves with stalactites and stalagmites	18.350000	82.666700
+106	Kailasagiri	Visakhapatnam	Andhra Pradesh	Hilltop park with sea views and statues	17.720000	83.296000
+107	Rushikonda Beach	Visakhapatnam	Andhra Pradesh	Popular water-sports beach	17.779000	83.393000
+108	Undavalli Caves	Vijayawada	Andhra Pradesh	4th-century rock-cut cave temples	16.500000	80.650000
+109	Amaravati Stupa	Amaravati	Andhra Pradesh	Ancient Buddhist monument	16.547000	80.653000
+110	Lepakshi Temple	Lepakshi	Andhra Pradesh	Temple with hanging pillar	13.780000	77.650000
+111	Ahobilam	Kurnool	Andhra Pradesh	Sacred shrines of Lord Narasimha	15.233000	78.667000
+112	Gandikota (Grand Canyon)	Kadapa	Andhra Pradesh	Fort on dramatic river gorge	14.427000	78.238000
+113	Sri Kalahasti Temple	Srikalahasti	Andhra Pradesh	Vayu Lingam Shiva temple	13.749000	79.698000
+114	Belum Caves	Kurnool	Andhra Pradesh	Second-largest cave system in India	15.416700	78.750000
+115	Rajahmundry Ghats	Rajahmundry	Andhra Pradesh	Pilgrim ghats & river boat rides	16.989000	81.796000
+116	Kolleru Lake	Eluru	Andhra Pradesh	Freshwater lake & bird sanctuary	16.583300	81.016700
+117	Papikonda Hills	Rajahmundry	Andhra Pradesh	Hill cruises along the Godavari River	17.000000	81.800000
+118	Simhachalam Temple	Visakhapatnam	Andhra Pradesh	Lord Narasimha shrine	17.785000	83.297000
+119	Maredumilli Forest	Maredumilli	Andhra Pradesh	Eco‑tourism area with waterfalls	17.266700	81.866700
+120	Vijayawada Durga Temple	Vijayawada	Andhra Pradesh	Temple on Indrakeeladri hill	16.506000	80.648000
+121	ISKCON Temple	Tirupati	Andhra Pradesh	Krishna worship and cultural center	13.641000	79.417000
+122	Manginapudi Beach	Machilipatnam	Andhra Pradesh	Black‑sand beach by Bay of Bengal	16.188000	81.135000
+123	Tawang Monastery	Tawang	Arunachal Pradesh	Largest Buddhist monastery in India	27.586000	92.279000
+124	Sela Pass	Tawang	Arunachal Pradesh	Snow-covered mountain pass	27.605000	92.008000
+125	Ziro Valley	Ziro	Arunachal Pradesh	UNESCO-style rice fields & tribal culture	27.616700	93.816700
+126	Namdapha National Park	Changlang	Arunachal Pradesh	Diverse wildlife reserve in eastern Himalayas	27.200000	96.350000
+127	Bomdila Monastery	Bomdila	Arunachal Pradesh	Scenic Buddhist monastery in the hills	27.250000	92.400000
+128	Dirang Valley	Dirang	Arunachal Pradesh	Valley with hot springs & monasteries	27.415000	92.625000
+129	Mechuka Valley	Mechuka	Arunachal Pradesh	Remote valley with tribal heritage	28.091000	95.303000
+130	Itanagar Gompa	Itanagar	Arunachal Pradesh	Buddhist temple in capital city	27.084400	93.605900
+131	Pakhui Wildlife Sanctuary	Seijosa	Arunachal Pradesh	Tiger reserve & birding hotspot	27.167000	92.900000
+132	Parshuram Kund	Lohit	Arunachal Pradesh	Pilgrimage site on Lohit River	28.033000	95.799000
+133	Roing	Roing	Arunachal Pradesh	Gateway to Mayudia Pass & archaeology	28.115000	95.525000
+134	Bhismaknagar Fort	Roing	Arunachal Pradesh	Ancient fort linked to Harish Chandra legend	28.110000	95.510000
+135	Kaziranga National Park	Kohora	Assam	UNESCO rhino sanctuary	26.577500	93.171100
+136	Majuli Island	Majuli	Assam	World’s largest river island	26.956000	94.176000
+137	Kamakhya Temple	Guwahati	Assam	Shakti Peetha atop Nilachal Hill	26.171100	91.713200
+138	Manas National Park	Barpeta	Assam	Biosphere reserve & tiger park	26.746000	91.000000
+139	Umananda Temple	Guwahati	Assam	Riverside temple on the Brahmaputra	26.155000	91.742000
+140	Sualkuchi	Sualkuchi	Assam	Silk-weaving village	26.220000	91.600000
+141	Haflong	Haflong	Assam	Assam’s only hill station	25.152000	92.413000
+142	Dibru-Saikhowa National Park	Tinsukia	Assam	Wetland park with birds and wild horses	27.462000	95.712000
+143	Pobitora Wildlife Sanctuary	Morigaon	Assam	Rhino sanctuary	26.410000	92.380000
+144	Tezpur	Tezpur	Assam	Cultural town on Brahmaputra banks	26.637000	92.798000
+145	Sibsagar	Sivasagar	Assam	Ahom-era temples and tanks	26.991000	94.643000
+146	Hajo	Hajo	Assam	Sacred to Hindus, Muslims, Buddhists	26.180000	91.610000
+147	Barpeta Satra	Barpeta	Assam	Vaishnavite monastery	26.315000	91.010000
+148	Chandubi Lake	Kamrup	Assam	Earthquake-formed lake	26.016000	91.270000
+149	Bogamati	Baksa	Assam	Scenic hill-forest picnic spot	26.650000	91.500000
+150	Mahabodhi Temple	Bodh Gaya	Bihar	UNESCO Buddhist site of Buddha’s enlightenment	24.695000	84.991000
+151	Nalanda Ruins	Nalanda	Bihar	Ancient university ruins; UNESCO site	25.135000	85.442000
+152	Vishnupad Temple	Gaya	Bihar	Temple marking Lord Vishnu’s footprint	24.798000	85.001000
+153	Rajgir Hot Springs	Rajgir	Bihar	Sacred hot springs in a mountainous valley	25.030000	85.425000
+154	Takht Sri Patna Sahib	Patna	Bihar	Birthplace of Guru Gobind Singh Ji	25.620000	85.129000
+155	Golghar	Patna	Bihar	Historic granary with panoramic views	25.602000	85.115000
+156	Barabar Caves	Jehanabad	Bihar	Ancient rock-cut caves linked to Jainism	24.768000	85.008000
+157	Mundeshwari Temple	Kaimur	Bihar	One of India’s oldest functional temples	24.721000	83.676000
+158	Ashokan Pillar	Vaishali	Bihar	Pillar marking Buddha’s visit	25.680000	85.300000
+159	Kesaria Stupa	Kesariya	Bihar	Large Buddhist stupa	26.738000	84.971000
+160	Bihar Museum	Patna	Bihar	Modern museum of state heritage	25.594000	85.123000
+161	Maner Sharif	Patna	Bihar	Sufi shrine complex	25.555000	85.036000
+162	Bodhgaya Museum	Bodh Gaya	Bihar	Artifacts from Buddhist & Mauryan eras	24.695000	84.992000
+163	Kakolat Waterfall	Nawada	Bihar	Picturesque waterfall with mythological ties	24.886000	85.594000
+164	Eco Park	Patna	Bihar	Urban lakeside recreational park	25.590000	85.140000
+165	Chitrakote Falls	Jagdalpur	Chhattisgarh	India’s widest waterfall, called “Niagara of India”	19.096000	82.049000
+166	Tirathgarh Falls	Jagdalpur	Chhattisgarh	Multi-tiered waterfall in Kanger Valley NP	19.088000	82.065000
+167	Barnawapara Sanctuary	Mahasamund	Chhattisgarh	Rich flora and fauna sanctuary	21.200000	82.077000
+168	Kanger Valley NP	Jagdalpur	Chhattisgarh	Caves, streams, and dense forest	19.055000	82.107000
+169	Danteshwari Temple	Dantewada	Chhattisgarh	Ancient Shakti Peetha shrine	18.904000	81.350000
+170	Bhoramdeo Temple	Kawardha	Chhattisgarh	10th-century temple complex	22.004000	81.238000
+171	Sirpur Archaeological Site	Mahasamund	Chhattisgarh	Ruins of Buddhist & Hindu temples	21.166000	82.103000
+172	Rajim	Rajim	Chhattisgarh	Spiritual “Prayagraj” of Chhattisgarh	21.251000	82.060000
+173	Mainpat	Mainpat	Chhattisgarh	Hill station with Tibetan colony	23.373000	83.855000
+174	Bastar Palace	Jagdalpur	Chhattisgarh	Heritage royal residence	19.071000	82.028000
+175	Kutumsar Caves	Kanger Valley	Chhattisgarh	Deep limestone cave system	19.058000	82.110000
+176	Maitri Bagh Zoo	Bhilai	Chhattisgarh	Zoo with musical fountain and garden	21.207000	81.369000
+177	Dongargarh Temple	Dongargarh	Chhattisgarh	Hill‑top Maa Bambleshwari shrine	21.352000	81.542000
+178	Madku Dweep	Bilaspur	Chhattisgarh	River island with archaeological remnants	22.103000	82.085000
+179	Jogimara Caves	Ramgarh	Chhattisgarh	Ancient caves with prehistoric art	22.123000	82.120000
+180	Devka Beach	Daman	Daman and Diu	Popular beach with amusement park and promenade	20.408000	72.828000
+181	Jampore Beach	Daman	Daman and Diu	Calm beach ideal for swimming and relaxation	20.401000	72.819000
+182	St. Jerome Fort	Diu	Daman and Diu	16th-century Portuguese fort with sea views	20.716000	70.995000
+183	Naida Caves	Diu	Daman and Diu	Limestone caves near Nagoa Beach	20.717500	70.995800
+184	Nagoa Beach	Diu	Daman and Diu	White sand beach with water sports	20.717900	71.004600
+185	Diu Fort (Fort of St. Anthony)	Diu	Daman and Diu	Imposing sea fort built by the Portuguese	20.715500	70.967000
+186	INS Khukri Memorial	Diu	Daman and Diu	Naval memorial for ship sunk in 1971 war	20.702000	70.987000
+187	St. Paul’s Church	Diu	Daman and Diu	One of Asia’s largest churches, dating to 17th century	20.712500	70.985300
+188	Gaoji Gully Beach	Diu	Daman and Diu	Secluded sandy beach with rock formations	20.713200	70.998800
+189	Chakratirth Beach	Daman	Daman and Diu	Popular beach near city center	20.417500	72.842500
+190	Moti Daman Fort	Daman	Daman and Diu	Historic Portuguese fort in Daman city	20.420000	72.844000
+191	St Paul’s Church	Moti Daman	Daman and Diu	17th-century Baroque church with ornate interiors	20.420500	72.844500
+192	Red Fort	Delhi	Delhi	Iconic 17th-century Mughal fort and UNESCO site	28.656200	77.241000
+193	Qutub Minar	Delhi	Delhi	Tallest brick minaret in the world; UNESCO site	28.524400	77.185500
+194	India Gate	Delhi	Delhi	War memorial in central Delhi	28.612900	77.229500
+195	Lotus Temple	Delhi	Delhi	Bahá’í House of Worship known for lotus shape	28.553500	77.258800
+196	Humayun’s Tomb	Delhi	Delhi	Mughal tomb and UNESCO World Heritage Site	28.593300	77.250700
+197	Akshardham Temple	Delhi	Delhi	Modern Hindu mandir complex with cultural exhibits	28.612100	77.277300
+198	Jama Masjid	Delhi	Delhi	One of India’s largest mosques, built in the 17th century	28.650700	77.233400
+199	Rashtrapati Bhavan	Delhi	Delhi	Presidential residence with Mughal Gardens	28.614300	77.199700
+200	Chandni Chowk	Delhi	Delhi	Historic market famous for street food and old bazaars	28.656200	77.230300
+201	Hauz Khas Complex	Delhi	Delhi	Medieval reservoir, mosque, and urban village area	28.549500	77.199400
+202	Swaminarayan Akshardham	Delhi	Delhi	Cultural complex dedicated to Swaminarayan	28.608500	77.277500
+203	Rani Ki Vav (Delhi)	Delhi	Delhi	Replica stepwell showcasing sandstone craftsmanship	28.612000	77.227500
+204	National Museum	Delhi	Delhi	Comprehensive museum of Indian history and art	28.612254	77.227232
+205	Jantar Mantar	Delhi	Delhi	Historic astronomical observatory	28.632645	77.219506
+206	Mehrauli Archaeological Park	Delhi	Delhi	Ruins of ancient structures near Qutub complex	28.527600	77.186900
+207	Agrasen ki Baoli	Delhi	Delhi	Ancient stepwell in city centre	28.632600	77.220600
+208	Purana Qila	Delhi	Delhi	Old Fort built during Sher Shah Suri’s era	28.616700	77.233333
+209	National Rail Museum	Delhi	Delhi	Gallery of vintage trains and rail artifacts	28.646575	77.219980
+210	Lodhi Garden	Delhi	Delhi	Park with tombs from 15th‑17th century	28.593300	77.241700
+211	Dilli Haat	Delhi	Delhi	Craft bazaar and food plaza with regional stores	28.551200	77.208700
+212	Shri Aapti Shiv Mandir	Silvassa	Dadra and Nagar Haveli	Ancient Shiva temple in the state capital	20.269900	73.002100
+213	Vanganga Lake Garden	Silvassa	Dadra and Nagar Haveli	Scenic garden surrounding a lake	20.271800	73.012100
+214	Hirwa Van Garden	Silvassa	Dadra and Nagar Haveli	Green park with children’s play area	20.278500	73.008900
+215	Lion Safari Wildlife Park	Silvassa	Dadra and Nagar Haveli	Safari park featuring lions and deer	20.257100	73.037100
+216	Dudhni Lake	Dudhani	Dadra and Nagar Haveli	Riverfront lake popular for water sports	20.216500	72.995000
+217	Satmalia Deer Park	Silvassa	Dadra and Nagar Haveli	Deer park near lion safari	20.260000	73.016200
+218	Smarak Theatre & Museum	Silvassa	Dadra and Nagar Haveli	Museum showcasing tribal artifacts and anti-colonial history	20.270100	73.006700
+219	Someshwar Waterfall	Silvassa	Dadra and Nagar Haveli	Rain-fed waterfall with forest backdrop	20.274500	73.010200
+220	Timber Trail Camping Site	Silvassa	Dadra and Nagar Haveli	Adventure camping and zipline nearby	20.266700	73.020000
+221	St. Joseph’s Church	Silvassa	Dadra and Nagar Haveli	Historic church with Gothic architecture	20.270500	73.007800
+222	Calangute Beach	Calangute	Goa	One of the busiest and most popular beaches in Goa	15.545300	73.754900
+223	Baga Beach	Baga	Goa	Lively beach known for nightlife and water sports	15.547000	73.750000
+224	Anjuna Beach	Anjuna	Goa	Famous for flea market and trance parties	15.609200	73.744200
+225	Fort Aguada	Sinquerim	Goa	17th-century Portuguese fort overlooking the sea	15.500600	73.775000
+226	Basilica of Bom Jesus	Old Goa	Goa	UNESCO site housing St. Francis Xavier’s remains	15.500900	73.913400
+227	Se Cathedral	Old Goa	Goa	One of Asia’s largest churches, dedicated to St. Catherine	15.503300	73.912700
+228	Dudhsagar Falls	Mollem	Goa	Spectacular four-tiered waterfall on the Mandovi River	15.333800	74.313000
+229	Chapora Fort	Chapora	Goa	Scenic hilltop fort with panoramic beach views	15.639500	73.703700
+230	Palolem Beach	Canacona	Goa	Picturesque crescent-shaped beach in South Goa	15.011000	73.985700
+231	Colva Beach	Colva	Goa	Long sandy beach popular with families	15.370500	73.926800
+232	Arvalem Caves & Waterfall	Bicholim	Goa	Historic Buddhist caves and scenic waterfall	15.585300	74.015600
+233	Church of Our Lady of the Immaculate Conception	Panaji	Goa	Baroque-style church in the state capital	15.492300	73.826600
+234	Baga Fort	Baga	Goa	Ruins of a small fort overlooking Baga beach	15.546000	73.749000
+235	Sinquerim Beach	Sinquerim	Goa	Blue-flag beach near Aguada fort	15.502000	73.777000
+236	Miramar Beach	Panaji	Goa	Sandy beachfront near the state capital	15.477500	73.830000
+237	Candolim Beach	Candolim	Goa	Family-friendly beach with water sports	15.532700	73.779200
+238	Vasco da Gama Port	Vasco da Gama	Goa	Major port city and gateway to hinterland	15.399300	73.812600
+239	Spice Plantations	Ponda	Goa	Tour of local spice gardens	15.414700	73.941600
+240	Tambdi Surla Temple	Tambdi Surla	Goa	11th-century Shiva temple in village setting	15.480100	74.025900
+241	Morjim Beach	Morjim	Goa	Turtle nesting beach with quieter vibe	15.600300	73.747200
+242	Rohtang Pass	Manali	Himachal Pradesh	High mountain pass with snow and scenic views	32.379000	77.154000
+243	Solang Valley	Manali	Himachal Pradesh	Adventure sports hub near Manali	32.251000	77.167000
+244	Hidimba Devi Temple	Manali	Himachal Pradesh	Ancient wooden temple set in pine forest	32.239000	77.189000
+245	Mall Road	Shimla	Himachal Pradesh	Popular promenade in colonial Shimla	31.104800	77.173400
+246	Jakhoo Temple	Shimla	Himachal Pradesh	Temple dedicated to Hanuman with city views	31.104700	77.154600
+247	Kullu Valley	Kullu	Himachal Pradesh	Lush valley along Beas River	31.957000	77.114400
+248	Great Himalayan National Park	Kullu	Himachal Pradesh	UNESCO forest biodiversity area	31.826000	77.234000
+249	Dharamshala	Dharamshala	Himachal Pradesh	Base of Dalai Lama with Tibetan culture	32.219500	76.323400
+250	McLeod Ganj	Dharamshala	Himachal Pradesh	Hill town known as “Little Lhasa”	32.239600	76.315600
+251	Chamba	Chamba	Himachal Pradesh	Historic hill town with temples	32.530000	76.261000
+252	Spiti Valley	Spiti	Himachal Pradesh	Cold desert valley with monasteries	32.224000	78.004000
+253	Kinnaur	Kinnaur	Himachal Pradesh	High-altitude district with tribal culture	31.060000	78.394000
+254	Bir Billing	Bir	Himachal Pradesh	Paragliding capital of India	32.044000	76.329000
+255	Chandigarh (Rock Garden)	Chandigarh	Himachal Pradesh	Artistic garden of sculptures	30.679700	76.790000
+256	Tirthan Valley	Tirthan	Himachal Pradesh	Scenic trout river valley	31.688000	77.238000
+257	Karna Lake	Kurukshetra	Haryana	Historic lake mentioned in Mahabharata	29.970000	76.850000
+258	Sheikh Chilli Tomb	Kurukshetra	Haryana	Mughal-era architectural mausoleum	29.967000	76.830000
+259	Panipat Battlefield	Panipat	Haryana	Site of historic battles including 1526 & 1761	29.390000	76.970000
+260	Morni Hills	Morni	Haryana	Hilly forest retreat with waterfalls	30.933000	76.735000
+261	Fatehabad Fort	Fatehabad	Haryana	Ruins of medieval fort by Firoz Shah Tughlaq	29.520000	75.450000
+262	Bhondsi Lake	Gurgaon	Haryana	Urban lake and bird watching spot	28.410000	77.080000
+263	Sheetal Kund	Narnaul	Haryana	Spring-fed tank with historic shrine	28.062000	76.111000
+264	Sector 10 Market	Gurgaon	Haryana	Popular urban shopping & cafe area	28.459500	77.026600
+265	Sultanpur National Park	Gurgaon	Haryana	Important bird sanctuary with migratory birds	28.472700	77.040300
+266	Bara Bair Mosque	Jagadhri	Haryana	Historic mosque with Indo-Islamic architecture	30.136000	77.280000
+267	Surajkund	Faridabad	Haryana	Annual crafts fair and reservoir	28.481300	77.302600
+268	Pinjore Gardens	Pinjore	Haryana	Mughal gardens by Raja Ravi Varma	30.909000	76.865000
+269	Dassam Falls	Ranchi	Jharkhand	Tiered waterfall on Kanchi River	23.307000	85.296000
+270	Hundru Falls	Ranchi	Jharkhand	Classic waterfall and rock pool	23.400000	85.346000
+271	Jonha Falls	Ranchi	Jharkhand	Scenic waterfall with plunge pool	23.315000	85.302000
+272	Jagannath Temple	Ranchi	Jharkhand	Temple with annual Rath Yatra	23.354000	85.338000
+273	Betla National Park	Latehar	Jharkhand	Tiger reserve in Palamau division	23.152000	84.215000
+274	Baidyanath Temple	Deoghar	Jharkhand	One of India’s 12 Jyotirlingas	24.485000	86.690000
+275	Tapin Dam	Deoghar	Jharkhand	Scenic reservoir with boating	24.483000	86.686000
+276	Rajrappa Temple	Ramgarh	Jharkhand	Temple at confluence of Damodar & Bhairavi rivers	23.613000	85.540000
+277	Hazaribagh	Hazaribagh	Jharkhand	Town & plateau with national park	23.993000	85.361000
+278	Parasnath Hill	Giridih	Jharkhand	Highest Jain pilgrimage site	23.784000	86.411000
+279	Rock Garden	Ranchi	Jharkhand	Lakeside rock-themed park	23.356000	85.324000
+280	Sun Temple	Ranchi	Jharkhand	Modern temple atop hill	23.345000	85.335000
+281	Dal Lake	Srinagar	Jammu and Kashmir	Iconic lake famed for houseboats and shikaras	34.083700	74.797300
+282	Gulmarg	Gulmarg	Jammu and Kashmir	Alpine meadow and ski resort	34.049800	74.381400
+283	Pahalgam	Pahalgam	Jammu and Kashmir	Riverside hill town; gateway to Amarnath	34.010800	75.317900
+284	Sonamarg	Sonamarg	Jammu and Kashmir	Scenic hill station by Sindh River	34.267000	75.336000
+285	Shankaracharya Temple	Srinagar	Jammu and Kashmir	Ancient temple overlooking Srinagar	34.104300	74.814700
+286	Mughal Gardens	Srinagar	Jammu and Kashmir	Chashme Shahi & Nishat Gardens by Dal Lake	34.085000	74.810000
+287	Betaab Valley	Pahalgam	Jammu and Kashmir	Scenic valley named after Bollywood film	33.957000	75.236000
+288	Kupwara	Kupwara	Jammu and Kashmir	Less-explored district with scenic vistas	34.528600	74.254700
+289	Dachigam National Park	Srinagar	Jammu and Kashmir	Wildlife reserve for hangul deer	34.083000	74.610000
+290	Verinag Spring	Anantnag	Jammu and Kashmir	Natural spring with Mughal garden	33.656500	75.188900
+291	Achabal Gardens	Anantnag	Jammu and Kashmir	Mughal terraced garden by spring	33.716600	75.134100
+292	Zanskar Valley	Leh-Ladakh	Jammu and Kashmir	Remote Himalayan valley with trekking	33.640000	76.070000
+293	Patnitop	Udhampur	Jammu and Kashmir	Hill resort on Batote–Kishtwar road	33.016900	75.178200
+294	Vaishno Devi Temple	Katra	Jammu and Kashmir	Major pilgrimage cave shrine	33.121200	75.240000
+295	Raghunath Temple	Srinagar	Jammu and Kashmir	Large temple complex in Srinagar	34.079800	74.826500
+296	Masroor Rock Cut Temple	Masroor	Himachal Pradesh	Underground monolithic temple complex (8th‑10th century)	31.770000	76.696000
+297	Khajjiar	Khajjiar	Himachal Pradesh	“Mini Switzerland” of India with lush meadows & lake	31.910000	76.164000
+298	Naina Devi Temple	Bilaspur	Himachal Pradesh	Hilltop temple with panoramic views	31.416600	76.512900
+299	Barot Valley	Barot	Himachal Pradesh	Scenic valley along Uhl River, ideal for trout fishing	31.460000	77.075000
+300	Chamera Lake	Chamera	Himachal Pradesh	Man-made reservoir with boating activities	32.415000	76.124000
+301	Great Himalayan Trails Base	Shimla	Himachal Pradesh	Starting point for long trekking routes	31.104800	77.173400
+302	Mcleodganj Cricket Stadium	Dharamshala	Himachal Pradesh	Iconic stadium with Himalayan backdrop	32.243500	76.331900
+303	Palampur Tea Gardens	Palampur	Himachal Pradesh	Rolling tea plantations and quaint town	32.121000	76.536800
+304	Chitkul Village	Chitkul	Himachal Pradesh	Last inhabited village on old Indo‑Tibetan highway	31.238000	78.348000
+305	Tashijong Monastery	Barot	Himachal Pradesh	Tibetan Buddhist monastery in serene setting	31.458000	77.075000
+306	Surajkund Mela Grounds	Faridabad	Haryana	Venue of annual cultural fair and crafts bazaar	28.480000	77.307000
+307	Bhuteshwar Temple	Hodal	Haryana	Ancient Shiva temple with religious significance	27.716600	77.202500
+308	Kalesar National Park	Yamunanagar	Haryana	Shivalik forests with wildlife and greenery	30.106000	77.207000
+309	Pinjore Baoli	Pinjore	Haryana	Historical stepwell in Pinjore Gardens	30.910000	76.867000
+310	Dhosi Hill	Narnaul	Haryana	Mythological hill with ancient temple and dhuni	28.041000	76.190000
+311	Badkhal Lake	Faridabad	Haryana	Once scenic seasonal lake, now restored eco-site	28.377500	77.324200
+312	Chandimandir Sahib	Chandigarh	Haryana	Gurbani town & temple of Sikh history	30.790000	76.760000
+313	Asigarh Fort	Hansi	Haryana	Ruins of early medieval fort of King Asoka	29.096000	75.957000
+314	Pehowa Saraswati Tirtha	Pehowa	Haryana	Sacred pilgrimage site on Ghaggar River	29.870000	76.533000
+315	Surajkund Lake	Faridabad	Haryana	Reservoir adjacent to Surajkund and mela grounds	28.478000	77.307500
+316	Hundru Falls Viewpoint	Ranchi	Jharkhand	Scenic viewing point above the waterfall	23.405000	85.345000
+317	Pahari Mandir	Ranchi	Jharkhand	Temple atop Ranchi hill with city views	23.339000	85.326000
+318	Rajrappa Falls	Ramgarh	Jharkhand	Waterfall and confluence near Rajrappa Temple	23.613500	85.537800
+319	Betla Palace	Latehar	Jharkhand	Heritage palace near Betla National Park	23.150800	84.209800
+320	Gonda Hill	Ranchi	Jharkhand	Religious hill with temple dedicated to Shiva	23.345500	85.342200
+321	Parasnath Waterfall	Giridih	Jharkhand	Seasonal waterfall near Parasnath Hill	23.784500	86.405000
+322	Hajaribagh Hilltop Park	Hazaribagh	Jharkhand	Panoramic hill park overlooking town	24.000000	85.368000
+323	Netarhat Viewpoint	Latehar	Jharkhand	Sunrise and sunset vantage point in forests	23.489000	84.594000
+324	Anthropological Museum	Ranchi	Jharkhand	Tribal culture exhibit museum	23.341500	85.337200
+325	Deori Mandir	Ramgarh	Jharkhand	Ancient temple dedicated to Lord Shiva	23.630000	85.532000
+326	Gurez Valley	Bandipora	Jammu and Kashmir	Remote valley known for tulip fields	34.529000	74.691000
+327	Shankaracharya Hill	Srinagar	Jammu and Kashmir	Hill with ancient temple and city views	34.102000	74.824000
+328	Char Chinar	Srinagar	Jammu and Kashmir	Group of iconic chinar trees on Dal Lake	34.084000	74.797500
+329	Kishtwar National Park	Kishtwar	Jammu and Kashmir	Protected area with diverse Himalayan fauna	33.338000	75.785000
+330	Doodhpathri	Budgam	Jammu and Kashmir	Valley known for meadows and streams	33.139000	75.197000
+331	Gurez River Valley	Bandipora	Jammu and Kashmir	River valley with scenic mountain landscapes	34.546000	74.667000
+332	Peer Ki Gali	Shopian	Jammu and Kashmir	Mountain pass on Mughal Road	33.687000	75.147000
+333	Tarsar Marsar Lakes	Anantnag	Jammu and Kashmir	Alpine twin lakes in Lidder Valley	33.700000	75.117000
+334	Sinthan Top	Kishtwar	Jammu and Kashmir	High-altitude trekking pass	33.212000	75.362000
+335	Wular Lake	Bandipora	Jammu and Kashmir	One of Asia’s largest freshwater lakes	34.249000	74.549000
+336	Mysore Palace	Mysore	Karnataka	Lavish palace of the Wodeyar dynasty	12.305130	76.655326
+337	Chamundi Hill	Mysore	Karnataka	Hill shrine overlooking Mysore city	12.334600	76.713800
+338	Brindavan Gardens	Mysore	Karnataka	Terraced gardens with musical fountain on Krishnaraja Sagar dam	12.412600	76.614200
+339	Coorg (Kodagu)	Madikeri	Karnataka	Coffee hills and waterfalls in Western Ghats	12.426300	75.738200
+340	Abbey Falls	Madikeri	Karnataka	Scenic waterfall in Coorg	12.423800	75.746600
+341	Nagarhole National Park	Nagarhole	Karnataka	Tiger reserve with rich wildlife	12.264000	76.355000
+342	Hampi	Hampi	Karnataka	UNESCO site with Vijayanagara ruins	15.335000	76.460000
+343	Virupaksha Temple	Hampi	Karnataka	Active temple from Vijayanagara era	15.335900	76.462000
+344	Badami Caves	Badami	Karnataka	Rock-cut cave temples dating 6th century	15.916400	75.676200
+345	Pattadakal	Pattadakal	Karnataka	UNESCO group of Chalukyan temples	15.866200	75.902200
+346	Aihole	Aihole	Karnataka	Ancient temple site of Chalukyan era	16.174900	75.961100
+347	Bijapur (Vijayapura)	Bijapur	Karnataka	Historic city with Gol Gumbaz mausoleum	16.830100	75.715200
+348	Gol Gumbaz	Bijapur	Karnataka	Monumental mausoleum with whispering gallery	16.834050	75.744600
+349	Gokarna Beach	Gokarna	Karnataka	Sacred beach town with temples and beaches	14.551000	74.314000
+350	Om Beach	Gokarna	Karnataka	Beach shaped like the Om symbol	14.546600	74.320500
+351	Murudeshwar Temple	Murudeshwar	Karnataka	Temple with world’s second tallest Shiva statue	14.094000	74.522800
+352	Jog Falls	Sagara	Karnataka	India’s highest plunge waterfall	14.236600	74.501500
+353	Coastal Udupi	Udupi	Karnataka	Famous Krishna Temple and beaches	13.340880	74.742142
+354	Sri Mukhi Hanuman Temple	Udupi	Karnataka	Hilltop Hanuman temple with city views	13.340600	74.745800
+355	Kudremukh	Kudremukh	Karnataka	Hills and national park ideal for trekking	12.623500	75.348700
+356	Dandeli Wildlife Sanctuary	Dandeli	Karnataka	Dense moist deciduous forest reserve	15.311200	74.607900
+357	Mahabaleshwar Temple	Gokarna	Karnataka	Hill cave temple of Lord Shiva	14.545900	74.318800
+358	St. Mary’s Island	Malpe	Karnataka	Columnar basalt rock formation islands	13.358400	74.704100
+359	Kabini	Nagarhole	Karnataka	Riverfront eco-tourism & wildlife area	11.988600	76.503200
+360	Shivanasamudra Falls	Shivanasamudra	Karnataka	Twin waterfalls on Kaveri River	12.305000	77.258000
+361	Bull Temple	Bengaluru	Karnataka	Historic temple dedicated to Nandi bull	12.950800	77.564200
+362	Lalbagh Botanical Garden	Bengaluru	Karnataka	Iconic botanical garden in city center	12.950700	77.584800
+363	Bangalore Palace	Bengaluru	Karnataka	Majestic Tudor-style palace	12.998580	77.592990
+364	Cubbon Park	Bengaluru	Karnataka	Green lung in the heart of the city	12.975400	77.592700
+365	Bannerghatta National Park	Bengaluru	Karnataka	Wildlife safari and zoo near the city	12.800600	77.577000
+366	Nandi Hills	Chikkaballapura	Karnataka	Popular weekend hill retreat with sunrise views	13.370000	77.683300
+367	Hesaraghatta Lake	Bengaluru	Karnataka	Man-made lake and bird sanctuary	13.097000	77.409700
+368	Ranganathittu Bird Sanctuary	Mandya	Karnataka	Small river islet bird sanctuary	12.414300	76.686000
+369	Chikmagalur	Chikmagalur	Karnataka	Coffee hills and Mullayanagiri peak	13.318100	75.775400
+370	Kurubarahalli Lake	Bengaluru	Karnataka	Urban lake for birding and walking	12.928500	77.480300
+371	ISKCON Temple	Bengaluru	Karnataka	Modern Krishna temple and cultural complex	13.021600	77.569500
+372	National Gallery of Modern Art	Bengaluru	Karnataka	Contemporary art museum in Mayura Park	12.979500	77.571400
+373	Vidhana Soudha	Bengaluru	Karnataka	Impressive neo-Dravidian state legislature building	12.979700	77.590700
+374	Backwaters of Alleppey	Alappuzha	Kerala	Canal-system network ideal for houseboats	9.498000	76.338780
+375	Fort Kochi	Kochi	Kerala	Historic district with colonial buildings & Chinese fishing nets	9.965800	76.240100
+376	Munnar Tea Plantations	Munnar	Kerala	Lush tea gardens in Western Ghats	10.088900	77.059500
+377	Eravikulam National Park	Munnar	Kerala	Protected area for Nilgiri Tahr and Neelakurinji blooms	10.091300	77.095200
+378	Vagamon	Vagamon	Kerala	Hill station with meadows and pine forests	9.816800	76.918800
+379	Thekkady (Periyar)	Thekkady	Kerala	Wildlife sanctuary with boat safaris	9.606300	77.126800
+380	Athirappilly Falls	Thrissur	Kerala	Largest waterfall in Kerala	10.223200	76.701300
+381	Wayanad Wildlife Sanctuary	Kalpetta	Kerala	Tiger and elephant reserve in Wayanad Hills	11.685200	76.130000
+382	Edakkal Caves	Wayanad	Kerala	Prehistoric petroglyphs in hill caves	11.515200	76.099600
+383	Kumarakom Bird Sanctuary	Kumarakom	Kerala	Migratory bird sanctuary on Vembanad Lake	9.578600	76.487700
+384	Bekal Fort	Bekal	Kerala	Coastal fort overlooking Arabian Sea	12.497600	74.990700
+385	Malampuzha Gardens	Palakkad	Kerala	Popular landscaped garden by reservoir	10.802480	76.632028
+386	Thiruvananthapuram Padmanabhaswamy Temple	Thiruvananthapuram	Kerala	Iconic Hindu temple with rich history	8.482100	76.947100
+387	Kovalam Beach	Kovalam	Kerala	Famous crescent-shaped beach	8.414500	76.978400
+388	Varkala Cliff	Varkala	Kerala	Scenic cliff-top beach town	8.724100	76.716091
+389	Bekal Beach	Bekal	Kerala	Beach next to Bekal Fort	12.498000	74.990000
+390	Naval School of Krishna	Kochi	Kerala	Historic residence associated with Shankaracharya	9.980000	76.300000
+391	Poovar Island	Poovar	Kerala	Estuary island with sunset cruises	8.439600	77.133300
+392	Cherai Beach	Cochin	Kerala	Beach near Kochi with backwater lagoon	10.195000	76.169000
+393	Mattancherry Palace	Kochi	Kerala	Dutch palace built by Portuguese and Dutch	9.965300	76.237000
+394	Jewish Synagogue	Kochi	Kerala	One of oldest active synagogues in Commonwealth	9.966000	76.242000
+395	Valara Waterfalls	Idukki	Kerala	Highway waterfall with easy access	10.066700	76.843300
+396	Meenmutty Falls	Wayanad	Kerala	Three-tiered waterfall in forest	11.595900	76.155200
+397	Silent Valley National Park	Palakkad	Kerala	Pristine evergreen forest reserve	11.047200	76.324600
+398	Periyar Lake	Thekkady	Kerala	Man-made lake inside Periyar tiger reserve	9.603100	77.117400
+399	Thusharagiri Falls	Kodenchery	Kerala	Multi-tiered scenic waterfall	11.267300	76.151300
+400	Alappuzha Lighthouse	Alappuzha	Kerala	Waterside lighthouse next to beach	9.498500	76.336000
+401	Munroe Island	Alappuzha	Kerala	Islet at confluence of Kallada & Ashtamudi backwaters	9.272322	76.466371
+402	Ponmudi	Thiruvananthapuram	Kerala	Hill station with tea gardens	8.741000	77.017000
+403	Veli Tourist Village	Thiruvananthapuram	Kerala	Beach lagoon park with toy train	8.484000	76.931000
+404	Karunagappally Beach	Karunagappally	Kerala	Quiet beach with local fishing community	9.006000	76.523000
+405	Bekal Bay Lighthouse	Bekal	Kerala	Lighthouse near Bekal Fort	12.498500	74.991000
+406	Kozhikode Beach	Kozhikode	Kerala	Popular city beach with food stalls	11.246200	75.780000
+407	Silent Valley Viewpoint	Palakkad	Kerala	Lookout deck with forest views	11.047500	76.325000
+408	Gateway of India	Mumbai	Maharashtra	Iconic arch monument by the sea	18.922000	72.834700
+409	Elephanta Caves	Mumbai	Maharashtra	UNESCO rock-cut temples on Elephanta Island	18.963200	72.931800
+410	Marine Drive	Mumbai	Maharashtra	Scenic seaside boulevard known as Queen’s Necklace	18.943100	72.823900
+411	Chhatrapati Shivaji Terminus	Mumbai	Maharashtra	Historic railway station UNESCO site	18.940200	72.835300
+412	Haji Ali Dargah	Mumbai	Maharashtra	Iconic mosque on an islet	18.982500	72.812900
+413	Ajanta Caves	Aurangabad	Maharashtra	UNESCO Buddhist cave complex	20.553000	75.703300
+414	Ellora Caves	Aurangabad	Maharashtra	UNESCO rock-cut temples from multiple religions	20.026600	75.179500
+415	Bibi Ka Maqbara	Aurangabad	Maharashtra	Marble mausoleum, “Taj of the Deccan”	19.884000	75.366000
+416	Shirdi Saibaba Temple	Shirdi	Maharashtra	Major pilgrimage site	19.766200	74.477700
+417	Trimbakeshwar Temple	Trimbak	Maharashtra	One of 12 Jyotirlingas	20.091000	73.567000
+418	Nasik Wineries	Nashik	Maharashtra	Wine tourism region with vineyards	19.997500	73.789800
+419	Pandharpur	Pandharpur	Maharashtra	Famous Vithoba pilgrimage town	17.677000	75.055000
+420	Tapola (Mini Kashmir)	Tapola	Maharashtra	Shivsagar Lake scenic locale	17.075000	73.958000
+421	Mahabaleshwar	Mahabaleshwar	Maharashtra	Hill station famed for strawberries & viewpoints	17.923000	73.657000
+422	Pratapgad Fort	Mahabaleshwar	Maharashtra	Historic fort with scenic trails	17.925000	73.589000
+423	Matheran	Matheran	Maharashtra	Car-free hill station near Mumbai	18.990000	73.267000
+424	Lonavala	Lonavala	Maharashtra	Hill station and weekend getaway	18.755000	73.404200
+425	Khandala	Khandala	Maharashtra	Twin hill station next to Lonavala	18.743000	73.407000
+426	Bhaja Caves	Lonavala	Maharashtra	Ancient Buddhist rock-cut caves	18.743000	73.436000
+427	Karla Caves	Karli	Maharashtra	Rock-cut Buddhist shrines	18.042500	73.842000
+428	Alibaug Beach	Alibaug	Maharashtra	Coastal beach destination near Mumbai port	18.637900	72.875800
+429	Murud-Janjira Fort	Murud	Maharashtra	Island fort off the Alibaug coast	18.295000	72.965000
+430	Tadoba Andhari Tiger Reserve	Tadoba	Maharashtra	Renowned tiger sanctuary	20.106700	79.580300
+431	Chandrabhaga Beach	Konkan	Maharashtra	Scenic beach near Chandipur	17.110000	73.231000
+432	Ganpatipule	Ratnagiri	Maharashtra	Temple town and beach	16.636300	73.336100
+433	Ajinkyatara Fort	Satara	Maharashtra	Hill fort overlooking Satara city	17.683000	73.993000
+434	Siddhivinayak Temple	Mumbai	Maharashtra	Famous Ganesh temple	19.017090	72.849250
+435	Shreeram Maharaj Temple	Ramtek	Maharashtra	Hill temple with mythological significance	26.428000	79.242000
+436	Bhimashankar Temple	Pune	Maharashtra	Jyotirlinga shrine in dense forest	19.051000	73.600000
+437	Murudeshwar Beach	Murudeshwar	Maharashtra	Beach with huge Shiva statue	14.094000	74.522800
+438	Bhandardara Lake	Ahmednagar	Maharashtra	Dam lake in Western Ghats	19.607000	73.647000
+439	Rajmachi Fort	Lonavala	Maharashtra	Twin forts accessible via trekking	18.688000	73.409000
+440	Lonar Crater Lake	Lonar	Maharashtra	Impact crater lake of volcanic origin	19.985800	76.510000
+441	Bhandup Lake	Mumbai	Maharashtra	Urban reservoir with green surroundings	19.125000	72.904000
+442	Chandrapur Tadoba	Chandrapur	Maharashtra	Dry deciduous forest tiger reserve	20.094000	79.583000
+443	Gharapuri (Elephanta Island)	Mumbai	Maharashtra	Island temple site UNESCO	18.963200	72.931800
+444	Lalgun, Waki Lake	Satara	Maharashtra	Scenic reservoir area	18.088000	74.050000
+445	Devrai Art Village	Alibaug	Maharashtra	Cultural centre promoting eco-art	18.611000	72.887000
+446	Bangaram Island	Lakshadweep	Lakshadweep	Uninhabited coral island with crystal waters	10.503900	72.333600
+447	Agatti Island	Agatti	Lakshadweep	Island with runway and lagoon jetty	10.822000	72.173000
+448	Kadmat Island	Lakshadweep	Lakshadweep	Coral atoll with scuba diving spots	10.919000	72.636000
+449	Kavaratti Beach	Kavaratti	Lakshadweep	Capital island with mosque and lighthouse	10.566000	72.646000
+450	Minicoy Island	Lakshadweep	Lakshadweep	Southernmost coral island with lighthouse	8.277000	73.050000
+451	Kalpeni Island	Lakshadweep	Lakshadweep	Ring-shaped island with beaches	10.193000	72.654000
+452	Andrott Island	Lakshadweep	Lakshadweep	Historical island with mosque ruins	10.738000	72.219000
+453	Chetlat Island	Lakshadweep	Lakshadweep	Northern coral islet with marine life	11.000000	72.380000
+454	Amini Island	Lakshadweep	Lakshadweep	Coral island known for weaving traditions	11.138000	72.634000
+455	Thinnakara Island	Lakshadweep	Lakshadweep	Private resort islet with lagoon	10.563000	72.634000
+456	Suheli Island	Lakshadweep	Lakshadweep	Uninhabited coral reef atoll	10.100000	72.600000
+457	Pitti Bird Sanctuary	Lakshadweep	Lakshadweep	Tiny islet sanctuary for seabirds	11.196000	72.803000
+458	Short Island	Lakshadweep	Lakshadweep	Small islet near Bangaram lagoon	10.501000	72.338000
+459	Cheriyam Island	Lakshadweep	Lakshadweep	Coral islet in Bangaram atoll	10.517000	72.342000
+460	Parali 1 Island	Lakshadweep	Lakshadweep	Part of coral cay group	10.541000	72.330000
+461	Parali 2 Island	Lakshadweep	Lakshadweep	Sister islet to Parali 1	10.546000	72.328000
+462	Parali 3 Island	Lakshadweep	Lakshadweep	Includes beach and lagoon	10.550000	72.325000
+463	Suhelipad Island	Lakshadweep	Lakshadweep	Very small atoll fragment	10.536000	72.327000
+464	Viringili Island	Lakshadweep	Lakshadweep	Tiny island near Kavaratti	10.550000	72.655000
+465	Maliku Atoll	Minicoy	Lakshadweep	Local name for Minicoy coral formation	8.280000	73.053000
+466	Cherrapunji	East Khasi Hills	Meghalaya	One of the wettest places on Earth; waterfalls & caves	25.284900	91.725600
+467	Mawsynram	East Khasi Hills	Meghalaya	Wettest place on Earth; living root bridges nearby	25.301800	91.581000
+468	Living Root Bridge	Cherrapunji	Meghalaya	Cementless bridge made from tree roots	25.289600	91.724700
+469	Nohkalikai Falls	Cherrapunji	Meghalaya	India’s tallest plunge waterfall	25.290800	91.720300
+470	Elephant Falls	Shillong	Meghalaya	Tiered waterfall accessible near Shillong	25.524400	91.877900
+471	Shillong Peak	Shillong	Meghalaya	Highest point in Shillong with panoramic views	25.624400	91.871100
+472	Umiam Lake	Shillong	Meghalaya	Scenic artificial lake, boating and hill views	25.617700	91.871900
+473	Mawlynnong	East Khasi Hills	Meghalaya	Asia’s cleanest village, living root attractions	25.146300	91.729300
+474	Krang Suri Falls	Mawkyrwat	Meghalaya	Honey-coloured waterfall in forest corridors	25.152900	91.749900
+475	Dawki	West Jaintia Hills	Meghalaya	Border town with crystal-clear Umngot river	25.268600	92.017000
+476	Double Decker Living Root Bridge	Mawlynnong	Meghalaya	Root bridge stacked in two levels	25.144200	91.730000
+477	Jaintia Hills Caves	Khasi & Jaintia Hills	Meghalaya	Extensive limestone cave systems	25.500000	92.100000
+478	Bangla Sahib Monolith	Shillong	Meghalaya	Natural limestone structure atop hill ridge	25.551000	91.876000
+479	Ward's Lake	Shillong	Meghalaya	Popular artificial lake and garden in Shillong	25.575300	91.883600
+480	Lady Hydari Park	Shillong	Meghalaya	Botanical garden with zoo and deer park	25.574900	91.878900
+481	Elephant Falls Viewpoint	Shillong	Meghalaya	Platform overlooking Elephant Falls	25.524600	91.877500
+482	Air Force Museum	Shillong	Meghalaya	Exhibits on WWII and air operations in NE	25.555600	91.878600
+483	Police Bazaar	Shillong	Meghalaya	Vibrant shopping and food hub	25.572300	91.879000
+484	Don Bosco Museum	Shillong	Meghalaya	Cultural & anthropological exhibits of NE tribes	25.574400	91.885600
+485	Sweet Falls	Cherrapunji	Meghalaya	Hidden waterfall off tourist path	25.283000	91.722000
+486	Loktak Lake	Moirang	Manipur	Largest freshwater lake with floating phumdis	24.500600	93.879300
+487	Keibul Lamjao National Park	Moirang	Manipur	World’s only floating national park	24.583300	93.902500
+488	Shirui Lily Sanctuary	Ukhrul	Manipur	Habitat of rare Shirui lily (state flower)	24.616600	94.365800
+489	Khonghampat Orchidarium	Imphal	Manipur	Orchid conservation and display centre	24.804900	93.947300
+490	Imphal War Cemetery	Imphal	Manipur	Memorial to WWII soldiers	24.799000	93.937200
+491	Kangla Fort	Imphal	Manipur	Ancient palace & seat of Manipur royalty	24.809600	93.936800
+492	Ima Keithel (Women’s Market)	Imphal	Manipur	Largest all-women-run market in Asia	24.817300	93.936500
+493	Shree Govindajee Temple	Imphal	Manipur	Major historic Vaishnavite temple	24.799200	93.935900
+494	Yangoupokpi-Lokchao Wildlife Sanctuary	Chandel	Manipur	Biodiverse wildlife area bordering Myanmar	24.377200	93.813600
+495	Mount Koubru	Manipur	Manipur	Sacred mountain of Meitei mythology	24.975000	93.892200
+496	Thoubal Phanjoubam Waterfall	Thoubal	Manipur	Scenic waterfall in tribal region	24.510000	93.936000
+497	Tamenglong	Tamenglong	Manipur	Hilly rugged region with remote tribal villages	24.800000	93.922000
+498	Hapta Kangjeibung Polo Ground	Imphal	Manipur	One of world’s oldest polo grounds	24.804000	93.937000
+499	Sekmai Wetland	Imphal	Manipur	Freshwater wetland with migratory birds	24.820000	93.924000
+500	Shija Hospital	Imphal	Manipur	Historic hospital landmark	24.828000	93.959000
+501	Waithou Lake	Kakching	Manipur	Pilgrimage lake with hill backdrop	24.427600	93.927200
+502	Gupteswar Temple	Churachandpur	Manipur	Natural cave temple dedicated to Shiva	24.333300	93.333300
+503	Iril River Tourist Spot	Imphal	Manipur	Scenic spot for picnics and fishing	24.817000	93.900000
+504	Yairipok Tourist Spot	Thoubal	Manipur	Popular riverfront recreational area	24.549000	93.973000
+505	Phaibung Village	Senapati	Manipur	Traditional tribal village in hills	25.006000	94.119000
+506	Aizawl	Aizawl	Mizoram	Capital city atop ridge with panoramic views	23.727100	92.717600
+507	Tam Dil Lake	Serchhip	Mizoram	Serene lake and scenic recreational site	23.458000	92.791000
+508	Vantawng Falls	Serchhip	Mizoram	Highest waterfall in the state	23.483300	92.928600
+509	Reiek Heritage Village	Aizawl	Mizoram	Cultural village with model traditional Mizo huts	23.727800	92.688300
+510	Mizoram State Museum	Aizawl	Mizoram	Museum on tribal heritage and history	23.727600	92.718000
+511	Durtlang Hills	Aizawl	Mizoram	Panoramic viewpoints over the city	23.750000	92.700000
+512	Solomon’s Temple	Aizawl	Mizoram	Christian church with distinctive Gandharan-style design	23.720200	92.714000
+513	Hakhal Wildlife Sanctuary	Aizawl	Mizoram	Protected reserve for tropical forest fauna	23.794500	92.851800
+514	Saitual Peak	Aizawl	Mizoram	Hilltop with temple and sunset views	23.500000	92.833300
+515	Vaphai Lengteng Wildlife Sanctuary	Champhai	Mizoram	Forest sanctuary near Myanmar border	23.018600	93.233700
+516	Palak Wildlife Sanctuary	Lawngtlai	Mizoram	Lowland sanctuary with diverse birdlife	22.450000	92.700000
+517	Lunglei Eco Park	Lunglei	Mizoram	Green public park with viewpoints	22.880000	92.750000
+518	Chhinga Veng Park	Aizawl	Mizoram	Recreational lakeside park in city	23.728500	92.717800
+519	Hmuifang Tlang	Aizawl	Mizoram	Forest-covered sacred mountain trek	23.542000	92.837000
+520	Lengpui Airport	Aizawl	Mizoram	State’s domestic airport amidst hills	23.833700	92.707400
+521	Mamit Church	Mamit	Mizoram	Historic church in west Mizoram	23.463000	92.507000
+522	Khawnglung Wildlife Sanctuary	Serchhip	Mizoram	Biodiversity-rich forest reserve	23.069200	92.803400
+523	Neihbawih Peak	Vairengte	Mizoram	Historic hill with WWII ruins	24.150000	92.650000
+524	Kohima War Cemetery	Kohima	Nagaland	WWII cemetery dedicated to Battle of Kohima	25.666900	94.112000
+525	Dzukou Valley	Phek	Nagaland	Alpine valley with seasonal flowers and camping	25.661200	94.147300
+526	Khonoma Village	Khonoma	Nagaland	Green village and first community-based conservation reserve	25.613300	94.219700
+527	Meghalaya Viewpoint	Kohima	Nagaland	Panorama of Kohima cityscape	25.658500	94.112500
+528	Nagaland State Museum	Kohima	Nagaland	Displays tribal art and artifacts	25.673500	94.122200
+529	Shilloi Lake	Tuensang	Nagaland	Sacred tribal lake on forested hills	26.143200	94.824800
+530	Intanki Wildlife Sanctuary	Kohima	Nagaland	Protected area with tropical forest fauna	25.688700	94.127100
+531	Tuophema Village	Chümoukedima	Nagaland	Leaf-shaped church and heritage village	25.592000	93.752500
+532	Chumukedima Garden	Chümoukedima	Nagaland	Well-maintained local garden space	25.576100	93.672200
+533	Sukapha Samashan	Dimapur	Nagaland	War memorial dedicated to Ahom king Sukapha	25.912600	93.715600
+534	Dimapur Zoo	Dimapur	Nagaland	City zoo and wildlife spot	25.916900	93.731100
+535	Termalam Therapeutic Sulphur Springs	Chumukedima	Nagaland	Hot springs believed to have health benefits	25.639900	93.713800
+536	Solo Village	Wokha	Nagaland	Heritage village with cultural significance	26.120000	94.109000
+537	Khuzama Village	Kohima	Nagaland	Traditional village showcasing Angami Naga life	25.645000	94.112000
+538	Nagaland Zoological Park	Dimapur	Nagaland	Large forested zoo with native species	25.910000	93.734000
+539	Dhulikhel Viewpoint	Kohima	Nagaland	Hilltop spot with panoramic views	25.683000	94.105000
+540	Yimyu Viewpoint	Chümoukedima	Nagaland	Scenic overlook near Kohima highway	25.618000	93.762000
+541	Shilloi Lake Viewpoint	Tuensang	Nagaland	Vista point above Shilloi Lake	26.145000	94.825000
+542	St. Joseph Cathedral	Kohima	Nagaland	Historic cathedral in capital city	25.666200	94.119800
+543	Lady Keane College Grounds	Shillong	Nagaland	Gardens & sport grounds in national-level college	25.573600	95.987300
+544	Jagannath Temple	Puri	Odisha	Famous Jagannath temple and Rath Yatra site	19.813500	85.831200
+545	Konark Sun Temple	Konark	Odisha	UNESCO Sun Temple with chariot architecture	19.887200	86.094000
+546	Lingaraj Temple	Bhubaneswar	Odisha	Ancient 11th‑century Shaivite temple	20.268300	85.839000
+547	Chilika Lake	Chilika	Odisha	Asia’s largest brackish water lagoon	19.673600	85.312000
+548	Udayagiri & Khandagiri	Bhubaneswar	Odisha	Rock-cut Jain caves dating to 2nd century BCE	20.282500	85.799500
+549	Dhauli Shanti Stupa	Bhubaneswar	Odisha	Peace pagoda on Buddhist historical site	20.227000	85.828500
+550	Raghurajpur Crafts Village	Puri	Odisha	Heritage artisan village of Pattachitra painters	19.836900	85.812000
+551	Nandankanan Zoo	Bhubaneswar	Odisha	Zoölogical park & botanical garden	20.215000	85.834500
+552	Surya Mandap at Konark Beach	Konark	Odisha	Beach near Sun Temple with scenic sunsets	19.899000	86.096000
+553	Barabati Fort	Cuttack	Odisha	13th‑century fort and archaeological site	20.462300	85.880000
+554	Mukutmanipur Beach	Puri	Odisha	Sandy beach near Puri coast	19.812000	85.837000
+555	Brahmeswar Temple	Bhadrak	Odisha	Ancient temple with intricate carvings	20.996700	86.242900
+556	Hirakud Dam	Sambalpur	Odisha	One of India’s longest earthen dams	21.503800	83.836500
+557	Khandadhar Falls	Sundargarh	Odisha	Tall waterfall in dense forest	22.155000	84.658000
+558	Debrigarh Wildlife Sanctuary	Bargarh	Odisha	Forest reserve and tribal community site	21.317100	83.685400
+559	Daringbadi	Kandhamal	Odisha	“Kashmir of Odisha” hill station	20.450000	84.217900
+560	Similipal National Park	Mayurbhanj	Odisha	Biosphere reserve with wildlife	21.591000	86.386700
+561	Satkosia Gorge	Angul	Odisha	River gorge & wildlife sanctuary	20.624000	84.860000
+562	Rajarani Temple	Bhubaneswar	Odisha	11th‑century temple built of red sandstone	20.284500	85.837100
+563	Sudarshan Crafts Park	Bhubaneswar	Odisha	Showcase village for Odisha crafts	20.307000	85.819000
+564	Chandipur Beach	Balasore	Odisha	Tidal beach where sea recedes remarkably	21.450000	86.899000
+565	Ugratara Temple	Sambalpur	Odisha	Important tantric temple by river	21.481500	83.970100
+566	Rameshwar Temple	Talcher	Odisha	Historic temple complex in old town	20.633300	86.393300
+567	Bhitarkanika National Park	Kendrapara	Odisha	Mangrove forest and saltwater crocodiles	20.680000	86.630000
+568	Mayurbhanj Palace	Baripada	Odisha	Royal residence of Mayurbhanj princely state	21.483300	86.866700
+569	Zero Point at Daringbadi	Daringbadi	Odisha	Tourist lookout point in hills	20.440000	84.216000
+570	Devkund Waterfall	Keonjhar	Odisha	Hidden forest waterfall trek site	21.600000	86.283000
+571	Ananta Vasudev Temple	Bhadrak	Odisha	Ancient temple dedicated to Lord Vishnu	21.065000	86.330000
+572	Old Town Heritage Walk	Bhubaneswar	Odisha	Walking route showcasing temples and architecture	20.270000	85.840000
+573	Golden Temple	Amritsar	Punjab	Iconic Sikh gurdwara with gold-plated exterior	31.620000	74.876500
+574	Jallianwala Bagh	Amritsar	Punjab	Historic site of 1919 massacre	31.633000	74.872300
+575	Wagah Border	Amritsar	Punjab	Daily Indian–Pakistani flag lowering ceremony	31.618700	74.578800
+576	Partition Museum	Amritsar	Punjab	Museum dedicated to India’s Partition history	31.628000	74.874500
+577	Maharaja Ranjit Singh Museum	Amritsar	Punjab	Museum housed in summer palace	31.621400	74.859400
+578	Durgiana Temple	Amritsar	Punjab	Hindu temple resembling Golden Temple	31.622200	74.867000
+579	Qila Mubarak	Patiala	Punjab	Historic fort & palace complex	30.329600	76.389500
+580	Sheikh Chilli’s Tomb	Patiala	Punjab	Mausoleum of Mughal scholar Sheikh Chilli	30.335600	76.400100
+581	Baradari Gardens	Patiala	Punjab	18th‑century Mughal garden	30.336200	76.391000
+582	Rangla Punjab Haveli	Patiala	Punjab	Cultural village experience	30.338500	76.393000
+583	Rock Garden	Chandigarh	Punjab	Sculptural garden of recycled materials	30.733300	76.779400
+584	Sukhna Lake	Chandigarh	Punjab	Reservoir with walkways and boating	30.734600	76.773000
+585	Capitol Complex	Chandigarh	Punjab	Le Corbusier‑designed government buildings	30.741500	76.768400
+586	Pinjore Gardens	Panchkula	Punjab	Baroque‑style Mughal gardens in foothills	30.910000	76.868000
+587	Shri Anandpur Sahib	Anandpur Sahib	Punjab	Sacred Sikh pilgrimage site and Hola Mohalla fair	31.219000	76.500000
+588	Damdama Lake	Gurgaon	Punjab	Boatpoints & leisure lake near NCR	28.406900	77.046000
+589	Kila Raipur Rural Games Village	Ludhiana	Punjab	Spectacle of rural sports festival	30.887000	75.845000
+590	Ranjit Sagar Dam	Pathankot	Punjab	Reservoir on Ravi River	32.235000	75.768000
+591	Gurudwara Manji Sahib	Chheharta Sahib	Punjab	Historic Sikh gurdwara on canal	31.637000	74.776000
+592	Anand Wildlife Sanctuary	Patiala	Punjab	Protected forest reserve	30.246000	76.553000
+593	Harike Wetland	Firozpur	Punjab	Important bird area & wetland	31.289400	74.523300
+594	Kiratpur Sahib	Rupnagar	Punjab	Town on Sutlej with historic gurdwaras	31.215000	76.390000
+595	Moti Bagh Palace	Patiala	Punjab	Heritage palace during royalty	30.329600	76.397900
+596	Barnala Gurudwara	Barnala	Punjab	Local gurudwara in religious circuit	30.379000	75.229000
+597	Vir Sikh Temple	Chandigarh	Punjab	Gurudwara near Sukhna Lake	30.739000	76.772000
+598	Talwandi Sabo	Bathinda	Punjab	Sikh pilgrim town on Ghaggar River	30.197000	74.983000
+599	Jhaja Sahib Gurudwara	Moga	Punjab	Historic Sikh temple of Baba Bhaniara	30.817000	75.168000
+600	Fateh burj	Mohali	Punjab	Monument with tallest victory tower	30.736000	76.707000
+601	Chimnabai Falls	Chandigarh	Punjab	Hill falls near Chandigarh	30.740000	76.828000
+602	Kushalnagar Kabir Chaura	Hoshiarpur	Punjab	Pilgrimage site of Kabir panth	31.516000	75.914000
+603	Naina Devi Temple	Una	Punjab	Goddess temple atop hill in Haridwar	31.472000	76.388000
+604	Bhakra Dam	Bilaspur	Punjab	One of India’s tallest gravity dams	31.820000	76.357000
+605	Bhima Devi Temple	Kurukshetra	Punjab	Ancient temple near historic city	30.004000	76.854000
+606	Muktsar Sahib	Sri Muktsar Sahib	Punjab	Historic Sikh town of battlefields	30.470000	74.520000
+607	Rose Garden	Chandigarh	Chandigarh	Largest rose garden in Asia	30.722500	76.776200
+608	Rock Garden	Chandigarh	Chandigarh	Sculptural garden of recycled materials	30.733300	76.779400
+609	Sukhna Lake	Chandigarh	Chandigarh	Leisure lake with stroll paths and boating	30.734600	76.773000
+610	Capitol Complex	Chandigarh	Chandigarh	Le Corbusier’s legislative buildings	30.741500	76.768400
+611	Japanese Garden	Chandigarh	Chandigarh	Themed garden with pagoda and waterfall	30.735000	76.791000
+612	Chhatbir Zoo	Chandigarh	Chandigarh	Large zoo on Zirakpur road	30.722000	76.811000
+613	Pinjore Gardens	Chandigarh	Chandigarh	Baroque Mughal garden nearby	30.910000	76.868000
+614	Leisure Valley	Chandigarh	Chandigarh	Tree-lined promenade for events	30.731000	76.786000
+615	Government Museum	Chandigarh	Chandigarh	Museum with Gandharan art & sculptures	30.743000	76.774000
+616	Sector 17 Plaza	Chandigarh	Chandigarh	Major shopping and entertainment hub	30.733000	76.779000
+617	ISBT Sector 43	Chandigarh	Chandigarh	Interstate bus terminal of region	30.743400	76.792000
+618	Mohali Cricket Stadium	Chandigarh	Chandigarh	International cricket ground	30.704600	76.717900
+619	Terraced Garden	Chandigarh	Chandigarh	Flower gardens near leisure valley	30.737000	76.785000
+620	Garden of Fragrance	Chandigarh	Chandigarh	Rose & herbal-flower garden	30.690500	76.790000
+621	Le Corbusier Centre	Chandigarh	Chandigarh	Museum dedicated to city’s planner	30.736000	76.768000
+622	Sri Aurobindo Ashram	Puducherry	Puducherry	Spiritual community foundation site	11.934600	79.828300
+623	Promenade Beach	Puducherry	Puducherry	Seaside walk lined with cafes & statues	11.934100	79.838600
+624	Auroville	Auroville	Puducherry	International spiritual township	12.005600	79.810000
+625	Botanical Garden	Puducherry	Puducherry	Historic garden with exotic plant species	11.931000	79.846000
+626	Paradise Beach	Puducherry	Puducherry	Island beach accessible by boat	11.947000	79.765000
+627	French Quarter	Puducherry	Puducherry	Colonial-era town with colored villas	11.935000	79.829000
+628	Auroville Beach	Auroville	Puducherry	Serene beach of the township	12.005000	79.842000
+629	Manakula Vinayagar Temple	Puducherry	Puducherry	Ancient Ganesha temple near beach	11.916900	79.830000
+630	Rock Beach	Puducherry	Puducherry	Northern beach stretch with promenade	11.933000	79.813000
+631	Duplex Beach	Puducherry	Puducherry	Smaller sandy beach near Promenade	11.930000	79.813000
+632	Arikamedu Archaeological Site	Puducherry	Puducherry	Roman trade port ruins	11.877300	79.822000
+633	Ousteri Lake	Ousteri	Puducherry	Freshwater lake and bird sanctuary	11.914000	79.758000
+634	Chunnambar Boat House	Chunnambar	Puducherry	Backwater boating & water sports	11.874500	79.838000
+635	Serenity Beach	Puducherry	Puducherry	Quiet surf beach north of Promenade	11.957000	79.836000
+636	Karaikal Beach	Karaikal	Puducherry	Calm beach with lighthouse	10.920000	79.840000
+637	Thiruvetkalam Beach	Puducherry	Puducherry	Tranquil seashore south of town	11.905000	79.820000
+638	Muthukuda Temple	Puducherry	Puducherry	Ancient temple with local worship	11.918000	79.835000
+639	Villianur Temple	Villianur	Puducherry	Historic Dravidian-style temple	12.016000	79.782000
+640	Gangtok	Gangtok	Sikkim	State capital nestled in the Himalayas	27.338900	88.606500
+641	Rumtek Monastery	Gangtok	Sikkim	Major Tibetan Buddhist monastery	27.365900	88.607400
+642	Tsomgo (Changu) Lake	Gangtok	Sikkim	Glacial alpine lake, often frozen	27.337000	88.638000
+643	Baba Harbhajan Singh Mandir	Gangtok	Sikkim	Memorial temple at Nathula Highway	27.317000	88.654000
+644	Nathula Pass	Nathula	Sikkim	Mountain pass on Indo‑China border	27.321000	88.855000
+645	Pelling	Pelling	Sikkim	Hill town with views of Kanchenjunga	27.105800	88.125400
+646	Pemayangtse Monastery	Pelling	Sikkim	Important Buddhist monastery	27.115400	88.123400
+647	Yuksom	Yuksom	Sikkim	Gateway to hiking trails to Kanchenjunga	27.320900	88.203900
+648	Khecheopalri Lake	Khecheopalri	Sikkim	Sacred lake revered by Buddhists	27.312200	88.267700
+649	Namchi	Namchi	Sikkim	Known for giant Shiva statue and gardens	27.166700	88.324600
+650	Ravangla	Ravangla	Sikkim	Hill station with Buddha park	27.244000	88.345000
+651	Tarku Viewpoint	Ravangla	Sikkim	Sunrise views over mountain peaks	27.245200	88.345800
+652	Dzongri Trek	Geyzing	Sikkim	Popular trekking route in Himalayas	27.358900	88.375000
+653	Zuluk	Zuluk	Sikkim	Historic Silk Route hamlet	27.174900	88.711600
+654	Kupup Lake	Kupup	Sikkim	High-altitude lake on Old Silk Road	27.343500	88.733000
+655	Phodong Monastery	Phodong	Sikkim	Ancient Buddhist monastery	27.374000	88.483000
+656	Tashiding Monastery	Tashiding	Sikkim	Holy monastery with scenic valley views	27.300000	88.470000
+657	Rabdentse Ruins	Namchi	Sikkim	Remains of old Sikkimese capital	27.312500	88.327800
+658	Pemako Sanctuary	West Sikkim	Sikkim	Remote biodiversity hotspot	27.025000	88.590000
+659	Singalila National Park	West Sikkim	Sikkim	High-altitude park known for red pandas	27.100000	88.123000
+660	Charminar	Hyderabad	Telangana	Iconic 16th‑century mosque and monument	17.361600	78.474700
+661	Golconda Fort	Hyderabad	Telangana	Historic fortress with light & sound show	17.383300	78.401100
+662	Hussain Sagar Lake	Hyderabad	Telangana	Man-made lake with Buddha statue island	17.423900	78.473800
+663	Salar Jung Museum	Hyderabad	Telangana	Major museum of art and antiquities	17.371500	78.480400
+664	Ramoji Film City	Hyderabad	Telangana	World’s largest film studio complex	17.254400	78.428300
+665	Chowmahalla Palace	Hyderabad	Telangana	Former Nizam palace complex	17.361600	78.479500
+666	Mecca Masjid	Hyderabad	Telangana	One of India’s largest mosques	17.361500	78.478600
+667	Qutb Shahi Tombs	Hyderabad	Telangana	Royal cemetery of Golconda dynasty	17.379700	78.397100
+668	Birla Mandir	Hyderabad	Telangana	Marble temple overlooking the city	17.410700	78.469000
+669	Nehru Zoological Park	Hyderabad	Telangana	Large safari and zoo complex	17.365600	78.483600
+670	Chilkur Balaji Temple	Hyderabad	Telangana	Noted “Visa temple” near Osman Sagar	17.290600	78.329400
+671	Osman Sagar	Hyderabad	Telangana	Reservoir also called Gandipet Lake	17.333300	78.381500
+672	Shilparamam	Hyderabad	Telangana	Cultural village showcasing crafts	17.332200	78.456900
+673	Bhongir Fort	Bhongir	Telangana	Hill fort with panoramic views	17.515800	78.888800
+674	Warangal Fort	Warangal	Telangana	Medieval Kakatiya fort ruins	17.983400	79.601000
+675	Ramappa Temple	Palampet	Telangana	UNESCO Kakatiya Temple of Thousand Pillars	18.366900	79.563000
+676	Thousand Pillar Temple	Hanamakonda	Telangana	Medieval Hindu temple	18.024800	79.577600
+677	Bhadrakali Temple	Warangal	Telangana	Temple atop hill with scenic views	17.968000	79.595000
+678	Laknavaram Lake	Warangal	Telangana	Scenic lake with hanging bridge	18.016900	79.895400
+679	Kakatiya Musical Garden	Warangal	Telangana	Gardens with musical fountain shows	17.968300	79.586800
+680	Kompally Lake	Hyderabad	Telangana	Lakeside urban green space	17.525300	78.524600
+681	Paigah Tombs	Hyderabad	Telangana	Finely sculpted tomb complex	17.383800	78.494200
+682	Falaknuma Palace	Hyderabad	Telangana	Palace-turned-hotel with city views	17.372000	78.497100
+683	Meenakshi Patnam	Hyderabad	Telangana	Ancient village turned heritage site	17.400000	78.450000
+684	Neerajaa Rock Gardens	Warangal	Telangana	Sculpture garden with water features	18.000000	79.583000
+685	Keesaragutta Temple	Hyderabad	Telangana	Ancient Siva temple on hill	17.638000	78.570000
+686	Shamirpet Lake	Hyderabad	Telangana	Pleasure lake with island park	17.636000	78.545000
+687	Nizamsagar Reservoir	Nizamabad	Telangana	Large irrigation lake with boat rides	18.380000	78.100000
+688	Basara Saraswathi Temple	Basara	Telangana	Famous temple of goddess Saraswati	17.770300	78.281900
+689	Kundavada Botanical Gardens	Warangal	Telangana	Urban botanical garden near fort	17.986000	79.576000
+690	Govindarajaswamy Temple	Nalgonda	Telangana	Village temple with Dravidian architecture	17.002000	79.201000
+691	Medak Cathedral	Medak	Telangana	Largest church in South India	18.058000	78.267000
+692	Alampur Navabrahma Temples	Alampur	Telangana	Group of seven early Chalukyan temples	16.814000	78.676000
+693	Ujjayanta Palace	Agartala	Tripura	Former state royal palace, now museum	23.836000	91.281200
+694	Neermahal	Udaipur	Tripura	Water palace in Rudrasagar Lake	23.509000	91.442000
+695	Tripura Sundari Temple	Udaipur	Tripura	One of the 51 Shakti Peethas	23.488300	91.462800
+696	Jagannath Temple	Agartala	Tripura	Temple of Lord Jagannath	23.836400	91.286000
+697	Jampui Hills	Kanchanpur	Tripura	Scenic hill station in North Tripura	24.157000	91.753000
+698	Pilak Heritage Site	Amarpur	Tripura	Ancient Buddhist and Hindu ruins	23.636000	91.326000
+699	Sepahijala Wildlife Sanctuary	Sonamura	Tripura	Wildlife park near Agartala	23.665000	91.327000
+700	Gumti Wildlife Sanctuary	Udaipur	Tripura	Sanctuary around reservoir	23.615600	91.433100
+701	Rajnagar Beach	Rajnagar	Tripura	Sandy riverbank beach	23.517200	91.407400
+702	Unakoti	Unakoti	Tripura	Rock-cut sculptures of gods and deities	24.255000	91.717000
+703	Kamalasagar Lake	Kanchanpur	Tripura	Historical tank and recreation spot	24.245300	91.767600
+704	Chabimura	Belonia	Tripura	Huge rock carvings on gorge	23.008000	91.445000
+705	Dasarath Deb Memorial Hall	Agartala	Tripura	State cultural museum	23.831000	91.279000
+706	Boxanagar Palace	Agartala	Tripura	Royal palace with manicured gardens	23.831500	91.270000
+707	Ambassa Church	Dhalai	Tripura	Historic colonial-era church	23.831900	91.953000
+708	Marina Beach	Chennai	Tamil Nadu	Longest urban beach in India	13.048000	80.282000
+709	Kapaleeshwarar Temple	Chennai	Tamil Nadu	Historic Dravidian-style temple	13.045200	80.267500
+710	Fort St. George	Chennai	Tamil Nadu	First British fortress in India	13.082700	80.275600
+711	Santhome Cathedral	Chennai	Tamil Nadu	Gothic cathedral built over St. Thomas grave	13.044800	80.268400
+712	Ooty Botanical Gardens	Udhagamandalam	Tamil Nadu	Extensive hill gardens	11.411000	76.703000
+713	Nilgiri Mountain Railway	Udhagamandalam	Tamil Nadu	Heritage toy train route	11.417200	76.695800
+714	Coonoor (Dolphin’s Nose)	Coonoor	Tamil Nadu	Scenic viewpoint in Nilgiris	11.353800	76.785200
+715	Avalanche Lake	Coonoor	Tamil Nadu	Alpine lake in Nilgiri Hills	11.302800	76.788800
+716	Yercaud Lake	Yercaud	Tamil Nadu	Hill station lake in Shevaroys	11.782800	78.234100
+717	Kodaikanal Lake	Kodaikanal	Tamil Nadu	Star-shaped freshwater lake	10.238000	77.489900
+718	Pamban Bridge	Rameswaram	Tamil Nadu	Iconic rail bridge to Rameswaram Island	9.272800	79.159400
+719	Ramanathaswamy Temple	Rameswaram	Tamil Nadu	Famous temple with longest corridor	9.287300	79.312000
+720	Meenakshi Amman Temple	Madurai	Tamil Nadu	Historic temple with colorful towers	9.919600	78.119000
+721	Thirumalai Nayakkar Palace	Madurai	Tamil Nadu	17th-century palace with courtyard	9.918500	78.119000
+722	Gandhi Memorial Museum	Madurai	Tamil Nadu	Museum on India’s freedom struggle	9.916400	78.120300
+723	Kanyakumari Vivekananda Rock Memorial	Kanyakumari	Tamil Nadu	Memorial on island off cape tip	8.082200	77.563900
+724	Thirparappu Waterfall	Kanyakumari	Tamil Nadu	Scenic waterfall and pool	8.355200	77.421400
+725	Courtallam Falls	Courtallam	Tamil Nadu	Popular seasonal waterfall	8.936400	77.284900
+726	Papanasam Dam	Papanasam	Tamil Nadu	Dam and recreational area	8.784200	77.286400
+727	Mudumalai National Park	The Nilgiris	Tamil Nadu	Tiger reserve in Western Ghats	11.533300	76.500000
+728	Annamalaiyar Temple	Thiruvannamalai	Tamil Nadu	Major Shiva temple at Arunachala hill	12.226000	79.072200
+729	Yelagiri Hills	Vellore	Tamil Nadu	Hill station known for trekking and boating	12.618800	78.626000
+730	Mahabalipuram Shore Temple	Mahabalipuram	Tamil Nadu	UNESCO temple by the sea	12.613100	80.197100
+731	Pancha Rathas	Mahabalipuram	Tamil Nadu	Rock-cut temple of five chariots	12.614000	80.196400
+732	Arjuna’s Penance	Mahabalipuram	Tamil Nadu	Giant rock relief carving	12.617800	80.197400
+733	Vedanthangal Bird Sanctuary	Vedanthangal	Tamil Nadu	Wetland sanctuary for migratory birds	12.593700	79.928000
+734	Guindy National Park	Chennai	Tamil Nadu	Urban wildlife reserve	13.026500	80.236000
+735	Elliot’s Beach	Chennai	Tamil Nadu	Popular beach in Besant Nagar	12.981100	80.250500
+736	St. Thomas Mount	Chennai	Tamil Nadu	Hill shrine associated with St. Thomas	13.008400	80.217400
+737	Chidambaram Nataraja Temple	Chidambaram	Tamil Nadu	Ancient temple of dancing Shiva	11.411400	79.695800
+738	Thanjavur Brihadeeswarar Temple	Thanjavur	Tamil Nadu	UNESCO Dravidian architecture temple	10.782400	79.131700
+739	Chettinad Mansions	Chettinad	Tamil Nadu	Heritage homes of Chettiar community	10.752500	78.685600
+740	Meghamalai	Theni	Tamil Nadu	Tea estate hill station	9.855300	77.249700
+741	Valparai	Coimbatore	Tamil Nadu	Hill resort in Anaimalai Hills	10.331900	76.981600
+742	Yercaud Observatory	Yercaud	Tamil Nadu	Amateur astronomy viewpoint	11.798800	78.225100
+743	Thiruvalluvar Statue	Kanyakumari	Tamil Nadu	Tall monument of poet-philosopher	8.080000	77.563300
+744	Kanniyakumari Sunset Point	Kanyakumari	Tamil Nadu	Meeting point of waters and stunning sunsets	8.086800	77.543800
+745	Taj Mahal	Agra	Uttar Pradesh	UNESCO mausoleum of love built by Shah Jahan	27.175144	78.042142
+746	Agra Fort	Agra	Uttar Pradesh	Historic Mughal fortress and palace complex	27.179714	78.021058
+747	Fatehpur Sikri	Fatehpur Sikri	Uttar Pradesh	UNESCO city built by Emperor Akbar	27.093000	77.660000
+748	Itmad-ud-Daulah	Agra	Uttar Pradesh	Marble “Baby Taj” monument	27.166301	78.040596
+749	Mathura	Mathura	Uttar Pradesh	Birthplace of Lord Krishna; pilgrimage town	27.492413	77.673675
+750	Vrindavan	Vrindavan	Uttar Pradesh	Holy town with Krishna temples	27.561500	77.673700
+751	Varanasi Ghats	Varanasi	Uttar Pradesh	Ancient riverfront steps on the Ganges	25.317600	82.973900
+752	Sarnath	Sarnath	Uttar Pradesh	Buddhist pilgrimage site where Buddha first taught	25.397500	83.016100
+753	Allahabad Fort	Prayagraj	Uttar Pradesh	Riverfront Mughal fort by confluence of rivers	25.444500	81.840400
+754	Triveni Sangam	Prayagraj	Uttar Pradesh	Sacred meeting point of three rivers	25.423400	81.848300
+755	Jhansi Fort	Jhansi	Uttar Pradesh	Large hilltop fort of Maratha and Bundela rulers	25.453500	78.573700
+756	Chitrakoot	Chitrakoot	Uttar Pradesh	Sacred town associated with the epic Ramayana	24.878500	79.072900
+757	Ayodhya	Ayodhya	Uttar Pradesh	Birthplace of Lord Rama and pilgrimage city	26.799800	82.202500
+758	Lucknow Residency	Lucknow	Uttar Pradesh	Historic British era ruin with museum	26.851700	80.946200
+759	Bara Imambara	Lucknow	Uttar Pradesh	Grand Shia congregational hall	26.846700	80.942900
+760	Rumi Darwaza	Lucknow	Uttar Pradesh	Impressive Awadhi gateway	26.846700	80.946200
+761	Chattar Manzil	Lucknow	Uttar Pradesh	Former palace on Lucknow’s riverfront	26.846200	80.945000
+762	Dudhwa National Park	Lakhimpur Kheri	Uttar Pradesh	Tiger reserve and biodiversity habitat	28.534900	80.875700
+763	Buddha Park	Sarnath	Uttar Pradesh	Public park with Buddha statue and stupas	25.396800	83.015500
+764	Allahabad Museum	Prayagraj	Uttar Pradesh	Museum showcasing regional history and art	25.435000	81.846800
+765	Kasmanda Palace	Kannauj	Uttar Pradesh	Ruined palace built by King Jai Chandra	27.060000	79.917800
+766	Mehtab Bagh	Agra	Uttar Pradesh	Gardens opposite Taj Mahal across Yamuna	27.176700	78.042500
+767	Gomti Riverfront	Lucknow	Uttar Pradesh	Scenic riverside promenade	26.846700	80.946000
+768	Naimisharanya	Sitapur	Uttar Pradesh	Sacred forest mentioned in Mahabharata	29.224000	79.619600
+769	Chandrika Devi Temple	Sitapur	Uttar Pradesh	Ancient hill shrine dedicated to Devi	27.490000	80.687000
+770	Pilibhit Tiger Reserve	Pilibhit	Uttar Pradesh	Forested national park habitat for tigers	28.632400	79.800700
+771	Chandramauxi Devi Temple	Banda	Uttar Pradesh	Local pilgrimage temple on hills	25.485000	80.297000
+772	Lucknow Zoo	Lucknow	Uttar Pradesh	Public zoo with varied wildlife	26.853100	80.948900
+773	Kushinagar	Kushinagar	Uttar Pradesh	Site of Buddha’s Mahaparinirvana	26.749700	83.889100
+774	Unnao Lake	Unnao	Uttar Pradesh	Seasonal wetland near Kanpur-Lucknow highway	26.492000	80.397000
+775	Haridwar	Haridwar	Uttarakhand	Holy city on Ganges famous for Ganga aarti	29.945700	78.164200
+776	Rishikesh	Rishikesh	Uttarakhand	Yoga capital & adventure hub on Ganges	30.086900	78.267600
+777	Badrinath Temple	Badrinath	Uttarakhand	One of the Char Dham pilgrimage shrines	30.743300	79.493000
+778	Kedarnath Temple	Kedarnath	Uttarakhand	Mountain temple dedicated to Lord Shiva	30.734600	79.066100
+779	Yamunotri Temple	Uttarkashi	Uttarakhand	Source of Yamuna River and pilgrimage site	30.729600	78.464500
+780	Gangotri Temple	Uttarkashi	Uttarakhand	Temple near source of Ganges river	30.994100	78.942500
+781	Valley of Flowers	Chamoli	Uttarakhand	UNESCO alpine valley full of flowers in summer	30.729800	79.605200
+782	Auli	Chamoli	Uttarakhand	Ski-resort with panoramic Himalayan views	30.674000	79.644000
+783	Nainital	Nainital	Uttarakhand	Popular hill station around a lake	29.391900	79.454200
+784	Jim Corbett NP	Nainital	Uttarakhand	First national park of India, tiger reserve	29.530000	78.774000
+785	Munsiyari	Pithoragarh	Uttarakhand	Base for Panchachuli Trek	29.928000	80.103000
+786	Mussoorie	Dehradun	Uttarakhand	“Queen of Hills” scenic mountainous town	30.459500	78.064200
+787	Dharasu Dam	Tehri	Uttarakhand	Reservoir near Tehri Dam	30.404000	78.611000
+788	Dehradun	Dehradun	Uttarakhand	City nestled in Shivalik foothills	30.316500	78.032200
+789	Kempty Falls	Mussoorie	Uttarakhand	Popular waterfall picnic spot	30.390000	78.062000
+790	Ranikhet	Almora	Uttarakhand	Hill station with forest and temples	29.638000	79.418000
+791	Mukteshwar	Nainital	Uttarakhand	Clifftop temple with Himalayan views	29.468200	79.621000
+792	Bhadrakali Temple	Haldwani	Uttarakhand	Hilltop temple overlooking city	29.216700	79.512500
+793	Binsar Wildlife Sanctuary	Chamoli	Uttarakhand	Oak forest sanctuary with Himalayan vistas	29.790000	79.487000
+794	Roopkund Trek	Chamoli	Uttarakhand	Glacial lake with ancient skeletal remains	30.314000	79.529000
+795	Hemkund Sahib	Chamoli	Uttarakhand	Sikh pilgrimage lake shrine at high altitude	30.946000	79.629000
+796	Naukuchiatal	Nainital	Uttarakhand	Lake shaped like nine corners	29.426600	79.525600
+797	Mukteshwar Dham	Nainital	Uttarakhand	Hill shrine and heritage college	29.488000	79.619000
+798	Kasardevi Temple	Almora	Uttarakhand	Ancient Shiva temple with valley views	29.642800	79.452200
+799	Binsar Eco Park	Almora	Uttarakhand	Garden with Himalayan panoramas	29.638000	79.418000
+800	Victoria Memorial	Kolkata	West Bengal	Iconic marble memorial museum	22.544800	88.342600
+801	Howrah Bridge	Kolkata	West Bengal	Cantilever bridge over the Hooghly river	22.576800	88.343300
+802	Dakshineswar Kali Temple	Kolkata	West Bengal	Famous riverside temple of Kali	22.622200	88.366300
+803	Belur Math	Howrah	West Bengal	Headquarters of Ramakrishna Mission	22.635800	88.349500
+804	Sundarbans National Park	Sundarbans	West Bengal	Largest mangrove forest & tiger reserve	21.949800	88.878000
+805	Darjeeling Himalayan Railway	Darjeeling	West Bengal	UNESCO “Toy Train” mountain railway	27.041000	88.266500
+806	Tiger Hill	Mirik	West Bengal	Sunrise view over Kanchenjunga	27.364400	88.255000
+807	Darjeeling Tea Gardens	Darjeeling	West Bengal	Famed tea estates in Himalayas	27.041000	88.266500
+808	Bishnupur Temples	Bishnupur	West Bengal	Terracotta temples of Malla era	23.238800	87.322600
+809	Murshidabad	Murshidabad	West Bengal	Historic city on the banks of Ganges	24.187000	88.265000
+810	Kalimpong	Kalimpong	West Bengal	Hill station with monasteries & views	27.066200	88.472700
+811	Silk Villages (Santiniketan)	Bolpur	West Bengal	Tagore’s university town and craft hub	23.684000	87.684000
+812	Belur Math Ferry Ghat	Howrah	West Bengal	Riverside departure to Belur Math	22.637900	88.351700
+813	Buxa Tiger Reserve	Alipurduar	West Bengal	Protected forest & wildlife sanctuary	26.696700	89.607800
+814	Mirik Lake	Mirik	West Bengal	Scenic lakeside hill town	26.888300	88.149000
+815	Jalpaiguri Forest	Jalpaiguri	West Bengal	Forest ecosystem & wildlife habitat	26.518000	88.722000
+816	Siliguri Corridor Viewpoint	Siliguri	West Bengal	Lookout over India‑Bangladesh border area	26.708600	88.428000
+817	Time Museum	Kolkata	West Bengal	Unique museum of clocks and timepieces	22.569000	88.363000
+818	Fractional Art Village	Santiniketan	West Bengal	Local artisans and crafts hub	23.680000	87.685000
+819	ISKCON Temple	Kolkata	West Bengal	Large temple dedicated to Lord Krishna	22.543400	88.358000
+820	Marble Palace	Kolkata	West Bengal	19th-century mansion with art collection	22.585000	88.330000
+821	Eco Park	Kolkata	West Bengal	Large urban park in New Town	22.559900	88.480600
+822	Nicco Park	Kolkata	West Bengal	Amusement park with rides and lake	22.598000	88.423000
+823	Science City	Kolkata	West Bengal	Science museum with space exhibits	22.568000	88.448000
+824	Alipore Zoo	Kolkata	West Bengal	One of India’s oldest zoological parks	22.530000	88.346000
+825	Princep Ghat	Kolkata	West Bengal	Riverside promenade & sunset spot	22.538700	88.334500
+826	St. Paul’s Cathedral	Kolkata	West Bengal	Gothic cathedral by Cathedral Road	22.544500	88.348000
+827	Belur Math Gardens	Howrah	West Bengal	Gardens surrounding Belur Math	22.635000	88.347000
+828	Malda Historic Town	Malda	West Bengal	Ancient ruins & riverside history	25.001000	88.140000
+829	Pangong Tso	Leh	Jammu and Kashmir	Stunning high-altitude lake that extends into China; famous for changing colors	33.749000	78.616700
+830	Nubra Valley	Diskit	Jammu and Kashmir	Cold desert valley with sand dunes and double-humped Bactrian camels	34.524000	77.552100
+831	Khardung La	Leh	Jammu and Kashmir	One of the highest motorable roads in the world at 5,359 meters	34.278300	77.606700
+832	Leh Palace	Leh	Jammu and Kashmir	17th-century nine-storey royal palace overlooking Leh town	34.166700	77.584800
+833	Shanti Stupa	Leh	Jammu and Kashmir	White-domed Buddhist stupa with panoramic views of Leh	34.164500	77.584800
+834	Hemis Monastery	Hemis	Jammu and Kashmir	Largest and richest monastery in Ladakh; known for Hemis Festival	33.881800	77.710000
+835	Tso Moriri Lake	Korzok	Jammu and Kashmir	Remote alpine lake in Changthang region; popular for birdwatching	32.995600	78.256600
+836	Magnetic Hill	Leh	Jammu and Kashmir	Gravity-defying hill where vehicles appear to roll uphill	34.171600	77.547400
+837	Zanskar Valley	Padum	Jammu and Kashmir	Scenic remote valley known for trekking, rafting, and frozen Chadar Trek	33.464800	76.882100
+838	Lamayuru Monastery	Lamayuru	Jammu and Kashmir	Oldest monastery in Ladakh amidst lunar-like landscape	34.283300	76.768900
+839	Alchi Monastery	Alchi	Jammu and Kashmir	Ancient monastery with Indo-Tibetan wall paintings	34.225800	76.844500
+840	Thiksey Monastery	Thiksey	Jammu and Kashmir	12-story monastery resembling Potala Palace with giant Maitreya statue	34.059400	77.635500
+841	Spituk Monastery	Spituk	Jammu and Kashmir	Hilltop Buddhist monastery near Leh Airport	34.123300	77.536100
+842	Shey Palace	Shey	Jammu and Kashmir	Former royal palace with large gold-plated Buddha statue	34.052200	77.648000
+843	Stok Palace	Stok	Jammu and Kashmir	Current royal residence of the Namgyal dynasty; museum included	34.016100	77.703100
+844	Turtuk Village	Turtuk	Jammu and Kashmir	Last Indian village near the Pakistan border; Balti culture	34.854200	76.818300
+845	Basgo Monastery	Basgo	Jammu and Kashmir	Historic fortress and monastery with ancient murals	34.181100	77.396900
+846	Phugtal Monastery	Lingshed	Jammu and Kashmir	Cliffside monastery built into a cave, reachable by trek	33.290300	77.282800
+847	Chadar Trek Route	Zanskar River	Jammu and Kashmir	Frozen river trek done in winter over Zanskar River	33.533300	77.216700
+848	Hanle Observatory	Hanle	Jammu and Kashmir	One of the world’s highest astronomical observatories	32.777300	78.960300
+\.
+
+
+--
+-- Name: places_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.places_id_seq', 209, true);
+
+
+--
+-- Name: placesdata_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.placesdata_id_seq', 848, true);
+
+
+--
+-- Name: places places_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.places
+    ADD CONSTRAINT places_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: placesdata placesdata_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.placesdata
+    ADD CONSTRAINT placesdata_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict 8I5hgnBIA88gYpnuHLa3pMyWpUO8HNlhhrlX3YL7RuHgt2BpoENp34tfPznp79l
+

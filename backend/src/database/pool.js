@@ -5,8 +5,9 @@ const {Pool}=pkg
 const pool=new Pool({
     user:process.env.DATABASE_USER,
     password:process.env.DATABASE_PASSWORD,
-    name:process.env.DATABASE_NAME,
+    database:process.env.DATABASE_NAME,
     host:process.env.DATABASE_HOST,
-    port:process.env.DATABASE_PORT
+    port:process.env.DATABASE_PORT||5432,
+    ssl: { rejectUnauthorized: false },
 })
 export default pool
