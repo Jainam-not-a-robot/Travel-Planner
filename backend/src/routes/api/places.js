@@ -3,4 +3,4 @@ import { handleGetAllPlaces,handleGetPlacesFromState,placesVerification } from '
 const router=express.Router();
 router.get('/states',handleGetAllPlaces);
 router.get('/states/:state',handleGetPlacesFromState);
-export default router;
+export default router; 
