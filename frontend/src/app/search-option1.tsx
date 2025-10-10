@@ -1,63 +1,33 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { UserContext } from './context_selectedPlace';
-import { usePathname } from 'next/navigation';
+
 export default function Search() {
-  const router = useRouter()
+  const router = useRouter();
+  const pathname = usePathname();
   const context = useContext(UserContext);
-  const pathname=usePathname()
+
   if (!context) {
     throw new Error("useContext must be used inside a UserProvider");
   }
+
   const { selectedPlace, setSelectedPlace } = context;
-  const changingRoute = () => {
-    if(pathname==="/")router.push("/places");
-  }
-  const places = [
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Assam",
-    "Bihar",
-    "Chhattisgarh",
-    "Goa",
-    "Gujarat",
-    "Haryana",
-    "Himachal Pradesh",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Madhya Pradesh",
-    "Maharashtra",
-    "Manipur",
-    "Meghalaya",
-    "Mizoram",
-    "Nagaland",
-    "Odisha",
-    "Punjab",
-    "Rajasthan",
-    "Sikkim",
-    "Tamil Nadu",
-    "Telangana",
-    "Tripura",
-    "Uttar Pradesh",
-    "Uttarakhand",
-    "West Bengal",
-    "Andaman and Nicobar Islands",
-    "Chandigarh",
-    "Dadra and Nagar Haveli",
-    "Daman and Diu",
-    "Delhi",
-    "Jammu and Kashmir",
-    "Ladakh",
-    "Lakshadweep",
-    "Puducherry"
+
+  const places: string[] = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+    "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
+    "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
+    "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand",
+    "West Bengal", "Andaman and Nicobar Islands", "Chandigarh",
+    "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Jammu and Kashmir",
+    "Ladakh", "Lakshadweep", "Puducherry"
   ];
 
-  const [filtered, setFiltered] = useState([]);
+  const [filtered, setFiltered] = useState<string[]>([]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSelectedPlace(value);
 
@@ -82,9 +52,13 @@ export default function Search() {
     setTimeout(() => setFiltered([]), 100);
   };
 
-  const handleSelect = (place) => {
+  const handleSelect = (place: string) => {
     setSelectedPlace(place);
     setFiltered([]);
+  };
+
+  const changingRoute = () => {
+    if (pathname === "/") router.push("/places");
   };
 
   return (
@@ -100,7 +74,10 @@ export default function Search() {
           className="w-full border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 
-        <button className="bg-[#239BA7] text-white px-4 py-2 rounded-full hover:bg-blue-600 hover:cursor-pointer hover:shadow-xl" onClick={changingRoute}>
+        <button
+          className="bg-[#239BA7] text-white px-4 py-2 rounded-full hover:bg-blue-600 hover:cursor-pointer hover:shadow-xl"
+          onClick={changingRoute}
+        >
           Search
         </button>
       </div>
@@ -109,7 +86,7 @@ export default function Search() {
           {filtered.map((place, i) => (
             <li
               key={i}
-              onMouseDown={() => handleSelect(place)} // use onMouseDown instead of onClick
+              onMouseDown={() => handleSelect(place)}
               className="px-4 py-2 hover:bg-blue-100 cursor-pointer"
             >
               {place}

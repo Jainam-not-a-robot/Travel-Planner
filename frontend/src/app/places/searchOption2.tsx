@@ -15,7 +15,7 @@ export function Search() {
 
   const { selectedPlace, setSelectedPlace } = context;
 
-  const places = [
+  const places: string[] = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
     "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
     "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
@@ -26,9 +26,9 @@ export function Search() {
     "Ladakh", "Lakshadweep", "Puducherry"
   ];
 
-  const [filtered, setFiltered] = useState([]);
+  const [filtered, setFiltered] = useState<string[]>([]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSelectedPlace(value);
 
@@ -52,7 +52,7 @@ export function Search() {
     setTimeout(() => setFiltered([]), 100);
   };
 
-  const handleSelect = (place) => {
+  const handleSelect = (place: string) => {
     setSelectedPlace(place);
     setFiltered([]);
   };
@@ -93,15 +93,7 @@ export function Search() {
           )}
         </div>
 
-        {/* Search Button */}
-        {/* <button
-          className="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm"
-          onClick={changingRoute}
-        >
-          Search
-        </button> */}
-
-        {/* Filter Button (your custom component) */}
+        {/* Filter Button */}
         <FilterBtn />
       </div>
     </div>

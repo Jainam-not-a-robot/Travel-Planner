@@ -1,5 +1,4 @@
 import { IndiaMap } from "./india-map"
-import { SidebarTrigger } from "@/components/ui/sidebar"
 import Search from "./search-option1"
 import NavCard from "./NavCard"
 export default function Home() {
