@@ -28,7 +28,6 @@ export default function Places() {
     const { selectedPlace, selectedOption } = context;
     const backendURL=process.env.NEXT_PUBLIC_BACKEND_URL;
     useEffect(() => {
-        console.log(backendURL)
         axios.get<{ places: Place[] }>(`${backendURL}/api/places/states/${selectedPlace}`)
             .then(response => setPlaces(response.data.places))
             .catch(error => console.error(error));
