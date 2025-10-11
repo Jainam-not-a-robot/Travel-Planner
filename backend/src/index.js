@@ -8,7 +8,7 @@ const app = express();
 app.use(cors(
   {
     origin: "https://travel-planner-web.vercel.app",
-    credentials: true // if you need cookies/auth
+    credentials: true 
   }
 ));
 app.use(express.json());
