@@ -13,21 +13,6 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   useEffect(() => {
     console.log(selectedPlace);
   }, [selectedPlace])
-  const [preserveRatio, setPreserveRatio] = useState('xMidYMid meet');
-
-  useEffect(() => {
-    const updateRatio = () => {
-      if (window.innerWidth > 1050) {
-        setPreserveRatio('xMidYMid meet');
-      } else {
-        setPreserveRatio('xMidYMid meet'); // Or any value for smaller widths
-      }
-    };
-
-    updateRatio();
-    window.addEventListener('resize', updateRatio);
-    return () => window.removeEventListener('resize', updateRatio);
-  }, []);
   return (
     <svg className="mx-auto"
       xmlns="http://www.w3.org/2000/svg"
