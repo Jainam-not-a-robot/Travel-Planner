@@ -7,9 +7,9 @@ const app = express();
 // Middleware
 app.use(cors(
   {
-    origin: "https://travel-planner-web.vercel.app",
+    origin: ["https://travel-planner-web.vercel.app","https://localhost:3000"],
     credentials: true 
-  }
+  },
 ));
 app.use(express.json());
 

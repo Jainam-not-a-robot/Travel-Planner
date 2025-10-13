@@ -17,10 +17,10 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
 
   useEffect(() => {
     const updateRatio = () => {
-      if (window.innerWidth >= 1050) {
+      if (window.innerWidth > 1050) {
         setPreserveRatio('xMidYMid meet');
       } else {
-        setPreserveRatio('none'); // Or any value for smaller widths
+        setPreserveRatio('xMidYMid meet'); // Or any value for smaller widths
       }
     };
 
@@ -32,7 +32,7 @@ export const IndiaMap: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     <svg className="mx-auto"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 611.86 695.70"
-      preserveAspectRatio={preserveRatio}
+      preserveAspectRatio='xMidYMid meet'
       style={{ width: '100%', height: '100%' }}
       {...props}
     >

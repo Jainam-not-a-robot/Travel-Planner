@@ -63,7 +63,8 @@ export default function Search() {
 
   return (
     <div className="relative w-128 mx-auto mt-16">
-      <div className='flex items-center gap-8 mb-4'>
+      <div className='flex flex-nowrap items-center gap-8 mb-4'>
+        <div className='flex-grow relative w-full'>
         <input
           type="search"
           value={selectedPlace}
@@ -71,8 +72,9 @@ export default function Search() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder="Enter State"
-          className="w-full border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="max-w-full min-w-1 w-72 border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
+        </div>
 
         <button
           className="bg-[#239BA7] text-white px-4 py-2 rounded-full hover:bg-blue-600 hover:cursor-pointer hover:shadow-xl"

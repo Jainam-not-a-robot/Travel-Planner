@@ -59,7 +59,7 @@ export function Search() {
   return (
     <div className="relative w-full max-w-3xl mx-auto mt-16">
       {/* Input Row */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-4">
+      <div className="flex flex-nowrap items-center gap-4 sm:gap-6 mb-4">
         {/* Search Input */}
         <div className="relative flex-grow w-full">
           <input
