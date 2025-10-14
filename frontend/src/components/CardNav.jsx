@@ -23,41 +23,6 @@ const CardNav = ({
   const cardsRef = useRef([]);
   const tlRef = useRef(null);
 
-  const calculateHeight = () => {
-    const navEl = navRef.current;
-    if (!navEl) return 166;
-
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile) {
-      const contentEl = navEl.querySelector('.card-nav-content');
-      if (contentEl) {
-        const wasVisible = contentEl.style.visibility;
-        const wasPointerEvents = contentEl.style.pointerEvents;
-        const wasPosition = contentEl.style.position;
-        const wasHeight = contentEl.style.height;
-
-        contentEl.style.visibility = 'visible';
-        contentEl.style.pointerEvents = 'auto';
-        contentEl.style.position = 'static';
-        contentEl.style.height = 'auto';
-
-        contentEl.offsetHeight;
-
-        const topBar = 60;
-        const padding = 16;
-        const contentHeight = contentEl.scrollHeight;
-
-        contentEl.style.visibility = wasVisible;
-        contentEl.style.pointerEvents = wasPointerEvents;
-        contentEl.style.position = wasPosition;
-        contentEl.style.height = wasHeight;
-
-        return topBar + contentHeight / 2 + padding;
-      }
-    }
-    return 166;
-  };
-
   const createTimeline = () => {
     const navEl = navRef.current;
     if (!navEl) return null;
@@ -68,7 +33,7 @@ const CardNav = ({
     const tl = gsap.timeline({ paused: true });
 
     tl.to(navEl, {
-      height: calculateHeight(),
+      height: 166,
       duration: 0.4,
       ease
     });
