@@ -3,7 +3,7 @@ import Card from "./placesCard";
 import axios from 'axios';
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context_selectedPlace";
-
+import Loading from "./loading_page";
 export default function Places() {
     type Place = {
         id: number;
@@ -17,7 +17,7 @@ export default function Places() {
         distance: number;
         ratings: number | null;
     };
-
+    const [loading,setLoading]=useState(true);
     const context = useContext(UserContext);
     const [places, setPlaces] = useState<Place[]>([]); // typed array
 
@@ -29,7 +29,10 @@ export default function Places() {
     const backendURL=process.env.NEXT_PUBLIC_BACKEND_URL;
     useEffect(() => {
         axios.get<{ places: Place[] }>(`${backendURL}/api/places/states/${selectedPlace}`)
-            .then(response => setPlaces(response.data.places))
+            .then(response => {
+                setPlaces(response.data.places)
+                setLoading(false);
+            })
             .catch(error => console.error(error));
     }, [selectedPlace]);
 
@@ -99,7 +102,7 @@ export default function Places() {
 
     sortByDistance(0, placesWithDistance.length - 1, placesWithDistance);
 
-    return (
+    return (loading?<Loading></Loading>:
         <div className="flex flex-wrap justify-center gap-6 p-4">
             {placesWithDistance.map(place => (
                 <Card key={place.id} place={place} />

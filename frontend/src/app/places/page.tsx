@@ -10,6 +10,5 @@ return(
     <Search/>
     <Places/>
     </>
-
 )
 }
