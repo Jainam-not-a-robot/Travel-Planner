@@ -62,27 +62,29 @@ export default function Search() {
   };
 
   return (
-    <div className="relative w-128 mx-auto mt-16">
-      <div className='flex flex-nowrap items-center gap-8 mb-4'>
-        <div className='flex-grow relative w-full'>
-        <input
-          type="search"
-          value={selectedPlace}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder="Enter State"
-          className="max-w-full min-w-1 w-72 border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+    <div className="relative max-w-128 mx-auto mt-16">
+      <div className="flex flex-nowrap items-center justify-center gap-2 mb-4 w-full px-4">
+        <div className="flex-grow max-w-[16rem] sm:max-w-[18rem] md:max-w-[20rem] lg:max-w-[24rem]">
+          <input
+            type="search"
+            value={selectedPlace}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            id="search"
+            onBlur={handleBlur}
+            placeholder="Enter State"
+            className="w-full border min-w-0 border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
+          />
         </div>
 
         <button
-          className="bg-[#239BA7] text-white px-4 py-2 rounded-full hover:bg-blue-600 hover:cursor-pointer hover:shadow-xl"
+          className="bg-[#239BA7] text-white min-w-0 px-3 sm:px-4 py-2 rounded-full hover:bg-blue-600 hover:cursor-pointer hover:shadow-xl flex-shrink-0 text-sm sm:text-base"
           onClick={changingRoute}
         >
           Search
         </button>
       </div>
+
       {filtered.length > 0 && (
         <ul className="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-md max-h-48 overflow-y-auto z-10">
           {filtered.map((place, i) => (
